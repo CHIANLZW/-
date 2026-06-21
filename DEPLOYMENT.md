@@ -222,6 +222,7 @@ git push origin main
 
 - `_source/` — 原始证件与客户资料（约 1.8GB）  
 - `素材/` — 内部审核材料  
+- `空域文件/` — 空域申请原件与批复 PDF（含客户全称）  
 - `_archive/` — 归档  
 
 公开仓库仅包含 `assets/` 内已处理的展示图与 manifest。
