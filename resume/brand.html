@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      var path = location.pathname.replace(/\\/g, '/');
+      var marker = '/resume';
+      var idx = path.indexOf(marker);
+      if (idx !== -1) {
+        path = path.slice(0, idx + marker.length) + '/';
+      } else if (/\.html$/i.test(path)) {
+        path = path.slice(0, path.lastIndexOf('/') + 1);
+      } else if (!path.endsWith('/')) {
+        path += '/';
+      }
+      document.write('<base href="' + path + '">');
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="卿晓萌 — 航空低空产业品牌运营专员 · 宣传文案 · 推广活动 · 培训引流">
+  <title>卿晓萌 · 航空低空产业品牌运营专员</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/resume.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="../studio/index.html" class="topbar__brand">inchian<span>.top</span></a>
+    <button class="topbar__toggle" type="button" aria-label="菜单">☰</button>
+    <nav class="topbar__nav">
+      <a href="#profile">基础信息</a>
+      <a href="#strengths">个人优势</a>
+      <a href="#skills">专业技能</a>
+      <a href="#education">教育经历</a>
+      <a href="#internship">实习经历</a>
+      <a href="#projects">项目经历</a>
+    </nav>
+    <div class="topbar__actions">
+      <a href="index.html" class="topbar__studio">求职意向</a>
+      <a href="../studio/index.html" class="topbar__studio">工作室官网</a>
+    </div>
+  </header>
+
+  <main class="resume">
+
+    <!-- 一、基础信息 -->
+    <section class="resume-header" id="profile">
+      <div class="resume-header__top">
+        <figure class="resume-photo">
+          <img src="assets/photo.png" alt="卿晓萌 · 个人简历照片" width="132" height="176" loading="eager">
+        </figure>
+        <div class="resume-header__main">
+          <p class="resume-header__label">个人简历 · 品牌运营方向</p>
+          <h1 class="resume-header__name">卿晓萌</h1>
+          <p class="resume-header__intent">求职意向：<strong>航空低空产业品牌运营专员</strong></p>
+          <p class="resume-header__motto">工作地点 <strong>全国可赴</strong>（可出差驻场）· 比起守着某一城，更愿意跟着值得投入的低空项目一起走</p>
+          <div class="resume-header__tags">
+            <span class="resume-tag resume-tag--primary">广告品牌运营专业</span>
+            <span class="resume-tag resume-tag--primary">传媒 + 低空复合型</span>
+            <span class="resume-tag resume-tag--primary">宣传文案与活动策划</span>
+            <span class="resume-tag">全国可赴 · 跟项目走</span>
+          </div>
+        </div>
+      </div>
+      <dl class="info-grid">
+        <div class="info-grid__item">
+          <dt>性别</dt>
+          <dd>男</dd>
+        </div>
+        <div class="info-grid__item">
+          <dt>年龄</dt>
+          <dd>23 岁</dd>
+        </div>
+        <div class="info-grid__item">
+          <dt>联系电话</dt>
+          <dd><a href="tel:13386581454">13386581454</a></dd>
+        </div>
+        <div class="info-grid__item">
+          <dt>邮箱</dt>
+          <dd><a href="mailto:1002476493@ucsiuniversity.edu.my">1002476493@ucsiuniversity.edu.my</a></dd>
+        </div>
+        <div class="info-grid__item">
+          <dt>期望薪资</dt>
+          <dd>5–8K</dd>
+        </div>
+        <div class="info-grid__item">
+          <dt>期望地点</dt>
+          <dd>全国（可出差驻场）</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 二、个人优势 -->
+    <section class="resume-section" id="strengths">
+      <h2 class="resume-section__title">个人优势</h2>
+      <div class="resume-section__body">
+        <p class="strength-epigraph">低空对我而言，不只是政策风口里的机会——更像一种长期执念：把机子造好、让天空离人更近一点。</p>
+        <div class="strength-layers">
+          <article class="strength-layer strength-layer--origin">
+            <h3 class="strength-layer__title">无人机工程技术履历 · 从少年工坊到赛场</h3>
+            <p>从第一次拆开穿越机机架起，这件事就扎进生活里——<strong>地上搭结构、天上对参数</strong>，一坚持就是许多年。</p>
+            <p><strong>FPV 穿越机</strong>：自主完成机架选型与组装、电调/电机/桨叶匹配、图传与接收链路调试、OSD 配置到首飞验收，沉淀<strong>整机系统集成</strong>与硬件调参手感。飞控体系：系统掌握 PX4 开源飞控完整生态（传感器校准、遥控器映射、安全逻辑与日志排查），并实操初代 APM 飞控板卡装配、供电布线、<strong>飞控参数标定</strong>与场地联调验收。</p>
+            <p><strong>VEX 机器人赛事</strong>：在限时赛制内独立完成机械结构搭建、电控系统集成、驱动调试与现场工程联调，多次走通「图纸—装配—排障—上场」完整闭环，把嵌入式工程落地的直觉练成了肌肉记忆。这段从少年工坊到赛场的积累，是后来承接政企低空项目的底层底气。</p>
+          </article>
+          <article class="strength-layer">
+            <h3 class="strength-layer__title">低空政企项目实战履历</h3>
+            <p>具备 <strong>2 年低空经济全周期项目操盘经验</strong>，精通 CAAC 无人机运营合规体系、<strong>空域资源统筹</strong>与申报流程、培训机构资质年审复查、<strong>适航备案</strong>材料协同及多政企主体交付。2024.08 起协同重庆苍凌工作室服务 62 家伙伴单位（培训资质 ~58 例、空域 20 例已批 + 9 例在办、OC 12+ 例），统筹靖边智科、遂宁天擎、浙江富龙等区县平台客户，擅长 <strong>PMO 全流程交付</strong>、<strong>项目节点管控</strong>、<strong>资质台账标准化搭建</strong>与 <strong>合规风险前置排查</strong>。</p>
+          </article>
+          <article class="strength-layer">
+            <h3 class="strength-layer__title">商业化运营能力</h3>
+            <p>把重庆苍凌工作室 / inchian.top 当作低空赛道的个人名片：独立运营无人机教培、配套设备供应、政企 <strong>低空产业可研报告</strong>与产业方案输出全商业链路；擅长低空垂直领域个人 IP 矩阵搭建、<strong>垂直产业内容矩阵</strong>策划、产业科普内容与政企招商线下活动全案落地。</p>
+          </article>
+          <article class="strength-layer">
+            <h3 class="strength-layer__title">企业用工适配优势</h3>
+            <p>比起等别人喂答案，更习惯在陌生业务里自己搭一张地图——学习快、落地快，<strong>入职即插即用</strong>，能显著缩短岗前技术与业务培训周期。</p>
+          </article>
+          <article class="strength-layer strength-layer--core">
+            <h3 class="strength-layer__title">核心差异化复合竞争力</h3>
+            <p>本科工商管理（广告品牌运营）叠加多年无人机工程实操，打通开源飞控<strong>整机系统集成</strong>、低空政企项目 PMO 管控、产业商业化营销三大能力域；我相信复合背景不是拼凑，而是低空产业真正需要的那块拼图——可独立衔接技术参数解读、<strong>多源政企资源调度</strong>与方案表达，承接航空央企、低空物流及民营无人机企业多环节复合型项目工作。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三、专业技能 -->
+    <section class="resume-section" id="skills">
+      <h2 class="resume-section__title">专业技能</h2>
+      <div class="resume-section__body">
+        <div class="skill-groups">
+          <div class="skill-group skill-group--primary">
+            <h3 class="skill-group__title">品牌策划 · 内容创作</h3>
+            <div class="resume-tags">
+              <span class="resume-tag resume-tag--primary">垂直产业内容矩阵</span>
+              <span class="resume-tag resume-tag--primary">低空产业宣传文案</span>
+              <span class="resume-tag resume-tag--primary">行业品牌策划</span>
+              <span class="resume-tag resume-tag--primary">政企推介材料撰写</span>
+              <span class="resume-tag resume-tag--primary">方案 PPT 与可视化表达</span>
+              <span class="resume-tag resume-tag--primary">产业故事与案例包装</span>
+            </div>
+          </div>
+          <div class="skill-group skill-group--primary">
+            <h3 class="skill-group__title">活动策划 · 培训引流</h3>
+            <div class="resume-tags">
+              <span class="resume-tag resume-tag--primary">政企推广活动组织</span>
+              <span class="resume-tag resume-tag--primary">低空产业可研报告解读传播</span>
+              <span class="resume-tag resume-tag--primary">无人机教培引流策划</span>
+              <span class="resume-tag resume-tag--primary">园区推介与开放日执行</span>
+              <span class="resume-tag resume-tag--primary">活动物料与流程统筹</span>
+            </div>
+          </div>
+          <div class="skill-group skill-group--primary">
+            <h3 class="skill-group__title">行业认知 · 传播支撑</h3>
+            <div class="resume-tags">
+              <span class="resume-tag resume-tag--primary">低空政策通俗化解读</span>
+              <span class="resume-tag resume-tag--primary">整机系统集成科普表达</span>
+              <span class="resume-tag resume-tag--primary">应用场景内容策划</span>
+              <span class="resume-tag resume-tag--primary">客户案例素材整理</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group__title">补充加分 · 项目协同</h3>
+            <div class="resume-tags">
+              <span class="resume-tag">项目节点管控辅助</span>
+              <span class="resume-tag">多源政企资源调度</span>
+              <span class="resume-tag">PMO 材料协同</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 四、教育经历 -->
+    <section class="resume-section" id="education">
+      <h2 class="resume-section__title">教育经历</h2>
+      <div class="resume-section__body">
+        <article class="resume-card">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">思特雅国际大学学院大学</h3>
+              <p class="resume-card__subtitle">本科 · 工商管理（广告品牌运营方向）</p>
+            </div>
+            <time class="resume-card__time">2023 — 2026</time>
+          </div>
+          <p class="resume-card__lead">核心课程涵盖品牌策划、广告创意、市场营销与传播学，与本岗位高度对口；在校期间即注重文案写作、活动策划与视觉表达训练，毕业后将专业能力系统应用于低空产业品牌运营与政企传播场景。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 五、实习经历 -->
+    <section class="resume-section" id="internship">
+      <h2 class="resume-section__title">实习经历</h2>
+      <div class="resume-section__body resume-timeline">
+
+        <article class="resume-card resume-card--featured">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">测试实习生</h3>
+              <p class="resume-card__subtitle">航天时代低空科技有限公司 · 中国航天科技集团九院</p>
+            </div>
+            <time class="resume-card__time">2026.02 — 2026.05</time>
+          </div>
+          <p class="resume-card__lead">
+            参与 2 个省级/市级低空基建与公安信息化项目，侧重建设方案文案撰写、模块内容梳理与政企推介材料编制。
+          </p>
+          <ul class="resume-list">
+            <li><strong>山东省公安厅低空公共安全管理平台</strong>：协助编制省级公安无人机信息化建设方案，将警用实战、民用管控、侦测反制、智能算法仓 4 大模块转化为清晰可读的业务叙述与推介内容。</li>
+            <li>对照低空相关政策，整理必要性分析、多跨场景清单 30+ 项，以通俗文案支撑方案答辩与对外宣传。</li>
+            <li>协助完成业务模块梳理与政策依据对照 20+ 条，输出合作建议文案 2 份，服务政企客户品牌推介场景。</li>
+          </ul>
+        </article>
+
+        <article class="resume-card resume-card--featured">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">项目专员</h3>
+              <p class="resume-card__subtitle">重庆苍珀科技有限公司</p>
+            </div>
+            <time class="resume-card__time">2024.08 — 2025.12</time>
+          </div>
+          <p class="resume-card__lead">
+            协同重庆苍凌工作室合规团队，驻场/远程统筹 3 家低空平台客户（靖边智科、遂宁天擎、浙江富龙），周期 17 个月；同时参与工作室生态内 62 家伙伴单位的低空合规批次协同，负责教培与产业规划类项目的品牌内容、推介材料与活动引流全流程支撑。
+          </p>
+          <ul class="resume-list">
+            <li>并行推进 3 条业务线，月均组织业主/合作方协调会 4–6 次，负责会议纪要、推介 PPT 与宣传文案输出，保障品牌传播节点按时交付。</li>
+            <li>协助完成无人机应用场景设计文案、可行性分析及实施计划编制，输出可研级文档 3 套，覆盖空域管理、教培落地与产业导入场景的品牌表达。</li>
+            <li>批次协同苍凌工作室，参与培训手册、空域/OC 推介物料与品牌包装（~58 例培训大纲/手册类内容协助），服务中科星源、湖北三峡职业技术学院、南通爱夏等伙伴单位传播需求。</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 六、项目经历 -->
+    <section class="resume-section" id="projects">
+      <h2 class="resume-section__title">项目经历</h2>
+      <div class="resume-section__body resume-timeline">
+
+        <article class="resume-card resume-card--featured">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">重庆市重点区域低空基础设施项目（一期）感知系统设施</h3>
+              <p class="resume-card__subtitle">案例素材整理 · 航天时代低空科技</p>
+            </div>
+            <time class="resume-card__time">2026.02 — 2026.05</time>
+          </div>
+          <p class="resume-card__lead">640 项目政企客户案例 · 协助整理项目交付亮点与「探测—识别—跟踪—告警」闭环能力描述，输出面向园区/公安类客户的案例摘要。</p>
+          <ul class="resume-list">
+            <li>将感知系统模块能力转化为非技术受众可理解的品牌话术要点，辅助销售与传播团队内容复用。</li>
+            <li>参与江北机场关键能力验证案例包装，归档宣传素材 1 套，为后续品牌推介提供图文支撑。</li>
+          </ul>
+        </article>
+
+        <article class="resume-card resume-card--featured">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">山东省公安厅低空公共安全管理平台</h3>
+              <p class="resume-card__subtitle">建设方案文案与内容梳理 · 航天时代低空科技</p>
+            </div>
+            <time class="resume-card__time">2026.02 — 2026.05</time>
+          </div>
+          <p class="resume-card__lead">2026 省级公安无人机信息化新建项目 · 覆盖全省「省—市—县」三级，负责将复杂技术架构转化为面向决策层的可读推介内容。</p>
+          <ul class="resume-list">
+            <li>协助撰写项目建设方案与合作建议文案 2 份，梳理 4 大业务模块及「1+3+3+N」底座的品牌化表达。</li>
+            <li>对照相关政策，整理必要性分析、多跨场景清单与数据共享条目 30+ 项，以清晰文案支撑方案宣传与答辩。</li>
+            <li>梳理 12 类外部系统对接场景，提炼机场净空、重大活动安保等典型警务场景故事素材，服务品牌案例包装。</li>
+          </ul>
+        </article>
+
+        <article class="resume-card resume-card--featured">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">靖边县智科低空经济发展有限公司 · 低空人才培训</h3>
+              <p class="resume-card__subtitle">项目负责人 · 重庆苍珀科技</p>
+            </div>
+            <time class="resume-card__time">2025.09 — 2025.12</time>
+          </div>
+          <p class="resume-card__lead">区县低空平台教培落地项目 · 周期 4 个月，统筹教培品牌包装、培训引流活动策划与空域应用场景宣传。</p>
+          <ul class="resume-list">
+            <li>协助完成无人机教培、运输物流场景宣传文案与可行性分析材料，明确教培与物流 2 类应用场景的品牌故事线与分阶段推广路径。</li>
+            <li>负责教培引流活动策划与多方沟通，协调业主、运营方与合规顾问 3 方，保障培训招募与品牌曝光节点按时推进。</li>
+            <li>输出教培品牌推介材料 1 套，涵盖课程亮点、就业场景与低空经济政策解读，支撑学员招募与政企推介。</li>
+          </ul>
+        </article>
+
+        <article class="resume-card resume-card--featured">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">遂宁天擎工程项目管理有限公司 · 低空人才培训项目</h3>
+              <p class="resume-card__subtitle">项目专员 · 重庆苍珀科技</p>
+            </div>
+            <time class="resume-card__time">2025.08 — 2025.10</time>
+          </div>
+          <p class="resume-card__lead">工程管理类客户教培品牌落地项目 · 周期 3 个月，侧重教培宣传内容与学员引流材料编制。</p>
+          <ul class="resume-list">
+            <li>协助编制空域管理、教培资质路径相关宣传材料，以通俗文案向业主方呈现合规要点与培训价值。</li>
+            <li>保障教培品牌内容在客户侧顺利落地，配合完成推介材料修订 2 轮，支撑培训招募启动。</li>
+            <li>推动无人机技术与低空经济融合宣传方案在业主侧落地，协助编制产业生态导入品牌建议 1 份。</li>
+          </ul>
+        </article>
+
+        <article class="resume-card resume-card--featured">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">协同苍凌工作室 · 低空合规批次服务</h3>
+              <p class="resume-card__subtitle">培训手册 / 推介物料 / 品牌包装 · 重庆苍珀科技 × 重庆苍凌工作室</p>
+            </div>
+            <time class="resume-card__time">2024.09 — 2025.12</time>
+          </div>
+          <p class="resume-card__lead">通过苍珀科技协同苍凌工作室，参与生态内 62 家伙伴单位批次服务的内容与品牌支撑（培训手册/大纲 ~58 例、空域/OC 推介物料等），非独立负责全部文案终审。</p>
+          <ul class="resume-list">
+            <li>协助编制 CAAC 培训类手册、课程大纲与证书申报材料文案，服务中科星源、北京龙翼航空、广州飞律普、四川岷霄、智飞航空、南通爱夏等客户品牌表达。</li>
+            <li>参与空域类客户（浙江富龙、靖边智科、遂宁天擎、北京安邮飞讯、石家庄展翼、金华交投、广东惠飞等）推介 PPT 与政策解读内容美化。</li>
+            <li>协助 OC 运营合格证类客户（重庆空域智租、广州市华科尔、重庆苍珀等）品牌包装与对外宣传摘要编制，统一工作室生态视觉口径。</li>
+          </ul>
+        </article>
+
+        <article class="resume-card resume-card--featured">
+          <div class="resume-card__head">
+            <div>
+              <h3 class="resume-card__title">浙江富龙低空全产业发展有限公司 · 低空产业规划落地</h3>
+              <p class="resume-card__subtitle">项目统筹协助 · 重庆苍珀科技</p>
+            </div>
+            <time class="resume-card__time">2024.08 — 2025.12</time>
+          </div>
+          <p class="resume-card__lead">省级低空全产业链平台客户 · 2024.08 入职起持续跟进至 2025.12，聚焦产业品牌策划与无人机应用推广内容，与靖边、遂宁及批次服务并行推进。</p>
+          <ul class="resume-list">
+            <li>参与低空经济产业规划品牌包装，协助完成无人机应用场景宣传文案、可行性分析及实施计划编制，覆盖「制造—运营—服务」3 条产业线内容策划。</li>
+            <li>负责组织政企推介会议内容支撑，协调园区方与运营方资源，保障产业导入品牌传播按节点推进。</li>
+            <li>推动无人机技术与低空经济融合故事线落地，协助编制规模化应用推广路径与阶段性品牌目标，助力区域低空产业形象构建。</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="resume-footer">
+    <p>&copy; 2026 卿晓萌 · 航空低空产业品牌运营专员 · <a href="index.html">其他求职意向</a> · <a href="../studio/index.html">重庆苍凌工作室</a> · <a href="../index.html">站点入口</a></p>
+  </footer>
+
+  <script src="js/resume.js"></script>
+</body>
+</html>

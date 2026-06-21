@@ -44,7 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
     { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
-  document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+  document.querySelectorAll('.fade-in').forEach((el) => {
+    el.classList.add('fade-in--animate');
+    observer.observe(el);
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) {
+      el.classList.add('visible');
+    }
+  });
+
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in:not(.visible)').forEach((el) => el.classList.add('visible'));
+  }, 1200);
 
   const form = document.querySelector('.contact-form');
   if (form) {

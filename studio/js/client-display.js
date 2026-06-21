@@ -1,8 +1,11 @@
-/** 经典版在 /classic/ 子目录，静态资源需回退一级 */
+/** 经典版在 /classic/ 或 /studio/classic/ 子目录，静态资源需回退 */
 window.assetUrl = function assetUrl(path) {
   const clean = String(path).replace(/^\//, '');
-  const inClassic = /\/classic(?:\/|$)/i.test(location.pathname.replace(/\\/g, '/'));
-  return (inClassic ? '../' : '') + clean;
+  const pathname = location.pathname.replace(/\\/g, '/');
+  if (/\/classic(?:\/|$)/i.test(pathname)) {
+    return pathname.includes('/studio/') ? '../../' + clean : '../' + clean;
+  }
+  return clean;
 };
 
 /** 客户名称：别名归一 + 敏感信息打码 */
