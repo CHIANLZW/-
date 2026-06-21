@@ -10,16 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (toggle && links) {
+    const setNavOpen = (open) => {
+      toggle.classList.toggle('active', open);
+      links.classList.toggle('open', open);
+      document.body.classList.toggle('nav-open', open);
+    };
+
     toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      links.classList.toggle('open');
+      setNavOpen(!links.classList.contains('open'));
     });
 
     links.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        toggle.classList.remove('active');
-        links.classList.remove('open');
-      });
+      link.addEventListener('click', () => setNavOpen(false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setNavOpen(false);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) setNavOpen(false);
     });
   }
 
