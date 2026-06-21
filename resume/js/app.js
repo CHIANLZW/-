@@ -81,7 +81,7 @@
         var contact = document.querySelector('[data-hub-contact]');
         if (contact) {
           contact.innerHTML =
-            '<p class="hub__contact-title">看简历觉得合适？直接联系我</p>' +
+            '<p class="hub__contact-title">联系方式</p>' +
             '<p class="hub__contact-lines">电话 <a href="tel:' +
             person.phone +
             '">' +
@@ -116,7 +116,7 @@
               '<span class="role-card__tags">' +
               role.tags.join(' · ') +
               '</span>' +
-              '<span class="role-card__arrow">查看完整简历 →</span>' +
+              '<span class="role-card__arrow">查看简历 →</span>' +
               '</a>'
             );
           })
