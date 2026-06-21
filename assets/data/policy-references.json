@@ -1,0 +1,145 @@
+{
+  "training_laws": [
+    {
+      "title": "CCAR-92 民用无人驾驶航空器运行安全管理规则",
+      "source": "中国民用航空局 · 交通运输部令 2024 年第 1 号",
+      "url": "https://www.caac.gov.cn/XXGK/XXGK/MHGZ/202401/t20240103_222566.html",
+      "local": "",
+      "note": "登记、适航、操控员执照与训练机构管理的现行规章。"
+    },
+    {
+      "title": "无人驾驶航空器飞行管理暂行条例",
+      "source": "国务院 · 国令第 761 号",
+      "url": "https://xxgk.mot.gov.cn/2020/jigou/fgs/202401/t20240103_3980642.html",
+      "local": "",
+      "note": "无人驾驶航空器飞行管理上位法。"
+    },
+    {
+      "title": "CCAR-92 部视频会议宣贯报道",
+      "source": "中国民航网 · 2024-01-17",
+      "url": "http://www.caacnews.com.cn/1/1/202401/t20240117_1373997.html",
+      "local": "",
+      "note": "规章发布背景与要点解读。"
+    }
+  ],
+  "training": [
+    {
+      "title": "民用无人驾驶航空器飞行活动报备表（样表）",
+      "source": "本地存档 · 培训教材扫描件",
+      "url": "",
+      "local": "assets/images/site/training/train-14.jpg",
+      "note": "飞行活动报备填写参考。"
+    },
+    {
+      "title": "旋翼飞行器实践飞行场地要求（团体标准摘录）",
+      "source": "本地存档 · 团标扫描件",
+      "url": "",
+      "local": "assets/images/site/training/train-20.jpg",
+      "note": "训练机构场地布置与验收要点。"
+    },
+    {
+      "title": "统接人民航主管部门批准云系统的通知",
+      "source": "本地存档 · 政策通知扫描件",
+      "url": "",
+      "local": "assets/images/site/training/train-16.jpg",
+      "note": "训练机构云系统接入与数据报送要求。"
+    }
+  ],
+  "airspace": [
+    {
+      "title": "UOM 民用无人驾驶航空器综合管理平台",
+      "source": "中国民用航空局",
+      "url": "https://uom.caac.gov.cn",
+      "local": "",
+      "note": "实名登记、适飞空域查询与飞行活动申请入口。"
+    },
+    {
+      "title": "江苏省微型、轻型、小型无人机适飞空域范围",
+      "source": "江苏省低空飞行服务中心 · jfsc.cn",
+      "url": "https://www.jfsc.cn/map",
+      "local": "assets/data/regulations/政策解读_·_江苏省_·_新建_·_文本文档.json",
+      "note": "江苏省适飞空域查询与飞行前报备说明。"
+    },
+    {
+      "title": "川渝一体化低空运行管理服务平台（四川端）",
+      "source": "四川省低空运行管理",
+      "url": "https://scdk.cn",
+      "local": "",
+      "note": "川渝地区临时空域与飞行活动审批。"
+    },
+    {
+      "title": "南部空域申请平台",
+      "source": "南部战区低空运行管理",
+      "url": "http://119.3.231.246:8081/personalCenter",
+      "local": "",
+      "note": "南部区域临时空域申请入口。"
+    },
+    {
+      "title": "北部空域申请免费平台",
+      "source": "北部战区低空运行管理",
+      "url": "http://bb.dkxt.cn:8888/fss/ntcm/production/#/portal?name=home&typeId=0",
+      "local": "",
+      "note": "北部区域空域申请入口。"
+    },
+    {
+      "title": "中部免费申请平台",
+      "source": "中部战区低空运行管理",
+      "url": "https://dkjz.gaeac.com:8081/gaefb-web/#/login",
+      "local": "",
+      "note": "中部区域空域申请入口。"
+    },
+    {
+      "title": "南京免费申请平台",
+      "source": "华东 · 南京低空运行管理",
+      "url": "http://www.njdk.org.cn",
+      "local": "",
+      "note": "华东（南京）区域空域申请入口。"
+    },
+    {
+      "title": "空域申请函样例（脱敏存档）",
+      "source": "本地存档 · 申办材料样张",
+      "url": "",
+      "local": "assets/images/site/airspace/airspace-03.jpg",
+      "note": "申请函格式与必备要素参考。"
+    }
+  ],
+  "operation": [
+    {
+      "title": "CCAR-92 民用无人驾驶航空器运行安全管理规则",
+      "source": "中国民用航空局 · 交通运输部令 2024 年第 1 号",
+      "url": "https://www.caac.gov.cn/XXGK/XXGK/MHGZ/202401/t20240103_222566.html",
+      "local": "",
+      "note": "运营合格证（OC）的法律依据。"
+    },
+    {
+      "title": "UOM 运营合格证在线申请",
+      "source": "中国民用航空局",
+      "url": "https://uom.caac.gov.cn",
+      "local": "",
+      "note": "OC 填报、补正与进度查询。"
+    }
+  ],
+  "airworthiness": [
+    {
+      "title": "中型民用无人驾驶航空器系统适航标准及符合性指导材料（AC-92-AA-2024-02）",
+      "source": "中国民用航空局 · 民航适函〔2024〕52 号",
+      "url": "http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202408/P020240807518082185594.pdf",
+      "local": "assets/docs/ac-92-aa-2024-02.pdf",
+      "note": "适用于 TC / STC 审定的适航标准。"
+    },
+    {
+      "title": "限用类无人驾驶航空器系统适航标准（AC-21-AA-2026-44）",
+      "source": "中国民用航空局 · 2026-02-12 生效",
+      "url": "http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202602/P020260226338705668572.pdf",
+      "local": "assets/docs/ac-21-aa-2026-44.pdf",
+      "note": "限用类中型及大型无人机 TC 审定要求。"
+    },
+    {
+      "title": "适航人员培训班通知（民航管理干部学院）",
+      "source": "本地存档 · 培训通知扫描件",
+      "url": "",
+      "local": "assets/images/site/airworthiness/airworth-01.jpg",
+      "note": "TC / DAS 专题培训安排参考。"
+    }
+  ]
+}

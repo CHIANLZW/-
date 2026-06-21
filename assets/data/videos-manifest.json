@@ -1,0 +1,70 @@
+{
+  "note": "将 published 设为 true 且 file 指向 assets/videos/ 下文件后，首页与项目集会自动展示。筛选前请对照桌面「经典项目-视频清单.txt」。",
+  "home": [],
+  "portfolio": {
+    "fpv": [],
+    "film": []
+  },
+  "pending": [
+    {
+      "id": "fpv-showreel",
+      "title": "FPV 飞行集锦",
+      "file": "assets/videos/fpv/fpv-showreel.mp4",
+      "poster": "assets/images/fpv/hero.jpg",
+      "category": "fpv",
+      "size_mb": 11.62,
+      "issue": "待确认是否为正确素材；原 WordPress 旧站视频",
+      "pages": ["index 经典项目", "portfolio#fpv"],
+      "published": false
+    },
+    {
+      "id": "fpv-flight",
+      "title": "FPV 拍摄片段",
+      "file": "assets/videos/fpv/fpv-flight.mp4",
+      "poster": "assets/images/portfolio/3a7369d1c48af8b4048aa2510795835.jpg",
+      "category": "fpv",
+      "size_mb": 3.38,
+      "issue": "与桌面 毕业/f44bb0e….mp4 同大小，可能为重复拷贝，待确认",
+      "pages": ["portfolio#fpv"],
+      "published": false
+    },
+    {
+      "id": "film-behind",
+      "title": "影视拍摄花絮",
+      "file": "assets/videos/film/film-behind.mp4",
+      "poster": "assets/images/film/hero.jpg",
+      "category": "film",
+      "size_mb": 71.43,
+      "issue": "与桌面 毕业/C0001.MP4 同大小，疑为同源；体积大可能影响加载",
+      "pages": ["index 经典项目", "portfolio#film"],
+      "published": false
+    },
+    {
+      "id": "grad-c0001",
+      "title": "毕业项目 C0001（候选）",
+      "file": null,
+      "source_path": "C:\\Users\\28295\\Desktop\\毕业\\C0001.MP4",
+      "category": "film",
+      "size_mb": 71.43,
+      "published": false
+    },
+    {
+      "id": "grad-c0002",
+      "title": "毕业项目 C0002（候选）",
+      "file": null,
+      "source_path": "C:\\Users\\28295\\Desktop\\毕业\\C0002.MP4",
+      "category": "film",
+      "size_mb": 226.89,
+      "published": false
+    },
+    {
+      "id": "grad-f44b",
+      "title": "毕业项目短片（候选）",
+      "file": null,
+      "source_path": "C:\\Users\\28295\\Desktop\\毕业\\f44bb0eee7ff8e160ec100edbba1a4b9.mp4",
+      "category": "film",
+      "size_mb": 3.38,
+      "published": false
+    }
+  ]
+}

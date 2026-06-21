@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="关于重庆苍凌工作室 — 低空产业服务、创意航拍与工程制作">
+  <title>关于我们 — 重庆苍凌工作室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/spacex.css">
+</head>
+<body class="theme-spacex" data-page="about">
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">INCHIAN</a>
+      <button class="nav__toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html" data-nav="home">首页</a></li>
+        <li><a href="low-altitude.html" data-nav="low-altitude">低空产业</a></li>
+        <li><a href="portfolio.html" data-nav="portfolio">创新延伸</a></li>
+        <li><a href="about.html" data-nav="about">关于</a></li>
+        <li><a href="contact.html" data-nav="contact">联系</a></li>
+        <li><a href="classic/index.html" class="version-switch">经典版</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header" style="--page-header-image: url('assets/images/credentials/training/training-17.jpg')">
+    <div class="container">
+      <h1 class="page-header__title">关于我们</h1>
+      <p class="page-header__desc">重庆苍凌工作室 — 低空产业合规服务与创意工程制作并重。业务内容分栏展示，避免与案例库混排。</p>
+      <div class="page-guide fade-in">
+        <p class="page-guide__title">网站怎么逛</p>
+        <ol class="page-guide__list">
+          <li><a href="index.html">首页</a> — 两条业务主线总览</li>
+          <li><a href="low-altitude.html">低空产业</a> — 培训 / 空域申请 / 运营合格证 OC / 适航 / 制造</li>
+          <li><a href="portfolio.html">创新延伸</a> — 团队跨界探索：FPV、影视、电子、改装</li>
+          <li><a href="#partners">合作单位</a> — 本页下方，服务过的机构名录</li>
+          <li><a href="contact.html">联系</a> — 咨询与拍摄合作</li>
+        </ol>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="split fade-in">
+        <div class="split__media">
+          <img src="assets/images/caac/uav-flight.jpg" alt="重庆苍凌工作室" loading="lazy">
+        </div>
+        <div class="split__content">
+          <p class="split__label">Studio</p>
+          <h2 class="split__title">工作室简介</h2>
+          <p class="split__text">我们扎根重庆，长期服务于低空经济相关企业：从政策解读、材料整理到空域与资质申报辅导，并延伸至 eVTOL 与电子硬件试制。与此同时，团队保持 FPV 航拍、影视与开源电子等创意产出，形成「合规服务 + 创意工程」双轨能力。</p>
+          <p class="split__text">欢迎参观工作坊。具体服务与作品请进入对应专页，不在此重复罗列。</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem;">
+            <a href="low-altitude.html" class="btn btn--primary">低空产业专页</a>
+            <a href="portfolio.html" class="btn btn--outline">创新延伸专页</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" id="partners">
+    <div class="container">
+      <div class="section__header fade-in">
+        <p class="section__label">Partners</p>
+        <h2 class="section__title">合作单位</h2>
+        <p class="section__desc" id="partners-intro"></p>
+        <p class="section__desc" style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.85;">累计服务 <span id="partners-count">—</span></p>
+      </div>
+      <div id="partners-grid" class="partners-grid fade-in"></div>
+      <div class="partners-map-section fade-in" style="margin-top: 2.5rem;">
+        <h3 class="section__title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">合作分布地图</h3>
+        <p class="section__desc" style="margin-bottom: 1rem;">一览我们与全国各地企业的合作足迹。</p>
+        <div class="partners-map-wrap">
+          <div id="partners-map" class="partners-map" aria-label="合作单位分布地图"></div>
+          <p class="partners-map__legend" id="partners-map-legend"></p>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 2rem;" class="fade-in">
+        <a href="low-altitude.html#sector-training" class="btn btn--outline">查看培训资质案例库</a>
+        <a href="low-altitude.html#sector-airspace" class="btn btn--outline" style="margin-left: 0.5rem;">查看空域申请案例</a>
+        <a href="low-altitude.html#sector-operation" class="btn btn--outline" style="margin-left: 0.5rem;">查看 OC 案例</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="quote fade-in">
+    <p class="quote__text">欢迎参观工作坊，共探低空产业与创意技术的无限可能。</p>
+    <p class="quote__author">重庆苍凌工作室</p>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__logo">重庆苍凌工作室</p>
+      <div class="footer__links">
+        <a href="index.html" data-nav="home">首页</a>
+        <a href="low-altitude.html" data-nav="low-altitude">低空产业</a>
+        <a href="portfolio.html" data-nav="portfolio">创新延伸</a>
+        <a href="about.html" data-nav="about">关于</a>
+        <a href="contact.html" data-nav="contact">联系</a>
+        <a href="classic/index.html">经典版</a>
+      </div>
+      <p class="footer__copy">&copy; 2026 重庆苍凌工作室 · inchian.top</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/client-display.js"></script>
+  <script src="js/partners.js"></script>
+  <script src="js/partners-map.js"></script>
+</body>
+</html>

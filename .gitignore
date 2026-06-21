@@ -1,0 +1,19 @@
+# 敏感原始素材（体量大且含客户信息，禁止公开部署）
+_source/
+素材/
+
+# 归档旧项目
+_archive/
+
+# 本地预览与工具
+node_modules/
+.serve/
+
+# 部署密钥（切勿提交）
+.env
+.env.*
+
+# 系统文件
+Thumbs.db
+desktop.ini
+.DS_Store
