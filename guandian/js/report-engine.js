@@ -151,10 +151,10 @@
       </section>`;
   }
 
-  function renderSegments(benchmarks) {
+  function renderSegments(benchmarks, company) {
     const cards = benchmarks
       .map((seg) => {
-        const x = seg.xiaomi;
+        const x = seg.company || seg.xiaomi || {};
         const peerRows = seg.peers
           .map(
             (p) => `
@@ -175,7 +175,7 @@
             <span class="seg-panel__rev">${fmt(x.revenue2025)}亿 · ${x.yoy || ''}</span>
           </summary>
           <div class="seg-panel__body">
-            <div class="seg-xiaomi">
+            <div class="seg-company">
               <span class="tip-chip" title="2025营收">营收 ${fmt(x.revenue2025)}亿</span>
               ${x.yoy ? `<span class="tip-chip">同比 ${x.yoy}</span>` : ''}
               ${x.grossMargin ? `<span class="tip-chip">毛利 ${x.grossMargin}</span>` : ''}
@@ -187,7 +187,7 @@
             <p class="seg-analyst">${seg.analystTake}</p>
             <div class="table-wrap table-wrap--compact">
               <table class="peer-table">
-                <thead><tr><th>对标公司</th><th>营收规模</th><th>研发投入</th><th>毛利/利润率</th><th>与小米差距</th></tr></thead>
+                <thead><tr><th>对标公司</th><th>营收规模</th><th>研发投入</th><th>毛利/利润率</th><th>与${company.name}差距</th></tr></thead>
                 <tbody>${peerRows}</tbody>
               </table>
             </div>
@@ -505,7 +505,7 @@
     app.innerHTML =
       renderChiefBar(c, syn, sp, fc) +
       renderNarrative(data.narrative) +
-      renderSegments(benchmarks) +
+      renderSegments(benchmarks, c) +
       renderForecast(fc, sp) +
       renderAgents(fw) +
       renderAppendix(c);
