@@ -41,14 +41,21 @@
           "year": "2025",
           "label": "FY2025",
           "revenue": 4573,
-          "netProfit": 236,
+          "netProfit": 416,
           "adjNetProfit": 392,
-          "grossMargin": 22.9,
-          "netMargin": 5.2,
+          "grossMargin": 22.3,
+          "netMargin": 9.1,
+          "operatingProfit": 479,
           "rd": 331,
           "rdPct": 7.2,
-          "yoyRev": 34.9,
-          "yoyProfit": 35.4
+          "yoyRev": 25.0,
+          "yoyProfit": 76.3,
+          "yoyAdjProfit": 43.8,
+          "ocf": 341.4,
+          "ocfYoy": -13.1,
+          "fairValueGain": 133.1,
+          "investingCfo": -716.8,
+          "note": "港交所2026-03-24年报：收入+25.0%，归母+76.3%，经调净利+43.8%"
         },
         {
           "year": "2024",
@@ -265,7 +272,7 @@
         {
           "name": "成长动能",
           "score": 78,
-          "detail": "2025 营收 +35%，汽车放量是主驱动"
+          "detail": "2025 营收 +25%（法定口径），汽车分部 +224% 是主驱动"
         },
         {
           "name": "现金流",
@@ -345,11 +352,11 @@
           "view": "对标苹果/华为差异化明显"
         }
       ],
-      "conclusion": "小米处于「消费电子基本盘 + 汽车放量 + AI 投入」三线并进阶段；2025 业绩高增长验证战略，2026 Q1 短期回调不改长期生态逻辑。估值反映制造属性多于平台属性，适合关注汽车盈利拐点与研发转化。",
+      "conclusion": "小米 2025 总收入 +25%、经调净利 +43.8% 创新高，但 2026 Q1 营收同比 -10.9% 提示增速换挡；汽车与 AI 投入期经营现金流同比下降 13%。估值需区分「管理层经调口径」与「现金流含金量」。",
       "sources": [
         {
-          "title": "小米集团 2025 全年业绩公告",
-          "url": "https://ir.mi.com"
+          "title": "小米集团 2025 全年业绩公告（港交所 2026-03-24）",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/2026032400608.pdf"
         },
         {
           "title": "小米集团 2026 Q1 业绩公告",

@@ -1,0 +1,133 @@
+{
+  "id": "xiaomi",
+  "title": "财报真实性核查 · 管理层叙事 vs 剔除干扰后",
+  "methodology": "参照财务尽调盈利核查框架（营业利润质量 / 非经剔除 / OCF 匹配 / 研发资本化排查 / 季报勾稽）。参考实务：利润表隐藏风险识别（扣非≠干净、OCF 检验含金量）、研发支出费用化 vs 资本化横向对比（见简山《研发支出的两种命运》）、恒瑞式「首付/里程碑」拆水分离思路——仅使用港交所法定披露数字。",
+  "riskLevel": "moderate",
+  "riskLabel": "中等偏高 · 叙事强于现金流，但研发未见激进资本化",
+  "ocfRatio": 0.87,
+  "managementSays": "2025 总收入 4,573 亿创历史新高、同比 +25%；经调整净利润 392 亿、+43.8%；汽车与 AI 为强劲增长引擎；2026 Q1 在存储涨价与竞争加剧下仍保持韧性。",
+  "afterStripping": "法定收入 +25% 属实，但结构高度依赖汽车分部 +223.8%，手机×AIoT 仅 +5.4%。经调净利 392 亿含管理层调整项，经营现金流 341 亿且同比 -13%，OCF/经调净利约 0.87，利润「含金量」弱于叙事。营业利润 479 亿中含公允价值变动收益约 133 亿，剔除后经营层面利润增速显著放缓。2026 Q1 营收 -10.9% 与 2025 全年高增长叙事存在张力。研发 331 亿全部费用化（附注为研发费用），未见通过资本化粉饰短期利润。",
+  "comparisons": [
+    {
+      "metric": "总收入同比",
+      "management": "+25.0%（创新高）",
+      "stripped": "+25.0% 法定数字成立",
+      "flag": "ok",
+      "note": "港交所 2026-03-24 年报"
+    },
+    {
+      "metric": "利润增速（主推口径）",
+      "management": "经调净利 +43.8%",
+      "stripped": "归母 +76.3% 含公允价值等；经调 +43.8% 仍高于 OCF 走势",
+      "flag": "watch",
+      "note": "管理层业绩会主推经调指标"
+    },
+    {
+      "metric": "经营现金流",
+      "management": "仍为正、支撑投入",
+      "stripped": "341 亿，同比 -13.1%，低于经调净利 392 亿",
+      "flag": "warn",
+      "note": "中证网披露 2025 年报经营活动现金流净额"
+    },
+    {
+      "metric": "公允价值变动",
+      "management": "投资布局收益",
+      "stripped": "约 133 亿计入利润表，属非主营一次性/波动性收益",
+      "flag": "warn",
+      "note": "年报利润表「按公允价值计入损益的金融工具公允价值变动」"
+    },
+    {
+      "metric": "研发费用",
+      "management": "331 亿接近全年利润，长期壁垒",
+      "stripped": "331 亿费用化入账，未通过资本化抬高利润——会计处理相对保守",
+      "flag": "ok",
+      "note": "研发开支 331.32 亿，列于利润表费用项"
+    },
+    {
+      "metric": "2026 Q1 营收",
+      "management": "短期逆风、基本盘韧性",
+      "stripped": "991 亿，同比 -10.9%，与 2025 高增长对比显著放缓",
+      "flag": "watch",
+      "note": "2026-05-26 Q1 业绩公告"
+    },
+    {
+      "metric": "分部结构",
+      "management": "人车家全生态协同",
+      "stripped": "汽车 1,061 亿（+223.8%）拉动；手机×AIoT 3,512 亿（+5.4%）接近成熟增速",
+      "flag": "watch",
+      "note": "年报分部披露"
+    }
+  ],
+  "adjustmentItems": [
+    {
+      "id": "fvpl",
+      "name": "公允价值变动收益",
+      "amount": 133.1,
+      "unit": "亿元",
+      "year": "FY2025",
+      "effect": "抬高营业利润与税前利润",
+      "action": "分析「核心经营利润」时应剔除或单独列示",
+      "source": "港交所年报利润表"
+    },
+    {
+      "id": "nonifrs",
+      "name": "经调整净利润调整项（合计）",
+      "amount": 24,
+      "unit": "亿元",
+      "year": "FY2025",
+      "effect": "经调 392 亿 vs 归母 416 亿口径不同；管理层指引偏经调",
+      "action": "同时跟踪归母、经调、OCF 三条线",
+      "source": "年报 Non-IFRS 调节表"
+    },
+    {
+      "id": "capex",
+      "name": "投资活动现金净流出",
+      "amount": 716.8,
+      "unit": "亿元",
+      "year": "FY2025",
+      "effect": "汽车产能/研发硬件投入，不直接减利润但消耗现金",
+      "action": "估值用 FCFF 而非净利润",
+      "source": "年报现金流量表"
+    }
+  ],
+  "drillDown": {
+    "periods": [
+      {
+        "id": "fy2025",
+        "label": "FY2025（至 2025-12-31）",
+        "source": "港交所 2026-03-24 年报",
+        "rows": [
+          { "line": "总收入", "reported": 4573, "core": 4573, "unit": "亿元", "mgmt": true, "coreOnly": false, "note": "法定披露" },
+          { "line": "毛利", "reported": 1018, "core": 1018, "unit": "亿元", "mgmt": true, "coreOnly": false, "note": "毛利率约 22.3%" },
+          { "line": "研发费用(费用化)", "reported": 331, "core": 331, "unit": "亿元", "mgmt": true, "coreOnly": true, "note": "全部费用化，无研发资本化粉饰" },
+          { "line": "营业利润", "reported": 479, "core": null, "unit": "亿元", "mgmt": true, "coreOnly": false, "note": "含公允价值变动等" },
+          { "line": "公允价值变动收益", "reported": 133.1, "core": 0, "unit": "亿元", "mgmt": false, "coreOnly": false, "note": "建议剔除看核心经营" },
+          { "line": "营业利润（剔除公允价值变动）", "reported": null, "core": 346, "unit": "亿元", "mgmt": false, "coreOnly": true, "note": "479−133 近似，研究口径" },
+          { "line": "归母净利润", "reported": 416, "core": null, "unit": "亿元", "mgmt": false, "coreOnly": false, "note": "法定净利润" },
+          { "line": "经调整净利润", "reported": 392, "core": null, "unit": "亿元", "mgmt": true, "coreOnly": false, "note": "业绩会主推" },
+          { "line": "经营现金流净额", "reported": 341.4, "core": 341.4, "unit": "亿元", "mgmt": false, "coreOnly": true, "note": "同比 -13.1%，检验含金量" }
+        ]
+      },
+      {
+        "id": "q1_2026",
+        "label": "2026 Q1（2026-05-26 披露）",
+        "source": "Q1 业绩公告",
+        "rows": [
+          { "line": "总收入", "reported": 991, "core": 991, "unit": "亿元", "mgmt": true, "coreOnly": true, "note": "同比 -10.9%" },
+          { "line": "经调整净利润", "reported": 61, "core": 61, "unit": "亿元", "mgmt": true, "coreOnly": false, "note": "管理层口径" },
+          { "line": "研发费用", "reported": 90, "core": 90, "unit": "亿元", "mgmt": true, "coreOnly": true, "note": "占收 9.1%，投入继续加码" }
+        ]
+      }
+    ]
+  },
+  "forecastCalibration": {
+    "asOf": "2026-06-23",
+    "baselinePrice": 25.0,
+    "inputs": [
+      "2026 Q1 营收同比 -10.9% 下调基准情景斜率",
+      "OCF/经调净利 <1 压制 PE 修复速度",
+      "汽车分部仍提供长期期权但短期 Capex 高",
+      "YTD 股价约 -52% 部分反映上述基本面"
+    ]
+  }
+}

@@ -139,6 +139,7 @@
   function renderToc() {
     return `
       <nav class="report-toc" aria-label="报告目录">
+        <a href="#s-integrity">财报核查</a>
         <a href="#s-plan">优化计划</a>
         <a href="#s-narr">研究正文</a>
         <a href="#s-seg">分部对标</a>
@@ -169,6 +170,86 @@
         ${body}
       </section>`;
   }
+      </section>`;
+  }
+
+  function flagBadge(flag) {
+    const map = { ok: 'b-q', watch: 'b-interim', warn: 'b-annual' };
+    const label = { ok: '一致', watch: '关注', warn: '偏离' }[flag] || flag;
+    return `<span class="badge ${map[flag] || ''}">${label}</span>`;
+  }
+
+  function renderFinancialIntegrity(fi) {
+    if (!fi) return '';
+    const riskClass = fi.riskLevel === 'moderate' ? 'stance-neutral' : fi.riskLevel === 'high' ? 'stance-bear' : 'stance-bull';
+    const cmpRows = (fi.comparisons || [])
+      .map(
+        (r) => `<tr>
+        <td>${r.metric}</td>
+        <td>${r.management}</td>
+        <td>${r.stripped}</td>
+        <td>${flagBadge(r.flag)}</td>
+      </tr>`
+      )
+      .join('');
+
+    const periods = (fi.drillDown?.periods || [])
+      .map((p) => {
+        const rows = (p.rows || [])
+          .map(
+            (row) => `<tr class="fin-row" data-period="${p.id}">
+            <td>${row.line}</td>
+            <td>${row.reported != null ? row.reported + (row.unit || '') : '—'}</td>
+            <td class="${row.coreOnly ? 'up' : ''}">${row.core != null ? row.core + (row.unit || '') : '—'}</td>
+            <td>${row.mgmt ? '管理层' : '法定/核心'}</td>
+            <td class="muted">${row.note || ''}</td>
+          </tr>`
+          )
+          .join('');
+        return `
+        <details class="fin-period" id="fin-${p.id}">
+          <summary class="fin-period__head">${p.label} <span class="muted">${p.source || ''}</span></summary>
+          <div class="table-wrap table-wrap--compact">
+            <table>
+              <thead><tr><th>科目</th><th>披露值</th><th>核心/剔除后</th><th>口径</th><th>说明</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+        </details>`;
+      })
+      .join('');
+
+    const adjList = (fi.adjustmentItems || [])
+      .map(
+        (a) => `<li><strong>${a.name}</strong> ${a.amount}${a.unit}（${a.year}）— ${a.effect}。${a.action} <span class="muted">来源：${a.source}</span></li>`
+      )
+      .join('');
+
+    return `
+      <section class="section section--integrity" id="s-integrity">
+        <h2 class="section__title">财报真实性核查 <span class="badge ${riskClass}">${fi.riskLabel || fi.riskLevel}</span></h2>
+        <p class="hint">${fi.methodology}</p>
+        <div class="fin-compare-grid">
+          <div class="block block--mgmt">
+            <div class="t">管理层想让你看到的</div>
+            <p>${fi.managementSays}</p>
+          </div>
+          <div class="block block--core">
+            <div class="t">剔除干扰项后</div>
+            <p>${fi.afterStripping}</p>
+          </div>
+        </div>
+        <details class="fold" open>
+          <summary>叙事 vs 事实对照表</summary>
+          <div class="table-wrap table-wrap--compact">
+            <table><thead><tr><th>指标</th><th>管理层叙事</th><th>核查后</th><th>信号</th></tr></thead><tbody>${cmpRows}</tbody></table>
+          </div>
+        </details>
+        ${adjList ? `<details class="fold"><summary>建议剔除/单独列示项</summary><ul class="fin-adj-list">${adjList}</ul></details>` : ''}
+        <details class="fold fin-drill" open id="s-fin-drill">
+          <summary>点击展开 · 财务数据钻取（法定 vs 核心）</summary>
+          ${periods}
+        </details>
       </section>`;
   }
 
@@ -281,9 +362,11 @@
       })
       .join('');
 
+    const calNote = sp?.calibrationNote || fc?.calibrationNote || '';
     return `
       <section class="section section--compact" id="s-forecast">
-        <h2 class="section__title">二、未来 1～2 年股价与市值预测</h2>
+        <h2 class="section__title">二、股价与市值预测（2026-06 起 → 2028-06）</h2>
+        ${calNote ? `<p class="hint">${calNote}</p>` : '<p class="hint">基准价约 2026-06 行情；情景折线为研究推演，非实时预测。</p>'}
         <div class="fc-mini-grid">${capCards}</div>
         <div id="klineMount" class="kline-mount"></div>
         <div class="chart-tabs">
@@ -353,11 +436,11 @@
       </section>`;
   }
 
-  function renderAppendix(c) {
+  function renderAppendix(c, fi) {
     const rows = (c.annuals || [])
       .map(
-        (a) => `<tr>
-        <td>${a.label}</td><td>${fmt(a.revenue)}</td><td>${fmt(a.adjNetProfit)}</td>
+        (a) => `<tr class="appendix-row" style="cursor:pointer" title="点击查看财报真实性钻取">
+        <td>${a.label}</td><td>${fmt(a.revenue)}</td><td>${fmt(a.adjNetProfit ?? a.netProfit)}</td>
         <td>${a.grossMargin != null ? a.grossMargin + '%' : '—'}</td><td class="${yoyClass(a.yoyRev)}">${yoyStr(a.yoyRev)}</td>
       </tr>`
       )
@@ -366,8 +449,9 @@
     return `
       <section class="section section--compact" id="s-appendix">
         <h2 class="section__title">附录 · 财务数据</h2>
-        <details class="fold">
-          <summary>近五年财报简表</summary>
+        ${fi ? '<p class="hint">点击下表任一行可跳转至 <a href="#s-fin-drill">财报真实性钻取</a>；「核心/剔除后」列见各期明细。</p>' : ''}
+        <details class="fold" open>
+          <summary>近五年财报简表（可点击钻取）</summary>
           <div class="table-wrap table-wrap--compact">
             <table><thead><tr><th>财年</th><th>营收</th><th>经调净利</th><th>毛利率</th><th>营收同比</th></tr></thead><tbody>${rows}</tbody></table>
           </div>
@@ -390,6 +474,18 @@
             .join('')}
         </details>
       </section>`;
+  }
+
+  function bindAppendixDrill() {
+    document.querySelectorAll('.appendix-row').forEach((row) => {
+      row.addEventListener('click', () => {
+        const target = document.getElementById('s-fin-drill') || document.getElementById('s-integrity');
+        if (target) {
+          target.open = true;
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   }
 
   function bindPeerTips() {
@@ -567,12 +663,13 @@
     app.innerHTML =
       renderChiefBar(c, syn, sp, fc) +
       renderToc() +
+      renderFinancialIntegrity(data.financialIntegrity) +
       renderOptimizationPlan(data.optimizationPlan) +
       renderNarrative(data.narrative) +
       renderSegments(benchmarks, c) +
       renderForecast(fc, sp, c) +
       renderAgents(fw) +
-      renderAppendix(c);
+      renderAppendix(c, data.financialIntegrity);
 
     const disclaimer = document.getElementById('disclaimer');
     if (disclaimer) {
@@ -580,6 +677,7 @@
     }
 
     bindPeerTips();
+    bindAppendixDrill();
     if (window.KlineChart) {
       const mount = document.getElementById('klineMount');
       if (mount) KlineChart.mount(mount, { daily: KlineChart.generateDailyOHLC(price0, 380, 0.032) });

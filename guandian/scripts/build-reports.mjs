@@ -5,6 +5,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { buildFinancialIntegrity } from './financial-integrity.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
@@ -28,13 +29,14 @@ function parseCapBn(s) {
   return m ? parseFloat(m[1]) : null;
 }
 
-function forecastFromBase(price, capBn, currency = 'HKD') {
+function forecastFromBase(price, capBn, currency = 'HKD', calibration = {}) {
   const p0 = price || 25;
+  const q1Weak = calibration.q1RevYoy != null && calibration.q1RevYoy < 0;
   const scenarios = {
-    bull: { mult: 1.35, label: '乐观' },
-    base: { mult: 1.15, label: '基准' },
-    bear: { mult: 0.88, label: '悲观' },
-    consensus: { mult: 1.12, label: '综合' }
+    bull: { mult: q1Weak ? 1.52 : 1.35, label: '乐观' },
+    base: { mult: q1Weak ? 1.2 : 1.15, label: '基准' },
+    bear: { mult: q1Weak ? 0.7 : 0.88, label: '悲观' },
+    consensus: { mult: q1Weak ? 1.16 : 1.12, label: '综合' }
   };
   const anchors = {};
   const months = ['2026-06', '2026-12', '2027-06', '2027-12', '2028-06'];
@@ -48,6 +50,8 @@ function forecastFromBase(price, capBn, currency = 'HKD') {
     unit: currency === 'USD' ? '美元' : '港元',
     baseline: { month: '2026-06', price: p0 },
     horizonEnd: '2028-06',
+    asOf: '2026-06-23',
+    calibrationNote: calibration.note || '基准价取自约 2026-06 行情；情景 2026-06→2028-06 线性插值。',
     scenarios: Object.fromEntries(
       Object.entries(scenarios).map(([k, v]) => [
         k,
@@ -552,7 +556,13 @@ for (const c of d.companies) {
   const capBn = parseCapBn(c.market?.marketCap) || parseCapBn(c.market?.marketCapUsd);
   const cur = c.ticker?.includes('.HK') ? 'HKD' : c.currency === 'USD' ? 'USD' : 'CNY';
 
-  const fcast = forecastFromBase(price, capBn, cur);
+  const fcast = forecastFromBase(price, capBn, cur, {
+    q1RevYoy: c.quarterly?.yoyRev,
+    note:
+      c.quarterly?.yoyRev != null && c.quarterly.yoyRev < 0
+        ? `已参考 ${c.quarterly.period} 营收同比 ${c.quarterly.yoyRev}% 下调基准/悲观斜率（截至 2026-06）。`
+        : '基准价取自约 2026-06 行情；情景 2026-06→2028-06。'
+  });
   const scenarioDefs = {
     bull: { mult: 1.35, label: '乐观' },
     base: { mult: 1.15, label: '基准' },
@@ -564,6 +574,7 @@ for (const c of d.companies) {
     id: c.id,
     meta: { targetChars: 5000, reportDate: d.meta.reportDate },
     optimizationPlan: buildOptimizationPlan(c, price, capBn),
+    financialIntegrity: buildFinancialIntegrity(c),
     narrative: { title: '深度研究正文', paragraphs: buildNarrative(c) },
     segmentBenchmarks: buildSegments(c).map((s) => ({
       id: s.name,

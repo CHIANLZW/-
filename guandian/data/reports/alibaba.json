@@ -181,6 +181,83 @@
       "actualChars": 4901
     }
   },
+  "financialIntegrity": {
+    "id": "alibaba",
+    "title": "财报真实性核查 · 管理层叙事 vs 剔除干扰后",
+    "methodology": "自动生成核查（待该公司手工深度模板）。框架：非经剔除、OCF 匹配、季报勾稽、研发资本化排查。完整版参照小米模板。",
+    "riskLevel": "low",
+    "riskLabel": "初步未见重大口径异常",
+    "managementSays": "阿里巴巴 FY2025 利润大幅反弹，战略聚焦与 AI 基础设施投入并行；短期看淘天利润率，中期看阿里云 AI 货币化与国际化。",
+    "afterStripping": "基于 至2025-03 披露：营收 9963亿元。经调与归母差额 286亿元。建议补充 OCF、公允价值、分部明细后完成深度核查（见小米模板）。",
+    "comparisons": [
+      {
+        "metric": "营收同比",
+        "management": "+5.8%",
+        "stripped": "以法定披露为准；需核对分部结构是否拉动 headline",
+        "flag": "ok",
+        "note": "至2025-03"
+      },
+      {
+        "metric": "净利润口径差",
+        "management": "经调/Non-GAAP 1581亿元",
+        "stripped": "归母 1295亿元；差额 286亿元 需查调节表",
+        "flag": "watch",
+        "note": "扣非/经调不等于「无一次性」"
+      }
+    ],
+    "adjustmentItems": [],
+    "drillDown": {
+      "periods": [
+        {
+          "id": "latest",
+          "label": "至2025-03",
+          "source": "FY2025 全年（至 2025-03-31，2025-05 披露）",
+          "rows": [
+            {
+              "line": "营收",
+              "reported": 9963,
+              "core": 9963,
+              "unit": "亿元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "同比 5.8%"
+            },
+            {
+              "line": "归母净利润",
+              "reported": 1295,
+              "core": null,
+              "unit": "亿元",
+              "mgmt": false,
+              "coreOnly": false,
+              "note": ""
+            },
+            {
+              "line": "经调/Non-GAAP 净利",
+              "reported": 1581,
+              "core": null,
+              "unit": "亿元",
+              "mgmt": true,
+              "coreOnly": false,
+              "note": ""
+            },
+            {
+              "line": "研发费用",
+              "reported": 572,
+              "core": 572,
+              "unit": "亿元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "占收 5.7%"
+            }
+          ]
+        }
+      ]
+    },
+    "forecastCalibration": {
+      "asOf": "2026-06-23",
+      "note": "待该公司手工校准预测输入"
+    }
+  },
   "narrative": {
     "title": "深度研究正文",
     "paragraphs": [
@@ -761,6 +838,8 @@
       "price": 105
     },
     "horizonEnd": "2028-06",
+    "asOf": "2026-06-23",
+    "calibrationNote": "基准价取自约 2026-06 行情；情景 2026-06→2028-06。",
     "scenarios": {
       "bull": {
         "label": "乐观股价",

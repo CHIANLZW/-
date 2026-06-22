@@ -256,3 +256,16 @@ body { font-size: 13px; }
 
 .nav-bar { margin-bottom: 10px; font-size: 12px; }
 .nav-bar__hint { color: var(--muted); font-size: 11px; }
+
+.fold { margin-top: 8px; border: 1px solid var(--border); border-radius: 8px; padding: 0 10px; background: #fafafa; }
+.fin-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+@media (max-width: 768px) { .fin-compare-grid { grid-template-columns: 1fr; } }
+.block--mgmt { border-left: 3px solid #2563eb; }
+.block--core { border-left: 3px solid var(--pos); }
+.section--integrity { border-left: 3px solid #dc2626; }
+.fin-period { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; padding: 0 10px; background: #fff; }
+.fin-period__head { cursor: pointer; padding: 8px 0; font-size: 12px; font-weight: 600; list-style: none; }
+.fin-period__head::-webkit-details-marker { display: none; }
+.fin-adj-list { font-size: 12px; padding-left: 18px; margin: 8px 0; }
+.fin-adj-list li { margin-bottom: 6px; }
+.appendix-row:hover td { background: color-mix(in srgb, var(--primary) 8%, white); }

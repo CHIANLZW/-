@@ -169,6 +169,67 @@
       "actualChars": 4306
     }
   },
+  "financialIntegrity": {
+    "id": "amd",
+    "title": "财报真实性核查 · 管理层叙事 vs 剔除干扰后",
+    "methodology": "自动生成核查（待该公司手工深度模板）。框架：非经剔除、OCF 匹配、季报勾稽、研发资本化排查。完整版参照小米模板。",
+    "riskLevel": "low",
+    "riskLabel": "初步未见重大口径异常",
+    "managementSays": "AMD FY2025 营收 346 亿美元（+34%），数据中心业务驱动反弹；AI GPU 是增长关键，但利润率与份额仍落后于 Nvidia。",
+    "afterStripping": "基于 FY2025 披露：营收 346亿美元。建议补充 OCF、公允价值、分部明细后完成深度核查（见小米模板）。",
+    "comparisons": [
+      {
+        "metric": "营收同比",
+        "management": "+34.3%",
+        "stripped": "以法定披露为准；需核对分部结构是否拉动 headline",
+        "flag": "ok",
+        "note": "FY2025"
+      }
+    ],
+    "adjustmentItems": [],
+    "drillDown": {
+      "periods": [
+        {
+          "id": "latest",
+          "label": "FY2025",
+          "source": "FY2025 全年",
+          "rows": [
+            {
+              "line": "营收",
+              "reported": 346,
+              "core": 346,
+              "unit": "亿美元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "同比 34.3%"
+            },
+            {
+              "line": "归母净利润",
+              "reported": 43,
+              "core": null,
+              "unit": "亿美元",
+              "mgmt": false,
+              "coreOnly": false,
+              "note": ""
+            },
+            {
+              "line": "研发费用",
+              "reported": 72,
+              "core": 72,
+              "unit": "亿美元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "占收 20.8%"
+            }
+          ]
+        }
+      ]
+    },
+    "forecastCalibration": {
+      "asOf": "2026-06-23",
+      "note": "待该公司手工校准预测输入"
+    }
+  },
   "narrative": {
     "title": "深度研究正文",
     "paragraphs": [
@@ -514,6 +575,8 @@
       "price": 128
     },
     "horizonEnd": "2028-06",
+    "asOf": "2026-06-23",
+    "calibrationNote": "基准价取自约 2026-06 行情；情景 2026-06→2028-06。",
     "scenarios": {
       "bull": {
         "label": "乐观股价",

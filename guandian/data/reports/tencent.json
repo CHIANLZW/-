@@ -179,6 +179,83 @@
       "actualChars": 4732
     }
   },
+  "financialIntegrity": {
+    "id": "tencent",
+    "title": "财报真实性核查 · 管理层叙事 vs 剔除干扰后",
+    "methodology": "自动生成核查（待该公司手工深度模板）。框架：非经剔除、OCF 匹配、季报勾稽、研发资本化排查。完整版参照小米模板。",
+    "riskLevel": "low",
+    "riskLabel": "初步未见重大口径异常",
+    "managementSays": "腾讯 2024-2025 业绩稳健增长，AI 战略进入重投入期；社交+游戏基本盘稳固，关注混元 AI 货币化节奏与 Capex ROI。",
+    "afterStripping": "基于 FY2025 披露：营收 7128亿元。经调与归母差额 327亿元。建议补充 OCF、公允价值、分部明细后完成深度核查（见小米模板）。",
+    "comparisons": [
+      {
+        "metric": "营收同比",
+        "management": "+8%",
+        "stripped": "以法定披露为准；需核对分部结构是否拉动 headline",
+        "flag": "ok",
+        "note": "FY2025"
+      },
+      {
+        "metric": "净利润口径差",
+        "management": "经调/Non-GAAP 2415亿元",
+        "stripped": "归母 2088亿元；差额 327亿元 需查调节表",
+        "flag": "watch",
+        "note": "扣非/经调不等于「无一次性」"
+      }
+    ],
+    "adjustmentItems": [],
+    "drillDown": {
+      "periods": [
+        {
+          "id": "latest",
+          "label": "FY2025",
+          "source": "FY2025 全年（2026-03 披露）",
+          "rows": [
+            {
+              "line": "营收",
+              "reported": 7128,
+              "core": 7128,
+              "unit": "亿元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "同比 8%"
+            },
+            {
+              "line": "归母净利润",
+              "reported": 2088,
+              "core": null,
+              "unit": "亿元",
+              "mgmt": false,
+              "coreOnly": false,
+              "note": ""
+            },
+            {
+              "line": "经调/Non-GAAP 净利",
+              "reported": 2415,
+              "core": null,
+              "unit": "亿元",
+              "mgmt": true,
+              "coreOnly": false,
+              "note": ""
+            },
+            {
+              "line": "研发费用",
+              "reported": 858,
+              "core": 858,
+              "unit": "亿元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "占收 12%"
+            }
+          ]
+        }
+      ]
+    },
+    "forecastCalibration": {
+      "asOf": "2026-06-23",
+      "note": "待该公司手工校准预测输入"
+    }
+  },
   "narrative": {
     "title": "深度研究正文",
     "paragraphs": [
@@ -708,6 +785,8 @@
       "price": 520
     },
     "horizonEnd": "2028-06",
+    "asOf": "2026-06-23",
+    "calibrationNote": "基准价取自约 2026-06 行情；情景 2026-06→2028-06。",
     "scenarios": {
       "bull": {
         "label": "乐观股价",

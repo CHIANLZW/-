@@ -216,42 +216,87 @@
   "stockPriceForecast": {
     "unit": "港元",
     "sharesBn": 252,
-    "baseline": { "month": "2026-06", "price": 25.0, "label": "当前参考价" },
+    "asOf": "2026-06-23",
+    "calibrationNote": "已纳入 2026 Q1 营收同比 -10.9%、经营现金流同比 -13.1%（2025 年报）及现价 HK$25.0；基准情景斜率较 2025 版下调。",
+    "baseline": { "month": "2026-06", "price": 25.0, "label": "2026-06 盘中参考" },
     "horizonEnd": "2028-06",
     "scenarios": {
-      "bull": { "label": "乐观股价", "color": "#059669", "endPrice": 40.5, "changePct": "+62%" },
-      "base": { "label": "基准股价", "color": "#ff6700", "endPrice": 32.5, "changePct": "+30%" },
-      "bear": { "label": "悲观股价", "color": "#dc2626", "endPrice": 20.6, "changePct": "-18%" },
-      "consensus": { "label": "博弈综合", "color": "#2563eb", "endPrice": 31.0, "changePct": "+24%" }
+      "bull": { "label": "乐观股价", "color": "#059669", "endPrice": 38.0, "changePct": "+52%" },
+      "base": { "label": "基准股价", "color": "#ff6700", "endPrice": 30.0, "changePct": "+20%" },
+      "bear": { "label": "悲观股价", "color": "#dc2626", "endPrice": 17.5, "changePct": "-30%" },
+      "consensus": { "label": "博弈综合", "color": "#2563eb", "endPrice": 29.0, "changePct": "+16%" }
     },
     "anchors": {
       "bull": [
         { "month": "2026-06", "price": 25.0 },
-        { "month": "2026-12", "price": 27.8 },
-        { "month": "2027-06", "price": 32.5 },
-        { "month": "2027-12", "price": 36.5 },
-        { "month": "2028-06", "price": 40.5 }
+        { "month": "2026-12", "price": 27.5 },
+        { "month": "2027-06", "price": 31.5 },
+        { "month": "2027-12", "price": 35.0 },
+        { "month": "2028-06", "price": 38.0 }
       ],
       "base": [
         { "month": "2026-06", "price": 25.0 },
-        { "month": "2026-12", "price": 26.2 },
-        { "month": "2027-06", "price": 28.2 },
-        { "month": "2027-12", "price": 30.2 },
-        { "month": "2028-06", "price": 32.5 }
+        { "month": "2026-12", "price": 25.8 },
+        { "month": "2027-06", "price": 27.5 },
+        { "month": "2027-12", "price": 28.8 },
+        { "month": "2028-06", "price": 30.0 }
       ],
       "bear": [
         { "month": "2026-06", "price": 25.0 },
-        { "month": "2026-12", "price": 23.0 },
-        { "month": "2027-06", "price": 19.0 },
-        { "month": "2027-12", "price": 19.8 },
-        { "month": "2028-06", "price": 20.6 }
+        { "month": "2026-12", "price": 22.5 },
+        { "month": "2027-06", "price": 19.5 },
+        { "month": "2027-12", "price": 18.2 },
+        { "month": "2028-06", "price": 17.5 }
       ],
       "consensus": [
         { "month": "2026-06", "price": 25.0 },
-        { "month": "2026-12", "price": 25.8 },
-        { "month": "2027-06", "price": 27.8 },
-        { "month": "2027-12", "price": 29.4 },
-        { "month": "2028-06", "price": 31.0 }
+        { "month": "2026-12", "price": 25.5 },
+        { "month": "2027-06", "price": 27.0 },
+        { "month": "2027-12", "price": 28.2 },
+        { "month": "2028-06", "price": 29.0 }
+      ]
+    }
+  },
+  "marketCapForecast": {
+    "unit": "亿港元",
+    "sharesBn": 252,
+    "asOf": "2026-06-23",
+    "baseline": { "month": "2026-06", "value": 6300 },
+    "horizonEnd": "2028-06",
+    "scenarios": {
+      "bull": { "label": "乐观市值", "color": "#059669", "endValue": 9576, "changePct": "+52%" },
+      "base": { "label": "基准市值", "color": "#ff6700", "endValue": 7560, "changePct": "+20%" },
+      "bear": { "label": "悲观市值", "color": "#dc2626", "endValue": 4410, "changePct": "-30%" },
+      "consensus": { "label": "博弈综合市值", "color": "#2563eb", "endValue": 7308, "changePct": "+16%" }
+    },
+    "anchors": {
+      "bull": [
+        { "month": "2026-06", "value": 6300 },
+        { "month": "2026-12", "value": 6930 },
+        { "month": "2027-06", "value": 7938 },
+        { "month": "2027-12", "value": 8820 },
+        { "month": "2028-06", "value": 9576 }
+      ],
+      "base": [
+        { "month": "2026-06", "value": 6300 },
+        { "month": "2026-12", "value": 6502 },
+        { "month": "2027-06", "value": 6930 },
+        { "month": "2027-12", "value": 7258 },
+        { "month": "2028-06", "value": 7560 }
+      ],
+      "bear": [
+        { "month": "2026-06", "value": 6300 },
+        { "month": "2026-12", "value": 5670 },
+        { "month": "2027-06", "value": 4914 },
+        { "month": "2027-12", "value": 4586 },
+        { "month": "2028-06", "value": 4410 }
+      ],
+      "consensus": [
+        { "month": "2026-06", "value": 6300 },
+        { "month": "2026-12", "value": 6426 },
+        { "month": "2027-06", "value": 6804 },
+        { "month": "2027-12", "value": 7106 },
+        { "month": "2028-06", "value": 7308 }
       ]
     }
   }

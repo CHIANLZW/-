@@ -169,6 +169,67 @@
       "actualChars": 4280
     }
   },
+  "financialIntegrity": {
+    "id": "luxshare",
+    "title": "财报真实性核查 · 管理层叙事 vs 剔除干扰后",
+    "methodology": "自动生成核查（待该公司手工深度模板）。框架：非经剔除、OCF 匹配、季报勾稽、研发资本化排查。完整版参照小米模板。",
+    "riskLevel": "low",
+    "riskLabel": "初步未见重大口径异常",
+    "managementSays": "立讯精密 2025 营收突破 3323 亿、净利 166 亿，Apple 供应链核心地位巩固；需关注客户集中度与毛利率压力。",
+    "afterStripping": "基于 FY2025 披露：营收 3323亿元。建议补充 OCF、公允价值、分部明细后完成深度核查（见小米模板）。",
+    "comparisons": [
+      {
+        "metric": "营收同比",
+        "management": "+23.6%",
+        "stripped": "以法定披露为准；需核对分部结构是否拉动 headline",
+        "flag": "ok",
+        "note": "FY2025"
+      }
+    ],
+    "adjustmentItems": [],
+    "drillDown": {
+      "periods": [
+        {
+          "id": "latest",
+          "label": "FY2025",
+          "source": "2025 年年报（2026-04 披露）",
+          "rows": [
+            {
+              "line": "营收",
+              "reported": 3323,
+              "core": 3323,
+              "unit": "亿元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "同比 23.6%"
+            },
+            {
+              "line": "归母净利润",
+              "reported": 166,
+              "core": null,
+              "unit": "亿元",
+              "mgmt": false,
+              "coreOnly": false,
+              "note": ""
+            },
+            {
+              "line": "研发费用",
+              "reported": 96,
+              "core": 96,
+              "unit": "亿元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "占收 2.9%"
+            }
+          ]
+        }
+      ]
+    },
+    "forecastCalibration": {
+      "asOf": "2026-06-23",
+      "note": "待该公司手工校准预测输入"
+    }
+  },
   "narrative": {
     "title": "深度研究正文",
     "paragraphs": [
@@ -536,6 +597,8 @@
       "price": 46
     },
     "horizonEnd": "2028-06",
+    "asOf": "2026-06-23",
+    "calibrationNote": "基准价取自约 2026-06 行情；情景 2026-06→2028-06。",
     "scenarios": {
       "bull": {
         "label": "乐观股价",

@@ -173,6 +173,67 @@
       "actualChars": 4480
     }
   },
+  "financialIntegrity": {
+    "id": "apple",
+    "title": "财报真实性核查 · 管理层叙事 vs 剔除干扰后",
+    "methodology": "自动生成核查（待该公司手工深度模板）。框架：非经剔除、OCF 匹配、季报勾稽、研发资本化排查。完整版参照小米模板。",
+    "riskLevel": "low",
+    "riskLabel": "初步未见重大口径异常",
+    "managementSays": "Apple FY2025 营收与利润双增，服务业务创新高；AI 功能与换机周期是中期关键变量，现金流与回购支撑估值。",
+    "afterStripping": "基于 至2025-09 披露：营收 4162亿美元。建议补充 OCF、公允价值、分部明细后完成深度核查（见小米模板）。",
+    "comparisons": [
+      {
+        "metric": "营收同比",
+        "management": "+6.4%",
+        "stripped": "以法定披露为准；需核对分部结构是否拉动 headline",
+        "flag": "ok",
+        "note": "至2025-09"
+      }
+    ],
+    "adjustmentItems": [],
+    "drillDown": {
+      "periods": [
+        {
+          "id": "latest",
+          "label": "至2025-09",
+          "source": "FY2025 全年（至 2025-09-27）",
+          "rows": [
+            {
+              "line": "营收",
+              "reported": 4162,
+              "core": 4162,
+              "unit": "亿美元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "同比 6.4%"
+            },
+            {
+              "line": "归母净利润",
+              "reported": 1120,
+              "core": null,
+              "unit": "亿美元",
+              "mgmt": false,
+              "coreOnly": false,
+              "note": ""
+            },
+            {
+              "line": "研发费用",
+              "reported": 346,
+              "core": 346,
+              "unit": "亿美元",
+              "mgmt": true,
+              "coreOnly": true,
+              "note": "占收 8.3%"
+            }
+          ]
+        }
+      ]
+    },
+    "forecastCalibration": {
+      "asOf": "2026-06-23",
+      "note": "待该公司手工校准预测输入"
+    }
+  },
   "narrative": {
     "title": "深度研究正文",
     "paragraphs": [
@@ -592,6 +653,8 @@
       "price": 198
     },
     "horizonEnd": "2028-06",
+    "asOf": "2026-06-23",
+    "calibrationNote": "基准价取自约 2026-06 行情；情景 2026-06→2028-06。",
     "scenarios": {
       "bull": {
         "label": "乐观股价",
