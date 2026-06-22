@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "version": "1.0",
+    "note": "七家公司分部深度对标（数据来自各公司 IR/SEC/港交所公开披露，同业为行业公开口径）"
+  },
+  "alibaba": {
+    "segmentBenchmarks": [
+      {
+        "id": "taotian",
+        "name": "淘天集团",
+        "icon": "🛒",
+        "company": { "revenue2025": 4498, "revenue2024": 4348, "yoy": "+3.4%", "grossMargin": "约 40%+（集团口径）" },
+        "analystTake": "FY2025 淘天收入 4,498 亿、同比 +3.4%，基本盘企稳但增速低于拼多多。分析师关注：① 88VIP 与内容电商能否提升 ARPU；② 即时零售（闪购）对利润率的影响；③ 与抖音电商份额争夺。",
+        "peers": [
+          { "name": "拼多多", "ticker": "PDD", "revenue": "FY2024 营收约 3,938 亿元", "rd": "研发约 110 亿元/年", "margin": "经调净利率约 30%+", "gap": "拼多多增速与利润率双高；阿里淘天体量更大但估值折价", "hover": "拼多多 TEMU 出海与阿里国际业务形成间接竞争。" },
+          { "name": "京东", "ticker": "JD / 9618.HK", "revenue": "FY2024 净收入约 11,588 亿元", "rd": "研发约 180 亿元/年", "margin": "零售毛利率约 15%", "gap": "京东自营物流重资产；阿里平台轻资产但履约投入上升", "hover": "京东 3C 与阿里天猫重叠；阿里在服饰、快消仍占优。" },
+          { "name": "Amazon 电商", "ticker": "AMZN", "revenue": "FY2024 北美+国际零售约 4,000+ 亿美元", "rd": "集团研发超 800 亿美元", "margin": "零售营业利润率低个位数", "gap": "亚马逊 AWS 拉高集团估值；阿里需云+AI 货币化对标", "hover": "AWS 利润率支撑 AMZN PE；阿里云扭亏是阿里估值修复关键。" }
+        ]
+      },
+      {
+        "id": "cloud",
+        "name": "云智能集团",
+        "icon": "☁️",
+        "company": { "revenue2025": 1180, "yoy": "+10.9%", "note": "AI 相关产品收入三位数增长" },
+        "analystTake": "云收入 1,180 亿、AI 相关三位数增长是 FY2025 最大亮点。对标微软 Azure / AWS：阿里国内份额领先但利润率仍处投入期；通义千问 API 与政企大模型订单决定 2026–2027 估值弹性。",
+        "peers": [
+          { "name": "华为云", "ticker": "非上市", "revenue": "2024 中国区份额约 19%（IDC）", "rd": "集团研发超 1,400 亿元", "margin": "云业务投入期", "gap": "政企国产化订单华为占优；阿里互联网客户与电商场景更深", "hover": "华为云增速在政企市场领先；阿里需证明 AI 产品利润率。" },
+          { "name": "腾讯云", "ticker": "0700.HK", "revenue": "未单独披露（含金融科技）", "rd": "集团研发 706 亿元（2025）", "margin": "金融科技毛利高", "gap": "腾讯社交+游戏云协同；阿里电商数据与物流云协同", "hover": "腾讯云与微信生态绑定；阿里云与淘天数据闭环。" },
+          { "name": "AWS", "ticker": "AMZN", "revenue": "FY2024 约 1,076 亿美元", "rd": "含于集团", "margin": "营业利润率约 35%+", "gap": "AWS 利润率远超国内云；阿里云扭亏进度决定 re-rating", "hover": "全球云市场 AWS 约 30% 份额；阿里云聚焦国内+东南亚。" }
+        ]
+      },
+      {
+        "id": "intl",
+        "name": "国际数字商业",
+        "icon": "🌏",
+        "company": { "revenue2025": 1325, "yoy": "+29.2%" },
+        "analystTake": "国际业务 1,325 亿、+29% 是增长引擎（Lazada、Trendyol、AliExpress）。对标 Sea / Shein：阿里海外仍处投入期，盈利时间表是估值分歧点。",
+        "peers": [
+          { "name": "Sea Limited", "ticker": "SE", "revenue": "FY2024 约 160 亿美元", "rd": "研发约 10 亿美元", "margin": "电商+游戏多元化", "gap": "Shopee 东南亚份额领先；Lazada 需差异化", "hover": "Sea 游戏现金流补贴电商；阿里国际需自我造血。" },
+          { "name": "Shein", "ticker": "非上市", "revenue": "2024 营收约 300 亿美元（媒体估）", "rd": "—", "margin": "供应链效率极高", "gap": "Shein 快时尚跨境；AliExpress 全品类", "hover": "Shein 估值曾超 600 亿美元；阿里国际整合 Trendyol 是关键。" }
+        ]
+      },
+      {
+        "id": "cainiao",
+        "name": "菜鸟",
+        "icon": "📦",
+        "company": { "revenue2025": 1012, "yoy": "+2.2%" },
+        "analystTake": "菜鸟 1,012 亿、增速放缓，集团已调整上市计划。对标顺丰 / 京东物流：菜鸟全球化网络是资产，但短期利润率承压。",
+        "peers": [
+          { "name": "顺丰控股", "ticker": "002352.SZ", "revenue": "2024 营收约 2,844 亿元", "rd": "科技投入约 30 亿元", "margin": "净利率约 3%", "gap": "顺丰时效与直营网络；菜鸟平台化+全球化", "hover": "菜鸟 2024 取消 IPO；需观察与阿里电商协同。" },
+          { "name": "京东物流", "ticker": "2618.HK", "revenue": "2024 营收约 1,828 亿元", "rd": "—", "margin": "外部客户占比提升", "gap": "京东物流一体化供应链；菜鸟跨境枢纽优势", "hover": "物流是电商竞争基础设施；菜鸟海外仓是差异化。" }
+        ]
+      }
+    ]
+  },
+  "tencent": {
+    "segmentBenchmarks": [
+      {
+        "id": "vas",
+        "name": "增值服务（游戏+社交）",
+        "icon": "🎮",
+        "company": { "revenue2025": 3423, "yoy": "+7.2%" },
+        "analystTake": "增值服务 3,423 亿占收约 48%，游戏（本土+海外）与社交网络是现金牛。关注：《王者荣耀》《DNF》长青表现与海外 Supercell 贡献；监管与未成年人保护政策风险。",
+        "peers": [
+          { "name": "网易", "ticker": "9999.HK", "revenue": "2024 游戏约 836 亿元", "rd": "研发约 150 亿元", "margin": "游戏毛利率约 60%+", "gap": "网易精品自研；腾讯渠道+投资生态更广", "hover": "腾讯游戏收入约为网易 2 倍+；海外是下一战场。" },
+          { "name": "Microsoft 游戏", "ticker": "MSFT", "revenue": "FY2025 游戏约 230 亿美元", "rd": "含于集团", "margin": "Xbox+Activision", "gap": "微软主机+云游戏；腾讯移动+社交入口", "hover": "腾讯无硬件依赖；云游戏布局较微软慢。" }
+        ]
+      },
+      {
+        "id": "ads",
+        "name": "营销服务",
+        "icon": "📢",
+        "company": { "revenue2025": 1288, "yoy": "+6.1%" },
+        "analystTake": "营销 1,288 亿、视频号广告加载率提升是增量。对标 Meta / 字节：腾讯社交广告库存深但转化仍低于字节；AI 广告工具是 2026 变量。",
+        "peers": [
+          { "name": "Meta", "ticker": "META", "revenue": "FY2024 广告约 1,600 亿美元", "rd": "含于集团", "margin": "广告营业利润率约 40%+", "gap": "Meta 全球精准广告；腾讯微信生态封闭", "hover": "视频号商业化是腾讯广告增速关键。" },
+          { "name": "字节跳动（估）", "ticker": "非上市", "revenue": "2024 广告收入约 3,000+ 亿元（估）", "rd": "—", "margin": "抖音电商闭环", "gap": "字节算法推荐领先；腾讯社交关系链深", "hover": "腾讯与字节在广告份额上直接竞争。" }
+        ]
+      },
+      {
+        "id": "fintech",
+        "name": "金融科技及企业服务",
+        "icon": "💳",
+        "company": { "revenue2025": 2212, "yoy": "+4.3%" },
+        "analystTake": "金融科技 2,212 亿含理财、支付与企业服务。对标蚂蚁（未纳入本组合）：腾讯支付与微信绑定；企业服务（腾讯云）与阿里云竞争。",
+        "peers": [
+          { "name": "PayPal", "ticker": "PYPL", "revenue": "FY2024 约 318 亿美元", "rd": "—", "margin": "净利率约 15%", "gap": "PayPal 跨境支付；腾讯国内场景 dominant", "hover": "微信支付日均交易笔数亿级；海外支付仍弱。" },
+          { "name": "Visa", "ticker": "V", "revenue": "FY2024 约 360 亿美元", "rd": "—", "margin": "营业利润率约 65%", "gap": "Visa 网络效应；腾讯是超级应用内支付", "hover": "腾讯金融科技毛利率高但监管敏感。" }
+        ]
+      }
+    ]
+  },
+  "apple": {
+    "segmentBenchmarks": [
+      {
+        "id": "iphone",
+        "name": "iPhone",
+        "icon": "📱",
+        "company": { "revenue2025": 2103, "yoy": "+4.5%", "grossMargin": "硬件毛利率约 46%" },
+        "analystTake": "iPhone FY2025 2,103 亿美元、占收约 51%。换机周期延长是行业共性；Apple Intelligence 能否触发超级周期是 2026–2027 核心议题。",
+        "peers": [
+          { "name": "Samsung 移动", "ticker": "005930.KS", "revenue": "2024 移动约 110 万亿韩元", "rd": "集团研发约 20+ 万亿韩元", "margin": "移动营业利润率中高个位数", "gap": "三星全价位+折叠屏；苹果高端垄断利润", "hover": "苹果拿走全球手机利润约 80%+（行业估）。" },
+          { "name": "小米", "ticker": "01810.HK", "revenue": "2025 手机 2,424 亿元", "rd": "手机研发约 112 亿元", "margin": "手机毛利约 12.6%", "gap": "苹果 ASP 约为小米 5 倍；生态闭锁更强", "hover": "苹果在华面临华为回归压力。" }
+        ]
+      },
+      {
+        "id": "services",
+        "name": "Services",
+        "icon": "🔔",
+        "company": { "revenue2025": 1091, "yoy": "+13.5%", "grossMargin": "约 74%" },
+        "analystTake": "Services 1,091 亿、毛利 74% 是估值锚。App Store、iCloud、Apple Music 订阅化收入稳定增长；监管（欧盟 DMA、佣金诉讼）是利润率风险。",
+        "peers": [
+          { "name": "Google Play / 云", "ticker": "GOOGL", "revenue": "Google 云+Play 数百亿美元", "rd": "集团研发超 400 亿美元", "margin": "云仍亏损", "gap": "谷歌开放生态；苹果封闭高佣金", "hover": "Services 占苹果毛利过半；监管是最大变量。" },
+          { "name": "Microsoft 365", "ticker": "MSFT", "revenue": "FY2025 生产力业务约 870 亿美元", "rd": "含于集团", "margin": "营业利润率约 50%+", "gap": "微软企业订阅；苹果消费订阅", "hover": "Apple TV+ 内容投入仍小于 Netflix/Disney。" }
+        ]
+      },
+      {
+        "id": "mac",
+        "name": "Mac",
+        "icon": "💻",
+        "company": { "revenue2025": 337, "yoy": "+12.3%" },
+        "analystTake": "Mac 337 亿、M 系列芯片驱动升级周期。对标联想 / 戴尔：苹果高端份额稳固，AI PC 叙事中 Apple Silicon 有先发优势。",
+        "peers": [
+          { "name": "联想", "ticker": "0992.HK", "revenue": "FY2024/25 约 690 亿美元", "rd": "研发约 20 亿美元", "margin": "PC 毛利率约 15%", "gap": "联想出货量第一；苹果利润份额更高", "hover": "Mac 在高端市场占有率超 50%（美国）。" }
+        ]
+      },
+      {
+        "id": "wearables",
+        "name": "Wearables/Home",
+        "icon": "⌚",
+        "company": { "revenue2025": 356, "yoy": "-3.8%" },
+        "analystTake": "可穿戴 356 亿、同比略降，Apple Watch 与 AirPods 成熟市场饱和。Health 订阅与 Vision Pro 是长期期权但短期贡献有限。",
+        "peers": [
+          { "name": "华为可穿戴", "ticker": "非上市", "revenue": "2024 可穿戴中国第一（IDC）", "rd": "—", "margin": "—", "gap": "华为手表在华份额领先；苹果生态绑定更强", "hover": "Vision Pro 第二代决定空间计算叙事可信度。" }
+        ]
+      }
+    ]
+  },
+  "nvidia": {
+    "segmentBenchmarks": [
+      {
+        "id": "dc",
+        "name": "Data Center",
+        "icon": "🖥️",
+        "company": { "revenue2025": 1152, "yoy": "+142.5%", "grossMargin": "约 75%", "note": "AI GPU 主力" },
+        "analystTake": "数据中心 1,152 亿、占收 88%，FY2025 毛利率 75% 创纪录。H100/B200 供给、大客户集中度（微软/谷歌/Meta/亚马逊）与出口管制是三大风险。",
+        "peers": [
+          { "name": "AMD Instinct", "ticker": "AMD", "revenue": "2025 DC 约 198 亿美元", "rd": "集团研发约 70 亿美元", "margin": "毛利率约 50%+", "gap": "AMD MI300 份额追赶；Nvidia CUDA 生态壁垒", "hover": "AMD 2025 DC +57%；仍远小于 Nvidia。" },
+          { "name": "Intel DCAI", "ticker": "INTC", "revenue": "2024 DCAI 约 128 亿美元", "rd": "集团研发约 160 亿美元", "margin": "亏损", "gap": "Intel Gaudi 市占低；Nvidia 主导训练", "hover": "自研芯片（Google TPU、Amazon Trainium）侵蚀长期 TAM。" },
+          { "name": "Broadcom AI", "ticker": "AVGO", "revenue": "FY2024 AI 收入约 120 亿美元", "rd": "—", "margin": "定制 ASIC 高毛利", "gap": "博通定制芯片；Nvidia 通用 GPU", "hover": "超大规模客户自研+采购并行。" }
+        ]
+      },
+      {
+        "id": "gaming",
+        "name": "Gaming",
+        "icon": "🎮",
+        "company": { "revenue2025": 114, "yoy": "+9.6%" },
+        "analystTake": "游戏 114 亿、传统基本盘，GeForce RTX 50 系列决定 2026 收入。AI 资本开支挤占游戏 GPU 产能是供应链隐忧。",
+        "peers": [
+          { "name": "AMD Radeon", "ticker": "AMD", "revenue": "2025 Gaming 约 26 亿美元", "rd": "—", "margin": "—", "gap": "AMD 中端性价比；Nvidia 高端垄断", "hover": "游戏业务占比已降至 9%；投资者更看 DC。" }
+        ]
+      },
+      {
+        "id": "auto",
+        "name": "Automotive",
+        "icon": "🚗",
+        "company": { "revenue2025": 5, "yoy": "+25%" },
+        "analystTake": "汽车 5 亿美元、基数小但 Orin/Thor 芯片绑定主流车企智驾。对标 Mobileye / 高通：Nvidia 算力领先，车企成本压力是渗透瓶颈。",
+        "peers": [
+          { "name": "Mobileye", "ticker": "MBLY", "revenue": "2024 约 16 亿美元", "rd": "—", "margin": "—", "gap": "Mobileye ADAS 渗透率高；Nvidia 高端智驾", "hover": "比亚迪、理想等采用 Nvidia Orin/Thor。" }
+        ]
+      }
+    ]
+  },
+  "amd": {
+    "segmentBenchmarks": [
+      {
+        "id": "dc",
+        "name": "Data Center",
+        "icon": "🖥️",
+        "company": { "revenue2025": 198, "yoy": "+57.1%" },
+        "analystTake": "数据中心 198 亿、MI300 系列驱动反弹，但毛利率与份额仍落后 Nvidia。2026 看 MI350/MI400 量产与客户多元化。",
+        "peers": [
+          { "name": "Nvidia DC", "ticker": "NVDA", "revenue": "FY2025 约 1,152 亿美元", "rd": "约 129 亿美元", "margin": "毛利率约 75%", "gap": "Nvidia 规模约为 AMD 6 倍；CUDA vs ROCm", "hover": "AMD 是唯一在 AI GPU 有可观份额的第二供应商。" },
+          { "name": "Intel Gaudi", "ticker": "INTC", "revenue": "2024 约 20 亿美元量级", "rd": "—", "margin": "—", "gap": "Intel 低价抢单；AMD 性能更接近 Nvidia", "hover": "云厂商希望多供应商压价。" }
+        ]
+      },
+      {
+        "id": "client",
+        "name": "Client（PC CPU）",
+        "icon": "💻",
+        "company": { "revenue2025": 88, "yoy": "+23.9%" },
+        "analystTake": "客户端 88 亿、Ryzen AI PC 周期受益。对标 Intel Client：AMD 在台式/笔记本份额持续提升，但 Intel 反击（Lunar Lake）在即。",
+        "peers": [
+          { "name": "Intel Client", "ticker": "INTC", "revenue": "2024 约 300 亿美元", "rd": "—", "margin": "—", "gap": "Intel 份额仍第一但下滑；AMD 利润率更优", "hover": "x86 双寡头；ARM PC（高通）是长期变量。" }
+        ]
+      },
+      {
+        "id": "gaming",
+        "name": "Gaming",
+        "icon": "🎮",
+        "company": { "revenue2025": 26, "yoy": "0%" },
+        "analystTake": "游戏 26 亿、持平，主机半定制芯片（PS5/Xbox）进入周期尾声。PS6 订单是 2027+ 变量。",
+        "peers": [
+          { "name": "Nvidia Gaming", "ticker": "NVDA", "revenue": "FY2025 约 114 亿美元", "rd": "—", "margin": "—", "gap": "Nvidia 独立显卡主导；AMD 主机+PC 双线", "hover": "索尼 PS5 Pro 仍用 AMD 半定制。" }
+        ]
+      },
+      {
+        "id": "embedded",
+        "name": "Embedded",
+        "icon": "🔧",
+        "company": { "revenue2025": 34, "yoy": "-2.9%" },
+        "analystTake": "嵌入式 34 亿、工业/通信芯片，周期性下滑。 Xilinx FPGA 整合完成，边缘 AI 是长期故事。",
+        "peers": [
+          { "name": "Xilinx（已并入）", "ticker": "—", "revenue": "收购完成 2022", "rd": "—", "margin": "—", "gap": "FPGA 与 CPU/GPU 协同", "hover": "嵌入式非 AMD 估值主驱动。" }
+        ]
+      }
+    ]
+  },
+  "luxshare": {
+    "segmentBenchmarks": [
+      {
+        "id": "ce",
+        "name": "消费电子",
+        "icon": "📱",
+        "company": { "revenue2025": 2912, "yoy": "+23.7%", "note": "含 Apple 组装与零部件" },
+        "analystTake": "消费电子 2,912 亿、占收约 88%，Apple 供应链核心地位。客户集中度极高是双刃剑：订单稳定但议价权弱、毛利率承压。",
+        "peers": [
+          { "name": "富士康（鸿海）", "ticker": "2317.TW", "revenue": "2024 约 6.2 万亿新台币", "rd": "—", "margin": "净利率约 2%", "gap": "鸿海规模更大；立讯垂直整合更深", "hover": "立讯收购昆山纬新拓展 iPhone 组装。" },
+          { "name": "歌尔股份", "ticker": "002241.SZ", "revenue": "2024 约 1,000 亿元", "rd": "研发约 30 亿元", "margin": "毛利率约 10%", "gap": "歌尔声学组件；立讯连接器+组装", "hover": "AirPods 等可穿戴订单与立讯竞争。" },
+          { "name": "蓝思科技", "ticker": "300433.SZ", "revenue": "2024 约 700 亿元", "rd": "—", "margin": "玻璃/结构件", "gap": "蓝思玻璃盖板；立讯整机组装", "hover": "苹果供应链向中国内地集中利好立讯。" }
+        ]
+      },
+      {
+        "id": "auto",
+        "name": "汽车电子",
+        "icon": "🚗",
+        "company": { "revenue2025": 245, "yoy": "+36.1%" },
+        "analystTake": "汽车电子 245 亿、增速最快，线束/连接器切入新能源车供应链。对标德赛西威：立讯从零部件向 Tier 0.5 升级，但车规认证周期长。",
+        "peers": [
+          { "name": "德赛西威", "ticker": "002920.SZ", "revenue": "2024 约 276 亿元", "rd": "研发约 20 亿元", "margin": "毛利率约 20%", "gap": "德赛智驾域控；立讯线束+连接", "hover": "汽车电子是立讯第二曲线。" }
+        ]
+      },
+      {
+        "id": "comm",
+        "name": "通信设备",
+        "icon": "📡",
+        "company": { "revenue2025": 112, "yoy": "+14.3%" },
+        "analystTake": "通信 112 亿、5G 基站相关零部件，占比小但毛利相对稳定。华为供应链替代逻辑与地缘政治风险并存。",
+        "peers": [
+          { "name": "中兴通讯", "ticker": "000063.SZ", "revenue": "2024 约 1,213 亿元", "rd": "研发约 200 亿元", "margin": "—", "gap": "中兴系统设备；立讯零部件", "hover": "通信非主业但分散客户风险。" }
+        ]
+      }
+    ]
+  }
+}

@@ -91,6 +91,27 @@
     return 'stance-neutral';
   }
 
+  function pricePrefix(c) {
+    if (c.currency === 'USD') return '$';
+    if (c.ticker?.includes('.HK')) return 'HK$';
+    return '¥';
+  }
+
+  function capUnit(c) {
+    if (c.currency === 'USD') return '亿美元';
+    if (c.ticker?.includes('.HK')) return '亿港元';
+    return '亿元';
+  }
+
+  function fmtPrice(c, val) {
+    if (val == null || val === '—') return '—';
+    return pricePrefix(c) + val;
+  }
+
+  function segUnit(c) {
+    return c.unit || '亿元';
+  }
+
   function roundText(r) {
     if (Array.isArray(r)) return r.map((p) => `<p>${p}</p>`).join('');
     return `<p>${r}</p>`;
@@ -115,6 +136,42 @@
     return { meta: companiesData.meta, company, ...ext };
   }
 
+  function renderToc() {
+    return `
+      <nav class="report-toc" aria-label="报告目录">
+        <a href="#s-plan">优化计划</a>
+        <a href="#s-narr">研究正文</a>
+        <a href="#s-seg">分部对标</a>
+        <a href="#s-forecast">股价预测</a>
+        <a href="#s-agents">分析师博弈</a>
+        <a href="#s-appendix">附录</a>
+      </nav>`;
+  }
+
+  function renderOptimizationPlan(plan) {
+    if (!plan?.sections?.length) return '';
+    const chars = plan.meta?.actualChars || plan.paragraphs?.join('').length || 0;
+    const body = plan.sections
+      .map(
+        (sec) => `
+        <details class="plan-section" ${sec.id === 'ui' ? 'open' : ''}>
+          <summary class="plan-section__head">${sec.title}</summary>
+          <div class="plan-section__body">
+            ${sec.paragraphs.map((p) => `<p>${p}</p>`).join('')}
+          </div>
+        </details>`
+      )
+      .join('');
+    return `
+      <section class="section section--plan" id="s-plan">
+        <h2 class="section__title">优化计划方案 <span class="badge b-annual">${chars} 字</span></h2>
+        <p class="hint">${plan.subtitle || ''} · ${plan.reportDate || ''}</p>
+        ${body}
+      </section>`;
+  }
+      </section>`;
+  }
+
   function renderNarrative(narr) {
     if (!narr?.paragraphs?.length) return '';
     const chunks = narr.paragraphs;
@@ -134,26 +191,29 @@
   function renderChiefBar(c, syn, sp, fc) {
     const spBase = sp?.scenarios?.base;
     const fcBase = fc?.scenarios?.base || (fc?.baseline ? { endValue: fc.baseline.value, changePct: '—' } : null);
+    const horizon = sp?.horizonEnd || '2028-06';
     return `
       <section class="chief-bar" id="top">
         <div class="chief-bar__main">
           <span class="tag">${c.ticker}</span>
-          <h1>${c.name} · 分析师研究报</h1>
+          <h1>${c.name} · 分析师研究报告</h1>
+          <p class="chief-bar__sub">${c.tagline || ''}</p>
           <p class="chief-bar__stance ${stanceClass(syn.stance)}">${syn.stance} · 综合 ${syn.finalScore}/100 · ${syn.confidence || '中'}置信</p>
         </div>
         <div class="chief-kpi">
           <div class="chief-kpi__item"><span>现价</span><strong>${c.market?.price || '—'}</strong></div>
           <div class="chief-kpi__item"><span>市值</span><strong>${c.market?.marketCap || '—'}</strong></div>
-          ${spBase ? `<div class="chief-kpi__item"><span>基准股价(28-06)</span><strong class="up">HK$${spBase.endPrice || spBase}</strong></div>` : ''}
-          ${fcBase ? `<div class="chief-kpi__item"><span>基准市值</span><strong class="up">${fmt(fcBase.endValue)}</strong></div>` : ''}
+          ${spBase ? `<div class="chief-kpi__item"><span>基准股价(${horizon.slice(5)})</span><strong class="up">${fmtPrice(c, spBase.endPrice)}</strong></div>` : ''}
+          ${fcBase ? `<div class="chief-kpi__item"><span>基准市值</span><strong class="up">${fmt(fcBase.endValue)}${capUnit(c)}</strong></div>` : ''}
         </div>
         <p class="chief-bar__verdict">${syn.verdict || c.conclusion || ''}</p>
       </section>`;
   }
 
   function renderSegments(benchmarks, company) {
+    const u = segUnit(company);
     const cards = benchmarks
-      .map((seg) => {
+      .map((seg, idx) => {
         const x = seg.company || seg.xiaomi || {};
         const peerRows = seg.peers
           .map(
@@ -168,15 +228,15 @@
           )
           .join('');
         return `
-        <details class="seg-panel" open>
+        <details class="seg-panel" ${idx === 0 ? 'open' : ''}>
           <summary class="seg-panel__head">
             <span class="seg-panel__icon">${seg.icon}</span>
             <span class="seg-panel__title">${seg.name}</span>
-            <span class="seg-panel__rev">${fmt(x.revenue2025)}亿 · ${x.yoy || ''}</span>
+            <span class="seg-panel__rev">${fmt(x.revenue2025)}${u} · ${x.yoy || ''}</span>
           </summary>
           <div class="seg-panel__body">
             <div class="seg-company">
-              <span class="tip-chip" title="2025营收">营收 ${fmt(x.revenue2025)}亿</span>
+              <span class="tip-chip" title="最新营收">营收 ${fmt(x.revenue2025)}${u}</span>
               ${x.yoy ? `<span class="tip-chip">同比 ${x.yoy}</span>` : ''}
               ${x.grossMargin ? `<span class="tip-chip">毛利 ${x.grossMargin}</span>` : ''}
               ${x.rd2025 ? `<span class="tip-chip" title="研发">研发 ${x.rd2025}亿</span>` : ''}
@@ -191,7 +251,6 @@
                 <tbody>${peerRows}</tbody>
               </table>
             </div>
-            <div id="peerTip" class="peer-tip" hidden>悬停表格行查看详情</div>
           </div>
         </details>`;
       })
@@ -200,12 +259,13 @@
     return `
       <section class="section section--compact" id="s-seg">
         <h2 class="section__title">一、业务板块深度对标 <span class="badge b-q">分析师视角</span></h2>
-        <p class="hint">鼠标悬停对标行显示细节；各板块营收/研发为 2025 财年或最新公开口径。</p>
+        <p class="hint">鼠标悬停对标行显示细节；各板块营收/研发为最新公开财年口径。</p>
+        <div id="peerTip" class="peer-tip" hidden>悬停表格行查看详情</div>
         ${cards}
       </section>`;
   }
 
-  function renderForecast(fc, sp) {
+  function renderForecast(fc, sp, c) {
     if (!sp?.scenarios) return '<section class="section section--compact"><p class="hint">暂无股价情景数据</p></section>';
     const capCards = ['bull', 'base', 'bear', 'consensus']
       .filter((k) => sp.scenarios[k])
@@ -215,8 +275,8 @@
         const color = { bull: '#059669', base: '#ff6700', bear: '#dc2626', consensus: '#2563eb' }[k];
         return `<div class="fc-mini" style="border-color:${color}">
           <span style="color:${color}">${p.label || k}</span>
-          <strong>${s ? fmt(s.endValue) + '亿' : '—'}</strong>
-          <em>股价 ${p.endPrice != null ? (sp.unit === '美元' ? '$' : 'HK$') + p.endPrice : '—'} · ${p.changePct || ''}</em>
+          <strong>${s ? fmt(s.endValue) + capUnit(c) : '—'}</strong>
+          <em>股价 ${p.endPrice != null ? fmtPrice(c, p.endPrice) : '—'} · ${p.changePct || ''}</em>
         </div>`;
       })
       .join('');
@@ -244,22 +304,23 @@
     if (!fw) return '';
     const syn = fw.synthesis || {};
     const agents = fw.agents || [];
+    const agentCount = agents.length;
     const agentList = agents
       .map(
         (a, i) => `
-      <details class="agent-fold" ${i === 0 ? '' : ''}>
+      <details class="agent-fold">
         <summary class="agent-fold__head">
           <span class="agent-fold__role">${a.role}</span>
           <span class="skills">${(a.skills || []).slice(0, 3).join(' · ')}</span>
-          <span class="stance ${stanceClass(a.stance)}">${a.stance}</span>
+          <span class="stance ${stanceClass(a.stance)}">${a.stance || ''}</span>
           <span class="agent-fold__score">${a.score}</span>
-          <span class="agent-fold__target">HK$${a.targetPrice?.low}–${a.targetPrice?.high}</span>
+          ${a.targetPrice ? `<span class="agent-fold__target">${fmtPrice(data.company, a.targetPrice.low)}–${fmtPrice(data.company, a.targetPrice.high)}</span>` : ''}
         </summary>
         <div class="agent-fold__body">
-          <p class="hint">覆盖板块：${(a.segmentFocus || []).join('、')}</p>
-          <div class="round-block"><h4>R1 事实陈述</h4>${roundText(a.rounds['1'])}</div>
+          <p class="hint">覆盖板块：${(a.segmentFocus || []).join('、') || '—'}</p>
+          ${a.rounds ? `<div class="round-block"><h4>R1 事实陈述</h4>${roundText(a.rounds['1'])}</div>
           <div class="round-block"><h4>R2 交叉质询</h4>${roundText(a.rounds['2'])}</div>
-          <div class="round-block"><h4>R3 情景定价</h4>${roundText(a.rounds['3'])}</div>
+          <div class="round-block"><h4>R3 情景定价</h4>${roundText(a.rounds['3'])}</div>` : `<p>${a.view || ''}</p>`}
         </div>
       </details>`
       )
@@ -267,7 +328,7 @@
 
     return `
       <section class="section section--compact" id="s-agents">
-        <h2 class="section__title">三、十席分析师架构博弈 <span class="badge b-annual">默认折叠</span></h2>
+        <h2 class="section__title">三、${agentCount} 席分析师架构博弈 <span class="badge b-annual">默认折叠</span></h2>
         <p class="hint">${fw.methodology}</p>
         <details class="fold fold--chief" open>
           <summary>首席综合研判 · ${syn.stance} · ${syn.finalScore}/100</summary>
@@ -345,9 +406,10 @@
     });
   }
 
-  function fillForecastTable(months, capSeries, priceSeries, sp, fc) {
+  function fillForecastTable(months, capSeries, priceSeries, sp, fc, c) {
     const tbody = document.querySelector('#forecastTable tbody');
     if (!tbody) return;
+    const cu = capUnit(c);
     const show = months.filter((_, i) => i % 3 === 0 || i === months.length - 1);
     tbody.innerHTML = show
       .map((m) => {
@@ -355,16 +417,16 @@
         const cm = capSeries.consensus.find((p) => p.month === m)?.value ?? '—';
         const bull = priceSeries.bull.find((p) => p.month === m)?.price ?? '—';
         const bear = priceSeries.bear.find((p) => p.month === m)?.price ?? '—';
-        return `<tr><td>${m}</td><td><strong>HK$${cp}</strong></td><td>${fmt(cm)}亿</td><td class="muted">HK$${bear} – ${bull}</td></tr>`;
+        return `<tr><td>${m}</td><td><strong>${fmtPrice(c, cp)}</strong></td><td>${fmt(cm)}${cu}</td><td class="muted">${fmtPrice(c, bear)} – ${fmtPrice(c, bull)}</td></tr>`;
       })
       .join('');
   }
 
-  function initForecastCharts(fc, sp) {
+  function initForecastCharts(fc, sp, c) {
     if (!sp?.anchors) return;
     const capData = fc?.anchors ? buildSeries({ anchors: fc.anchors }, 'value') : null;
     const priceData = buildSeries(sp, 'price');
-    fillForecastTable(priceData.months, capData?.series || priceData.series, priceData.series, sp, fc);
+    fillForecastTable(priceData.months, capData?.series || priceData.series, priceData.series, sp, fc, c);
 
     let mode = sp ? 'price' : 'cap';
     const canvas = document.getElementById('forecastMainChart');
@@ -381,7 +443,7 @@
       const field = isPrice ? 'price' : 'value';
       const built = isPrice ? priceData : capData;
       const sc = forecast.scenarios;
-      const unit = isPrice ? '港元' : '亿港元';
+      const unit = isPrice ? (sp.unit || pricePrefix(c).replace('$', '美元').replace('HK$', '港元')) : capUnit(c);
 
       charts.push(
         new Chart(canvas, {
@@ -504,9 +566,11 @@
 
     app.innerHTML =
       renderChiefBar(c, syn, sp, fc) +
+      renderToc() +
+      renderOptimizationPlan(data.optimizationPlan) +
       renderNarrative(data.narrative) +
       renderSegments(benchmarks, c) +
-      renderForecast(fc, sp) +
+      renderForecast(fc, sp, c) +
       renderAgents(fw) +
       renderAppendix(c);
 
@@ -520,7 +584,7 @@
       const mount = document.getElementById('klineMount');
       if (mount) KlineChart.mount(mount, { daily: KlineChart.generateDailyOHLC(price0, 380, 0.032) });
     }
-    if (fc && sp) initForecastCharts(fc, sp);
+    if (fc && sp) initForecastCharts(fc, sp, c);
     initAppendixCharts(c);
   }
 

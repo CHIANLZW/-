@@ -220,7 +220,16 @@ body { font-size: 13px; }
 .chart-box--sm { height: 200px; }
 .chart-row--compact { gap: 10px; margin-top: 8px; }
 
-.fold { margin-top: 8px; border: 1px solid var(--border); border-radius: 8px; padding: 0 10px; background: #fafafa; }
+.report-toc { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 12px; position: sticky; top: 0; z-index: 10; box-shadow: var(--shadow); }
+.report-toc a { font-size: 12px; color: var(--primary-dark); text-decoration: none; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); background: #fff; }
+.report-toc a:hover { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 6%, white); }
+.chief-bar__sub { font-size: 12px; opacity: .85; margin-top: 2px; }
+.section--plan { border-left: 3px solid var(--primary); }
+.plan-section { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #fafafa; }
+.plan-section__head { cursor: pointer; padding: 10px 12px; font-size: 13px; font-weight: 600; list-style: none; }
+.plan-section__head::-webkit-details-marker { display: none; }
+.plan-section__body { padding: 0 12px 12px; font-size: 12px; line-height: 1.65; }
+.plan-section__body p { margin-bottom: 8px; }
 .fold summary { cursor: pointer; padding: 8px 0; font-size: 12px; font-weight: 600; color: var(--primary-dark); }
 .fold--chief { background: #eff6ff; border-color: #93c5fd; }
 .chief-detail { padding-bottom: 10px; font-size: 12px; line-height: 1.6; }
