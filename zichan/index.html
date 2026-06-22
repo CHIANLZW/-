@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="卿晓萌 — 资产分析 · 收支台账 · 资产配置 · 投资复盘">
+  <title>资产分析 · 卿晓萌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body class="page-zichan">
+
+  <header class="site-header" id="top">
+    <div class="site-header__brand">卿晓萌 <span>资产分析</span></div>
+    <button class="site-header__toggle" type="button" aria-label="打开导航" aria-expanded="false">☰</button>
+    <nav class="site-header__nav" aria-label="章节导航">
+      <a href="#overview">资产概览</a>
+      <a href="#structure">收支结构</a>
+      <a href="#assets">资产配置</a>
+      <a href="#investments">投资记录</a>
+      <a href="#notes">复盘笔记</a>
+    </nav>
+  </header>
+
+  <main class="finance">
+
+    <header class="finance-header" id="overview">
+      <p class="finance-header__label">二级站点 · 资产分析</p>
+      <h1 class="finance-header__title">资产分析</h1>
+      <p class="finance-header__desc">追踪个人收支、资产分布与投资表现，形成可复盘的全景财务视图。本站为独立入口，仅供个人记录参考。</p>
+    </header>
+
+    <section class="finance-section">
+      <h2 class="finance-section__title">资产概览</h2>
+      <div class="finance-section__body">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span class="stat-card__label">月度结余率</span>
+            <span class="stat-card__value stat-card__value--pending">待录入</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">应急储备</span>
+            <span class="stat-card__value stat-card__value--pending">待录入</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">投资账户市值</span>
+            <span class="stat-card__value stat-card__value--pending">待录入</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">年度收益率</span>
+            <span class="stat-card__value stat-card__value--pending">待录入</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="finance-section" id="structure">
+      <h2 class="finance-section__title">收支结构</h2>
+      <div class="finance-section__body">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>类别</th>
+              <th>类型</th>
+              <th>月度金额</th>
+              <th>占比</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>工资收入</td>
+              <td>收入</td>
+              <td>—</td>
+              <td>—</td>
+              <td>待录入</td>
+            </tr>
+            <tr>
+              <td>副业 / 项目</td>
+              <td>收入</td>
+              <td>—</td>
+              <td>—</td>
+              <td>待录入</td>
+            </tr>
+            <tr>
+              <td>生活固定支出</td>
+              <td>支出</td>
+              <td>—</td>
+              <td>—</td>
+              <td>房租、餐饮、交通等</td>
+            </tr>
+            <tr>
+              <td>投资定投</td>
+              <td>支出</td>
+              <td>—</td>
+              <td>—</td>
+              <td>基金 / ETF 等</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="finance-section" id="assets">
+      <h2 class="finance-section__title">资产配置</h2>
+      <div class="finance-section__body">
+        <div class="allocation-bar" aria-label="资产配置示意">
+          <div class="allocation-bar__segment allocation-bar__segment--cash" style="width: 30%"></div>
+          <div class="allocation-bar__segment allocation-bar__segment--fund" style="width: 35%"></div>
+          <div class="allocation-bar__segment allocation-bar__segment--stock" style="width: 25%"></div>
+          <div class="allocation-bar__segment allocation-bar__segment--other" style="width: 10%"></div>
+        </div>
+        <div class="allocation-legend">
+          <span class="legend-cash">现金 / 货币基金 30%</span>
+          <span class="legend-fund">基金 / ETF 35%</span>
+          <span class="legend-stock">个股 25%</span>
+          <span class="legend-other">其他 10%</span>
+        </div>
+        <p class="placeholder-block">以上为示意比例，请根据实际持仓更新。建议保持 3–6 个月生活费的应急储备。</p>
+      </div>
+    </section>
+
+    <section class="finance-section" id="investments">
+      <h2 class="finance-section__title">投资记录</h2>
+      <div class="finance-section__body">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>标的</th>
+              <th>类型</th>
+              <th>成本</th>
+              <th>市值</th>
+              <th>盈亏</th>
+              <th>策略</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--text-muted);">暂无记录，待添加持仓明细</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="finance-section" id="notes">
+      <h2 class="finance-section__title">复盘笔记</h2>
+      <div class="finance-section__body">
+        <article class="note-card">
+          <span class="note-card__date">2026-06</span>
+          <span class="note-card__title">资产分析板块上线</span>
+          <p class="note-card__body">资产分析模块已搭建完成，后续将定期更新收支台账、资产配置与投资复盘。建议每月末做一次月度小结，每季度回顾一次配置比例是否需要再平衡。</p>
+          <div class="note-card__tags">
+            <span class="finance-tag">月度复盘</span>
+            <span class="finance-tag">资产配置</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 卿晓萌 · 资产分析 · 仅供参考，不构成投资建议</p>
+  </footer>
+
+  <script src="../_lib/oneway.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
