@@ -117,6 +117,43 @@
     return `<p>${r}</p>`;
   }
 
+  function secTitle(num, text, badge) {
+    return `<h2 class="section__title"><span class="sec-num">${num}</span><span class="sec-text">${text}</span>${badge || ''}</h2>`;
+  }
+
+  function scoreRing(score, color) {
+    const s = Math.min(100, Math.max(0, score || 0));
+    const r = 34;
+    const circ = 2 * Math.PI * r;
+    const offset = circ * (1 - s / 100);
+    return `<div class="score-ring-wrap" title="综合评分 ${s}/100">
+      <svg class="score-ring" viewBox="0 0 80 80" width="64" height="64" aria-hidden="true">
+        <circle cx="40" cy="40" r="${r}" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="7"/>
+        <circle cx="40" cy="40" r="${r}" fill="none" stroke="${color || '#fff'}" stroke-width="7"
+          stroke-dasharray="${circ.toFixed(1)}" stroke-dashoffset="${offset.toFixed(1)}"
+          stroke-linecap="round" transform="rotate(-90 40 40)"/>
+        <text x="40" y="44" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">${s}</text>
+      </svg>
+      <span class="score-ring__lbl">综合分</span>
+    </div>`;
+  }
+
+  function renderProgressBar() {
+    return '<div class="read-progress" aria-hidden="true"><div class="read-progress__bar"></div></div>';
+  }
+
+  function renderReportMeta(c, meta) {
+    return `<div class="report-meta">
+      <span>数据截至 ${meta.reportDate || '2026-06-23'}</span>
+      <span>·</span>
+      <span>${c.exchange || ''}</span>
+      <span>·</span>
+      <span>财年 ${c.fiscalYearEnd || '—'}</span>
+      <span>·</span>
+      <span class="report-meta__tag">分析师研究版 v4</span>
+    </div>`;
+  }
+
   async function loadData(id) {
     if (window.GUANDIAN_REPORTS && window.GUANDIAN_REPORTS[id]) {
       const ext = window.GUANDIAN_REPORTS[id];
@@ -137,15 +174,19 @@
   }
 
   function renderToc() {
+    const items = [
+      ['s-integrity', '财报核查'],
+      ['s-plan', '优化计划'],
+      ['s-narr', '研究正文'],
+      ['s-seg', '分部对标'],
+      ['s-forecast', '股价预测'],
+      ['s-agents', '博弈'],
+      ['s-appendix', '附录']
+    ];
     return `
       <nav class="report-toc" aria-label="报告目录">
-        <a href="#s-integrity">财报核查</a>
-        <a href="#s-plan">优化计划</a>
-        <a href="#s-narr">研究正文</a>
-        <a href="#s-seg">分部对标</a>
-        <a href="#s-forecast">股价预测</a>
-        <a href="#s-agents">分析师博弈</a>
-        <a href="#s-appendix">附录</a>
+        <span class="report-toc__label">目录</span>
+        ${items.map(([id, label]) => `<a href="#${id}">${label}</a>`).join('')}
       </nav>`;
   }
 
@@ -165,11 +206,9 @@
       .join('');
     return `
       <section class="section section--plan" id="s-plan">
-        <h2 class="section__title">优化计划方案 <span class="badge b-annual">${chars} 字</span></h2>
+        ${secTitle('02', '优化计划方案', `<span class="badge b-annual">${chars} 字</span>`)}
         <p class="hint">${plan.subtitle || ''} · ${plan.reportDate || ''}</p>
         ${body}
-      </section>`;
-  }
       </section>`;
   }
 
@@ -177,6 +216,31 @@
     const map = { ok: 'b-q', watch: 'b-interim', warn: 'b-annual' };
     const label = { ok: '一致', watch: '关注', warn: '偏离' }[flag] || flag;
     return `<span class="badge ${map[flag] || ''}">${label}</span>`;
+  }
+
+  function renderIntegrityViz(fi) {
+    if (!fi) return '';
+    const ratio = fi.ocfRatio != null ? Math.round(fi.ocfRatio * 100) : null;
+    const flags = fi.comparisons || [];
+    const ok = flags.filter((f) => f.flag === 'ok').length;
+    const watch = flags.filter((f) => f.flag === 'watch').length;
+    const warn = flags.filter((f) => f.flag === 'warn').length;
+    return `
+      <div class="fin-viz">
+        ${ratio != null ? `<div class="fin-viz__card">
+          <div class="fin-viz__title">利润含金量 · OCF/经调净利</div>
+          <div class="fin-viz__bar"><div class="fin-viz__fill" style="width:${ratio}%"></div></div>
+          <div class="fin-viz__meta"><span>${ratio}%</span><span class="muted">${ratio < 90 ? '低于 90% 需关注' : '相对健康'}</span></div>
+        </div>` : ''}
+        <div class="fin-viz__card fin-viz__flags">
+          <div class="fin-viz__title">核查信号分布</div>
+          <div class="flag-chips">
+            <span class="flag-chip flag-chip--ok">一致 ${ok}</span>
+            <span class="flag-chip flag-chip--watch">关注 ${watch}</span>
+            <span class="flag-chip flag-chip--warn">偏离 ${warn}</span>
+          </div>
+        </div>
+      </div>`;
   }
 
   function renderFinancialIntegrity(fi) {
@@ -227,14 +291,17 @@
 
     return `
       <section class="section section--integrity" id="s-integrity">
-        <h2 class="section__title">财报真实性核查 <span class="badge ${riskClass}">${fi.riskLabel || fi.riskLevel}</span></h2>
-        <p class="hint">${fi.methodology}</p>
+        ${secTitle('01', '财报真实性核查', `<span class="badge ${riskClass}">${fi.riskLabel || fi.riskLevel}</span>`)}
+        <p class="hint hint--method">${fi.methodology}</p>
+        ${renderIntegrityViz(fi)}
         <div class="fin-compare-grid">
           <div class="block block--mgmt">
-            <div class="t">管理层想让你看到的</div>
+            <div class="block__label">管理层叙事</div>
+            <div class="t">想让你看到的</div>
             <p>${fi.managementSays}</p>
           </div>
           <div class="block block--core">
+            <div class="block__label">核查结论</div>
             <div class="t">剔除干扰项后</div>
             <p>${fi.afterStripping}</p>
           </div>
@@ -263,7 +330,7 @@
       .join('');
     return `
       <section class="section section--compact" id="s-narr">
-        <h2 class="section__title">深度研究正文 <span class="badge b-q">约 ${narr.paragraphs.join('').length} 字</span></h2>
+        ${secTitle('03', '深度研究正文', `<span class="badge b-q">约 ${narr.paragraphs.join('').length} 字</span>`)}
         ${preview}
         <details class="fold"><summary>展开全文</summary><div class="narr-body">${rest}</div></details>
       </section>`;
@@ -275,11 +342,14 @@
     const horizon = sp?.horizonEnd || '2028-06';
     return `
       <section class="chief-bar" id="top">
-        <div class="chief-bar__main">
-          <span class="tag">${c.ticker}</span>
-          <h1>${c.name} · 分析师研究报告</h1>
-          <p class="chief-bar__sub">${c.tagline || ''}</p>
-          <p class="chief-bar__stance ${stanceClass(syn.stance)}">${syn.stance} · 综合 ${syn.finalScore}/100 · ${syn.confidence || '中'}置信</p>
+        <div class="chief-bar__layout">
+          <div class="chief-bar__main">
+            <span class="tag">${c.ticker}</span>
+            <h1>${c.name}</h1>
+            <p class="chief-bar__sub">${c.tagline || ''}</p>
+            <p class="chief-bar__stance ${stanceClass(syn.stance)}">${syn.stance} · ${syn.confidence || '中'}置信</p>
+          </div>
+          ${scoreRing(syn.finalScore, c.color)}
         </div>
         <div class="chief-kpi">
           <div class="chief-kpi__item"><span>现价</span><strong>${c.market?.price || '—'}</strong></div>
@@ -339,7 +409,7 @@
 
     return `
       <section class="section section--compact" id="s-seg">
-        <h2 class="section__title">一、业务板块深度对标 <span class="badge b-q">分析师视角</span></h2>
+        ${secTitle('04', '业务板块深度对标', '<span class="badge b-q">分析师视角</span>')}
         <p class="hint">鼠标悬停对标行显示细节；各板块营收/研发为最新公开财年口径。</p>
         <div id="peerTip" class="peer-tip" hidden>悬停表格行查看详情</div>
         ${cards}
@@ -348,26 +418,28 @@
 
   function renderForecast(fc, sp, c) {
     if (!sp?.scenarios) return '<section class="section section--compact"><p class="hint">暂无股价情景数据</p></section>';
-    const capCards = ['bull', 'base', 'bear', 'consensus']
+
+    const calNote = sp?.calibrationNote || fc?.calibrationNote || '';
+    const cards = ['bull', 'base', 'bear', 'consensus']
       .filter((k) => sp.scenarios[k])
       .map((k) => {
         const s = fc?.scenarios?.[k];
         const p = sp.scenarios[k];
-        const color = { bull: '#059669', base: '#ff6700', bear: '#dc2626', consensus: '#2563eb' }[k];
-        return `<div class="fc-mini" style="border-color:${color}">
-          <span style="color:${color}">${p.label || k}</span>
-          <strong>${s ? fmt(s.endValue) + capUnit(c) : '—'}</strong>
-          <em>股价 ${p.endPrice != null ? fmtPrice(c, p.endPrice) : '—'} · ${p.changePct || ''}</em>
+        const color = p.color || { bull: '#059669', base: '#ff6700', bear: '#dc2626', consensus: '#2563eb' }[k];
+        return `<div class="scenario-card" style="--sc-color:${color}">
+          <div class="scenario-card__label">${p.label || k}</div>
+          <div class="scenario-card__price">${p.endPrice != null ? fmtPrice(c, p.endPrice) : '—'}</div>
+          <div class="scenario-card__cap">${s ? fmt(s.endValue) + capUnit(c) : '—'}</div>
+          <div class="scenario-card__chg ${(p.changePct || '').startsWith('+') ? 'up' : (p.changePct || '').startsWith('-') ? 'down' : ''}">${p.changePct || ''}</div>
         </div>`;
       })
       .join('');
 
-    const calNote = sp?.calibrationNote || fc?.calibrationNote || '';
     return `
       <section class="section section--compact" id="s-forecast">
-        <h2 class="section__title">二、股价与市值预测（2026-06 起 → 2028-06）</h2>
-        ${calNote ? `<p class="hint">${calNote}</p>` : '<p class="hint">基准价约 2026-06 行情；情景折线为研究推演，非实时预测。</p>'}
-        <div class="fc-mini-grid">${capCards}</div>
+        ${secTitle('05', '股价与市值预测', '<span class="badge b-interim">2026-06 → 2028-06</span>')}
+        ${calNote ? `<p class="hint">${calNote}</p>` : '<p class="hint">基准价约 2026-06 行情；情景折线为研究推演。</p>'}
+        <div class="scenario-grid">${cards}</div>
         <div id="klineMount" class="kline-mount"></div>
         <div class="chart-tabs">
           <button type="button" class="chart-tab active" data-chart="price">股价情景折线</button>
@@ -411,7 +483,7 @@
 
     return `
       <section class="section section--compact" id="s-agents">
-        <h2 class="section__title">三、${agentCount} 席分析师架构博弈 <span class="badge b-annual">默认折叠</span></h2>
+        ${secTitle('06', `${agentCount} 席分析师架构博弈`, '<span class="badge b-annual">默认折叠</span>')}
         <p class="hint">${fw.methodology}</p>
         <details class="fold fold--chief" open>
           <summary>首席综合研判 · ${syn.stance} · ${syn.finalScore}/100</summary>
@@ -448,7 +520,7 @@
 
     return `
       <section class="section section--compact" id="s-appendix">
-        <h2 class="section__title">附录 · 财务数据</h2>
+        ${secTitle('07', '附录 · 财务数据', '')}
         ${fi ? '<p class="hint">点击下表任一行可跳转至 <a href="#s-fin-drill">财报真实性钻取</a>；「核心/剔除后」列见各期明细。</p>' : ''}
         <details class="fold" open>
           <summary>近五年财报简表（可点击钻取）</summary>
@@ -661,6 +733,8 @@
     const price0 = parseFloat(String(c.market?.price || '25').replace(/[^\d.]/g, '')) || 25;
 
     app.innerHTML =
+      renderProgressBar() +
+      renderReportMeta(c, meta) +
       renderChiefBar(c, syn, sp, fc) +
       renderToc() +
       renderFinancialIntegrity(data.financialIntegrity) +
@@ -684,6 +758,7 @@
     }
     if (fc && sp) initForecastCharts(fc, sp, c);
     initAppendixCharts(c);
+    if (window.GuandianReportUI) GuandianReportUI.init();
   }
 
   main();

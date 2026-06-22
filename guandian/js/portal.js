@@ -11,6 +11,8 @@
     luxshare: '立'
   };
 
+  const DEEP = { xiaomi: true };
+
   function reportUrl(id) {
     return 'report.html?id=' + encodeURIComponent(id);
   }
@@ -30,13 +32,16 @@
     grid.innerHTML = companies
       .map(
         (c) => `
-      <a class="company-card" href="${reportUrl(c.id)}">
+      <a class="company-card" href="${reportUrl(c.id)}" style="--primary:${c.color}">
         <div class="logo" style="background:${c.color}">${ICONS[c.id] || c.name[0]}</div>
         <h3>${c.name}</h3>
         <div class="ticker">${c.ticker} · ${c.exchange}</div>
         <div class="brief">${c.tagline || ''}</div>
-        <div class="company-card__cta">进入深度研究报告 →</div>
-        <div class="brief" style="margin-top:6px">最新：${c.latestReport || '—'}</div>
+        <div class="company-card__meta">
+          <span>${c.latestReport || '—'}</span>
+          ${DEEP[c.id] ? '<span class="company-card__badge">深度模板</span>' : '<span class="company-card__badge">标准版</span>'}
+        </div>
+        <div class="company-card__cta">进入研究报告 →</div>
       </a>`
       )
       .join('');
