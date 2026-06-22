@@ -2,40 +2,36 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    (function () {
+      var path = location.pathname.replace(/\\/g, '/');
+      var marker = '/guandian';
+      var idx = path.indexOf(marker);
+      if (idx !== -1) path = path.slice(0, idx + marker.length) + '/';
+      else if (/\.html$/i.test(path)) path = path.slice(0, path.lastIndexOf('/') + 1);
+      else if (!path.endsWith('/')) path += '/';
+      document.write('<base href="' + path + '">');
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>公司财务分析 · 卿晓萌</title>
-  <script src="js/base.js"></script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 <div class="container">
   <div class="portal-hero">
-    <h1>📊 公司财务分析</h1>
-    <p>点击公司卡片直接进入完整 8 章分析报告 · 勾选多家后可生成横向对比</p>
+    <h1>公司财务深度研究</h1>
+    <p>7 家公司 · 点击卡片进入完整分析报告 · 含十席博弈与 1～2 年股价/市值情景</p>
   </div>
-
-  <div class="select-all">
-    <button class="btn btn-secondary" id="selectAll">全选对比</button>
-    <button class="btn btn-secondary" id="clearAll">清除勾选</button>
-    <span class="hint" style="margin-left:12px" id="selCount">已选 0 家（用于对比）</span>
-  </div>
-
   <div class="company-grid" id="companyGrid">
-    <p class="hint" style="grid-column:1/-1;text-align:center;padding:24px">正在加载公司列表…</p>
+    <p class="hint" style="grid-column:1/-1;text-align:center;padding:24px">正在加载…</p>
   </div>
-
-  <div class="action-bar">
-    <button class="btn btn-primary" id="openCompare" disabled>多公司对比表（需勾选 2 家及以上）</button>
+  <div class="section section--compact" style="margin-top:16px">
+    <p class="hint">数据来源：各公司 IR / 港交所 / SEC / 巨潮资讯 · 研究情景推演不构成投资建议 · 2026-06-23</p>
+    <p class="hint">已移除蚂蚁集团；其余公司与线上一致并升级交互版报告。</p>
   </div>
-
-  <div class="section" style="margin-top:24px">
-    <h2 style="border:none;padding:0;margin-bottom:10px;font-size:15px">📋 涵盖 8 家公司</h2>
-    <p class="hint">小米集团 · 阿里巴巴 · 腾讯控股 · 蚂蚁集团 · Apple · Nvidia · AMD · 立讯精密 — 各公司财年截止日不同，报告中均单独标注。</p>
-  </div>
-
-  <p class="disclaimer">数据来源：各公司 IR / 港交所 / SEC / 巨潮资讯 · 仅供研究参考，不构成投资建议 · 报告日期 2026-06-22</p>
 </div>
-<script src="../_lib/oneway.js"></script>
+<script src="js/data-portal.js"></script>
 <script src="js/portal.js"></script>
 </body>
 </html>

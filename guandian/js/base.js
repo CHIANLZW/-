@@ -1,6 +1,5 @@
 (function () {
   'use strict';
-
   var path = location.pathname.replace(/\\/g, '/');
   var marker = '/guandian';
   var idx = path.indexOf(marker);
@@ -13,5 +12,5 @@
   }
   var base = document.createElement('base');
   base.href = path;
-  document.head.insertBefore(base, document.head.firstChild);
+  document.head.prepend(base);
 })();

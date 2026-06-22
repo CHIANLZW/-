@@ -1,0 +1,12 @@
+{
+  "name": "inchian-top",
+  "private": true,
+  "description": "inchian.top 静态站点 — 本地预览",
+  "scripts": {
+    "start": "serve -l 8080",
+    "dev": "serve -l 8080"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
