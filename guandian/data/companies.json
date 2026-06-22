@@ -1,29 +1,692 @@
 {
-  "updated": "2026-06",
-  "intro": "记录个人对感兴趣上市公司的研究：二级市场股价跟踪、公司战略与发展方向判断，以及阶段性预测与事后复盘。",
+  "meta": {
+    "reportDate": "2026-06-22",
+    "version": "1.0",
+    "note": "各公司财年截止日不同，对比时以各公司「财年」标注为准；蚂蚁集团非上市，数据来自阿里巴巴权益法披露。"
+  },
   "companies": [
     {
-      "id": "placeholder",
-      "name": "（待添加公司）",
-      "ticker": "—",
-      "market": "—",
-      "sector": "—",
-      "status": "待研究",
-      "price": {
-        "current": "—",
-        "change": "—",
-        "range52w": "—",
-        "updated": "—"
+      "id": "xiaomi",
+      "name": "小米集团",
+      "nameEn": "Xiaomi Corporation",
+      "ticker": "01810.HK",
+      "exchange": "港交所",
+      "listed": true,
+      "color": "#ff6700",
+      "currency": "CNY",
+      "currencySymbol": "¥",
+      "unit": "亿元",
+      "unitEn": "100M CNY",
+      "fiscalYearEnd": "12-31",
+      "tagline": "「手机×AIoT」+ 智能电动汽车 · 人车家全生态",
+      "ceo": "雷军",
+      "ipoDate": "2018-07-09",
+      "latestReport": "2026 Q1（2026-05-26 披露）",
+      "definition": "硬件为入口的互联网生态公司，正从消费电子制造商向「人车家全生态」科技公司转型；汽车业务拉高资本开支与估值波动。",
+      "market": {
+        "price": "HK$25.0",
+        "priceNote": "约 2026-06 盘中参考",
+        "marketCap": "约 6,300 亿港元",
+        "marketCapUsd": "约 810 亿美元",
+        "pe": 13.7,
+        "peLabel": "TTM 市盈率",
+        "week52High": "HK$61.5",
+        "week52Low": "HK$24.0",
+        "ytdChange": "-52%",
+        "dividendYield": "—",
+        "source": "港交所行情 / 小米 IR"
       },
-      "direction": "在此填写公司主营业务、战略规划、产能扩张、并购整合等发展方向的个人理解。",
-      "thesis": "在此填写关注该公司的核心逻辑：行业地位、竞争优势、业绩拐点、政策催化等。",
-      "prediction": {
-        "horizon": "—",
-        "target": "—",
-        "view": "待判断",
-        "summary": "在此填写对股价走势与公司发展的阶段性预测，注明时间窗口与关键假设。"
+      "annuals": [
+        { "year": "2025", "label": "FY2025", "revenue": 4573, "netProfit": 236, "adjNetProfit": 392, "grossMargin": 22.9, "netMargin": 5.2, "rd": 331, "rdPct": 7.2, "yoyRev": 34.9, "yoyProfit": 35.4 },
+        { "year": "2024", "label": "FY2024", "revenue": 3388, "netProfit": 193, "adjNetProfit": 290, "grossMargin": 21.0, "netMargin": 5.7, "rd": 241, "rdPct": 7.1, "yoyRev": 35.0, "yoyProfit": 41.3 },
+        { "year": "2023", "label": "FY2023", "revenue": 2510, "netProfit": 137, "adjNetProfit": 193, "grossMargin": 21.2, "netMargin": 5.5, "rd": 191, "rdPct": 7.6, "yoyRev": -3.2, "yoyProfit": 6.0 },
+        { "year": "2022", "label": "FY2022", "revenue": 2593, "netProfit": 85, "adjNetProfit": 126, "grossMargin": 17.0, "netMargin": 3.3, "rd": 160, "rdPct": 6.2, "yoyRev": -14.7, "yoyProfit": -87.2 },
+        { "year": "2021", "label": "FY2021", "revenue": 3039, "netProfit": 193, "adjNetProfit": 220, "grossMargin": 17.4, "netMargin": 6.3, "rd": 132, "rdPct": 4.3, "yoyRev": 33.5, "yoyProfit": 103.7 }
+      ],
+      "quarterly": { "period": "2026 Q1", "revenue": 991, "adjNetProfit": 61, "rd": 90, "yoyRev": -10.9, "yoyRd": 33.4 },
+      "reports": [
+        { "date": "2026-05-26", "type": "q", "title": "2026年第一季度业绩公告" },
+        { "date": "2025-03-18", "type": "annual", "title": "2024年全年业绩公告" },
+        { "date": "2024-03-19", "type": "annual", "title": "2023年全年业绩公告" },
+        { "date": "2023-03-24", "type": "annual", "title": "2022年全年业绩公告" },
+        { "date": "2022-03-22", "type": "annual", "title": "2021年全年业绩公告" }
+      ],
+      "segments": [
+        { "name": "智能手机", "y1": 1918, "y2": 2424, "unit": "亿元", "y1Label": "2024", "y2Label": "2025", "note": "出货量约 1.69 亿台（2025）" },
+        { "name": "IoT与生活消费", "y1": 1041, "y2": 1314, "unit": "亿元" },
+        { "name": "互联网服务", "y1": 341, "y2": 385, "unit": "亿元", "note": "毛利率约 76%" },
+        { "name": "智能电动汽车等", "y1": 328, "y2": 812, "unit": "亿元", "note": "2025 汽车交付约 41.5 万辆" }
+      ],
+      "rd": {
+        "official": true,
+        "years": [
+          { "year": "2025", "total": 331, "pct": 7.2, "breakdown": [
+            { "name": "智能手机/芯片", "amount": 112, "est": true },
+            { "name": "AIoT/操作系统", "amount": 86, "est": true },
+            { "name": "智能汽车", "amount": 99, "est": true },
+            { "name": "互联网/AI", "amount": 34, "est": true }
+          ]},
+          { "year": "2024", "total": 241, "pct": 7.1, "breakdown": [
+            { "name": "智能手机/芯片", "amount": 82, "est": true },
+            { "name": "AIoT/操作系统", "amount": 63, "est": true },
+            { "name": "智能汽车", "amount": 72, "est": true },
+            { "name": "互联网/AI", "amount": 24, "est": true }
+          ]},
+          { "year": "2026Q1", "total": 90, "pct": 9.1, "breakdown": [
+            { "name": "智能手机/芯片", "amount": 28, "est": true },
+            { "name": "AIoT/操作系统", "amount": 22, "est": true },
+            { "name": "智能汽车", "amount": 30, "est": true },
+            { "name": "互联网/AI", "amount": 10, "est": true }
+          ]}
+        ],
+        "note": "分板块为管理层口径+业绩会指引推算；研发总额为财报官方披露。"
       },
-      "risks": "主要风险与证伪条件（待填写）"
+      "dimensions": [
+        { "name": "盈利能力", "score": 72, "detail": "经调整净利率约 8.6%（2025），汽车拖累短期毛利" },
+        { "name": "成长动能", "score": 78, "detail": "2025 营收 +35%，汽车放量是主驱动" },
+        { "name": "现金流", "score": 65, "detail": "汽车 Capex 高，经营现金流仍为正" },
+        { "name": "研发投入", "score": 75, "detail": "研发占收 7%+，2026 Q1 升至 9.1%" },
+        { "name": "竞争壁垒", "score": 68, "detail": "生态+性价比，高端突破仍在进行" },
+        { "name": "估值合理性", "score": 70, "detail": "PE ~14×，低于纯科技龙头" }
+      ],
+      "qualitative": {
+        "peLowReason": "市场将小米视为「硬件+汽车制造」而非纯软件平台，汽车投入期压制利润率预期；港股流动性与板块情绪亦影响估值。",
+        "techVsMfg": "兼具科技与制造：自研芯片、HyperOS、AI 与汽车智能化属科技属性；手机/汽车量产与供应链属制造属性。",
+        "userCorrection": "「大而稳、低泡沫」部分成立——体量已大、PE 不高；但汽车业务带来波动，并非传统意义低波动蓝筹。"
+      },
+      "agents": [
+        { "role": "价值投资者", "score": 62, "view": "PE 合理但需验证汽车 ROI" },
+        { "role": "科技成长分析师", "score": 71, "view": "AI+汽车打开第二曲线" },
+        { "role": "汽车业分析师", "score": 68, "view": "交付亮眼，盈利拐点待观察" },
+        { "role": "制造业分析师", "score": 68, "view": "供应链效率强，毛利承压" },
+        { "role": "平台经济分析师", "score": 64, "view": "互联网服务毛利高但占比有限" },
+        { "role": "宏观策略师", "score": 68, "view": "消费复苏+出海双逻辑" },
+        { "role": "空头研究员", "score": 35, "view": "汽车烧钱、手机红海" },
+        { "role": "品牌分析师", "score": 74, "view": "高端化与生态认知提升" },
+        { "role": "信用分析师", "score": 74, "view": "资产负债表稳健" },
+        { "role": "竞品对比分析师", "score": 70, "view": "对标苹果/华为差异化明显" }
+      ],
+      "conclusion": "小米处于「消费电子基本盘 + 汽车放量 + AI 投入」三线并进阶段；2025 业绩高增长验证战略，2026 Q1 短期回调不改长期生态逻辑。估值反映制造属性多于平台属性，适合关注汽车盈利拐点与研发转化。",
+      "sources": [
+        { "title": "小米集团 2025 全年业绩公告", "url": "https://ir.mi.com" },
+        { "title": "小米集团 2026 Q1 业绩公告", "url": "https://ir.mi.com" },
+        { "title": "港交所 01810 行情", "url": "https://www.hkex.com.hk" }
+      ]
+    },
+    {
+      "id": "alibaba",
+      "name": "阿里巴巴",
+      "nameEn": "Alibaba Group",
+      "ticker": "9988.HK / BABA",
+      "exchange": "港交所 / 纽交所",
+      "listed": true,
+      "color": "#ff6a00",
+      "currency": "CNY",
+      "currencySymbol": "¥",
+      "unit": "亿元",
+      "fiscalYearEnd": "03-31",
+      "tagline": "电商 + 云智能 + 国际数字商业 · AI 基础设施",
+      "ceo": "吴泳铭",
+      "ipoDate": "2014-09-19",
+      "latestReport": "FY2025 全年（至 2025-03-31，2025-05 披露）",
+      "definition": "中国最大的数字商业与云计算平台之一，FY2025 起战略聚焦「电商、云+AI、国际、菜鸟、大文娱」；淘天集团基本盘+阿里云 AI 投入期。",
+      "market": {
+        "price": "HK$105",
+        "priceNote": "约 2026-06 参考",
+        "marketCap": "约 2.0 万亿港元",
+        "pe": 18,
+        "peLabel": "Forward PE 约估",
+        "week52High": "HK$154",
+        "week52Low": "HK$72",
+        "ytdChange": "+12%",
+        "source": "港交所 / 阿里 IR"
+      },
+      "annuals": [
+        { "year": "FY2025", "label": "至2025-03", "revenue": 9963, "netProfit": 1295, "nonGaapNet": 1581, "grossMargin": null, "netMargin": 13.0, "rd": 572, "rdPct": 5.7, "yoyRev": 5.8, "yoyProfit": 62.5, "note": "产品开发费用 571.51 亿" },
+        { "year": "FY2024", "label": "至2024-03", "revenue": 9412, "netProfit": 797, "nonGaapNet": 1575, "rd": 523, "rdPct": 5.6, "yoyRev": 8.3, "yoyProfit": 13.0 },
+        { "year": "FY2023", "label": "至2023-03", "revenue": 8687, "netProfit": 725, "nonGaapNet": 1361, "rd": 498, "rdPct": 5.7, "yoyRev": 2.0, "yoyProfit": -58.8 },
+        { "year": "FY2022", "label": "至2022-03", "revenue": 8531, "netProfit": 470, "nonGaapNet": 1364, "rd": 455, "rdPct": 5.3, "yoyRev": 19.0, "yoyProfit": -66.4 },
+        { "year": "FY2021", "label": "至2021-03", "revenue": 7172, "netProfit": 1432, "nonGaapNet": 1719, "rd": 430, "rdPct": 6.0, "yoyRev": 41.0, "yoyProfit": 2.0 }
+      ],
+      "reports": [
+        { "date": "2025-05-15", "type": "annual", "title": "FY2025 全年及 Q4 业绩" },
+        { "date": "2024-05-14", "type": "annual", "title": "FY2024 全年业绩" },
+        { "date": "2023-05-18", "type": "annual", "title": "FY2023 全年业绩" }
+      ],
+      "segments": [
+        { "name": "淘天集团", "y1": 4348, "y2": 4498, "unit": "亿元", "y1Label": "FY2024", "y2Label": "FY2025" },
+        { "name": "云智能集团", "y1": 1064, "y2": 1180, "unit": "亿元", "note": "AI 相关产品收入三位数增长" },
+        { "name": "国际数字商业", "y1": 1026, "y2": 1325, "unit": "亿元" },
+        { "name": "菜鸟", "y1": 990, "y2": 1012, "unit": "亿元" }
+      ],
+      "rd": {
+        "official": true,
+        "years": [
+          { "year": "FY2025", "total": 572, "pct": 5.7, "breakdown": [
+            { "name": "阿里云/AI", "amount": 228, "est": true },
+            { "name": "电商/推荐算法", "amount": 171, "est": true },
+            { "name": "国际/物流科技", "amount": 114, "est": true },
+            { "name": "其他", "amount": 59, "est": true }
+          ]}
+        ],
+        "note": "官方披露为「产品开发费用」；分板块为估算。"
+      },
+      "dimensions": [
+        { "name": "盈利能力", "score": 75, "detail": "FY2025 归母净利 +62%，淘天利润率改善" },
+        { "name": "成长动能", "score": 70, "detail": "云+国际增速高于集团平均" },
+        { "name": "现金流", "score": 78, "detail": "自由现金流强劲" },
+        { "name": "研发投入", "score": 80, "detail": "三年 3800 亿 AI Capex 计划" },
+        { "name": "竞争壁垒", "score": 82, "detail": "电商+云双寡头地位" },
+        { "name": "估值合理性", "score": 72, "detail": "分拆预期与回购支撑估值" }
+      ],
+      "qualitative": {
+        "peLowReason": "中概监管阴影、竞争加剧、增长放缓的历史记忆；云业务投入期压制短期利润释放。",
+        "techVsMfg": "平台与云计算公司，非制造业；物流菜鸟有运营资产但核心为数字商业与云。",
+        "userCorrection": "已非高速增长期独角兽，而是「成熟平台 + AI 再投资」阶段。"
+      },
+      "agents": [
+        { "role": "价值投资者", "score": 74, "view": "回购+股息，估值修复中" },
+        { "role": "科技成长分析师", "score": 76, "view": "AI 全栈投入，云增速回升" },
+        { "role": "电商分析师", "score": 72, "view": "淘天份额企稳" },
+        { "role": "云计算分析师", "score": 78, "view": "国内 IAAS 龙头" },
+        { "role": "平台经济分析师", "score": 80, "view": "生态护城河深" },
+        { "role": "宏观策略师", "score": 70, "view": "消费复苏利好电商" },
+        { "role": "空头研究员", "score": 42, "view": "拼多多/抖音竞争" },
+        { "role": "品牌分析师", "score": 76, "view": "品牌老化风险可控" },
+        { "role": "信用分析师", "score": 80, "view": "净现金充裕" },
+        { "role": "竞品对比分析师", "score": 75, "view": "vs 腾讯/拼多多各有胜负" }
+      ],
+      "conclusion": "阿里巴巴 FY2025 利润大幅反弹，战略聚焦与 AI 基础设施投入并行；短期看淘天利润率，中期看阿里云 AI 货币化与国际化。",
+      "sources": [
+        { "title": "阿里巴巴 FY2025 业绩公告", "url": "https://www.alibabagroup.com" },
+        { "title": "SEC BABA 20-F", "url": "https://www.sec.gov" }
+      ]
+    },
+    {
+      "id": "tencent",
+      "name": "腾讯控股",
+      "nameEn": "Tencent Holdings",
+      "ticker": "0700.HK",
+      "exchange": "港交所",
+      "listed": true,
+      "color": "#07c160",
+      "currency": "CNY",
+      "currencySymbol": "¥",
+      "unit": "亿元",
+      "fiscalYearEnd": "12-31",
+      "tagline": "社交 + 游戏 + 金融科技 + 云与企业服务",
+      "ceo": "马化腾",
+      "ipoDate": "2004-06-16",
+      "latestReport": "FY2025 全年（2026-03 披露）",
+      "definition": "中国最大的互联网平台之一，微信/QQ 社交护城河+国内游戏龙头+金融科技（理财通/支付）；2024-2025 加大 AI（混元）与 Capex 投入。",
+      "market": {
+        "price": "HK$520",
+        "marketCap": "约 4.9 万亿港元",
+        "pe": 22,
+        "week52High": "HK$547",
+        "week52Low": "HK$360",
+        "source": "港交所 / 腾讯 IR"
+      },
+      "annuals": [
+        { "year": "2025", "label": "FY2025", "revenue": 7128, "netProfit": 2088, "nonGaapNet": 2415, "rd": 858, "rdPct": 12.0, "yoyRev": 8.0, "yoyProfit": 7.6, "note": "2025 全年；研发 857.5 亿" },
+        { "year": "2024", "label": "FY2024", "revenue": 6603, "netProfit": 1941, "nonGaapNet": 2227, "rd": 707, "rdPct": 10.7, "yoyRev": 8.4, "yoyProfit": 68.0 },
+        { "year": "2023", "label": "FY2023", "revenue": 6090, "netProfit": 1152, "nonGaapNet": 1577, "rd": 640, "rdPct": 10.5, "yoyRev": 9.8, "yoyProfit": -38.8 },
+        { "year": "2022", "label": "FY2022", "revenue": 5546, "netProfit": 1882, "nonGaapNet": 1156, "rd": 614, "rdPct": 11.1, "yoyRev": -0.9, "yoyProfit": -16.3 },
+        { "year": "2021", "label": "FY2021", "revenue": 5601, "netProfit": 2248, "nonGaapNet": 1238, "rd": 519, "rdPct": 9.3, "yoyRev": 16.2, "yoyProfit": 36.3 }
+      ],
+      "reports": [
+        { "date": "2026-03-18", "type": "annual", "title": "2025 全年业绩" },
+        { "date": "2025-03-19", "type": "annual", "title": "2024 全年业绩" }
+      ],
+      "segments": [
+        { "name": "增值服务（游戏+社交）", "y1": 3192, "y2": 3423, "unit": "亿元", "y1Label": "2024", "y2Label": "2025" },
+        { "name": "营销服务", "y1": 1214, "y2": 1288, "unit": "亿元" },
+        { "name": "金融科技及企业服务", "y1": 2120, "y2": 2212, "unit": "亿元" }
+      ],
+      "rd": {
+        "official": true,
+        "years": [
+          { "year": "2025", "total": 858, "pct": 12.0, "breakdown": [
+            { "name": "混元/元宝 AI", "amount": 180, "est": false, "note": "管理层披露全年投入" },
+            { "name": "游戏引擎/内容", "amount": 257, "est": true },
+            { "name": "云/企业服务", "amount": 214, "est": true },
+            { "name": "其他", "amount": 207, "est": true }
+          ]},
+          { "year": "2024", "total": 707, "pct": 10.7, "breakdown": [
+            { "name": "AI/混元", "amount": 90, "est": true },
+            { "name": "游戏引擎/内容", "amount": 212, "est": true },
+            { "name": "云/企业服务", "amount": 177, "est": true },
+            { "name": "其他", "amount": 228, "est": true }
+          ]}
+        ],
+        "note": "2025 研发 857.5 亿、Capex 792 亿均为官方披露。"
+      },
+      "dimensions": [
+        { "name": "盈利能力", "score": 85, "detail": "非 IFRS 净利率约 34%" },
+        { "name": "成长动能", "score": 72, "detail": "游戏复苏+广告回暖" },
+        { "name": "现金流", "score": 88, "detail": "经营现金流行业顶尖" },
+        { "name": "研发投入", "score": 82, "detail": "七年累计研发 3403 亿" },
+        { "name": "竞争壁垒", "score": 90, "detail": "微信社交壁垒极高" },
+        { "name": "估值合理性", "score": 75, "detail": "PE ~22×，溢价合理" }
+      ],
+      "qualitative": {
+        "peLowReason": "腾讯 PE 并不低；若偏低是相对美股 Mag7，因港股折价与中概情绪。",
+        "techVsMfg": "纯平台/科技公司，无制造主业。",
+        "userCorrection": "游戏监管后已进入稳健增长+高分红阶段，非早期高波动成长股。"
+      },
+      "agents": [
+        { "role": "价值投资者", "score": 80, "view": "现金流+回购+股息" },
+        { "role": "科技成长分析师", "score": 78, "view": "AI 投入加码" },
+        { "role": "游戏分析师", "score": 82, "view": "国内手游龙头" },
+        { "role": "广告分析师", "score": 76, "view": "视频号商业化提速" },
+        { "role": "平台经济分析师", "score": 90, "view": "微信生态无敌" },
+        { "role": "宏观策略师", "score": 74, "view": "港股核心资产" },
+        { "role": "空头研究员", "score": 38, "view": "监管与竞争" },
+        { "role": "品牌分析师", "score": 85, "view": "顶级消费入口" },
+        { "role": "信用分析师", "score": 88, "view": "资产负债表极强" },
+        { "role": "竞品对比分析师", "score": 80, "view": "vs 阿里各有护城河" }
+      ],
+      "conclusion": "腾讯 2024-2025 业绩稳健增长，AI 战略进入重投入期；社交+游戏基本盘稳固，关注混元 AI 货币化节奏与 Capex ROI。",
+      "sources": [
+        { "title": "腾讯 2024/2025 全年业绩", "url": "https://www.tencent.com" }
+      ]
+    },
+    {
+      "id": "ant",
+      "name": "蚂蚁集团",
+      "nameEn": "Ant Group",
+      "ticker": "非上市",
+      "exchange": "—",
+      "listed": false,
+      "color": "#1677ff",
+      "currency": "CNY",
+      "unit": "亿元",
+      "fiscalYearEnd": "12-31",
+      "tagline": "支付宝 · 数字支付 + 数字金融 + 科技服务",
+      "ceo": "韩歆毅",
+      "latestReport": "阿里 FY2025 权益法披露（2024 日历年）",
+      "definition": "中国领先的数字支付与数字金融平台，支付宝 MAU 超 10 亿；非上市公司，财务通过阿里巴巴权益法投资披露。",
+      "market": {
+        "price": "—",
+        "marketCap": "非上市（2020 IPO 暂缓）",
+        "pe": null,
+        "note": "2020 年曾估值约 2.1 万亿人民币（IPO 前）",
+        "source": "阿里巴巴财报附注"
+      },
+      "annuals": [
+        { "year": "2024", "label": "日历年2024", "revenue": null, "netProfit": 383, "yoyProfit": 61.0, "note": "阿里权益法：蚂蚁 2024 利润 383.05 亿" },
+        { "year": "2023", "label": "日历年2023", "netProfit": 238, "yoyProfit": 22.0 },
+        { "year": "2022", "label": "日历年2022", "netProfit": 195, "yoyProfit": -28.0 },
+        { "year": "2021", "label": "日历年2021", "netProfit": 270, "yoyProfit": 22.0 },
+        { "year": "2020", "label": "日历年2020", "netProfit": 221, "yoyProfit": 30.0 }
+      ],
+      "reports": [
+        { "date": "2025-05", "type": "annual", "title": "阿里 FY2025 报告附注披露蚂蚁 2024 业绩" },
+        { "note": "蚂蚁无独立公开年报，数据均来自阿里权益法披露" }
+      ],
+      "segments": [
+        { "name": "数字支付（支付宝）", "note": "国内第三方支付龙头，跨境支付增长" },
+        { "name": "数字金融（理财/信贷/保险）", "note": "受监管整改后更合规、更稳健" },
+        { "name": "数字科技（B端）", "note": "区块链、风控、AI 输出" }
+      ],
+      "rd": {
+        "official": false,
+        "years": [
+          { "year": "2024", "total": 200, "pct": null, "breakdown": [
+            { "name": "AI/风控", "amount": 80, "est": true },
+            { "name": "区块链/安全", "amount": 50, "est": true },
+            { "name": "支付技术", "amount": 70, "est": true }
+          ]}
+        ],
+        "note": "蚂蚁未单独披露研发；金额为行业报道与阿里附注推算，仅供参考。"
+      },
+      "dimensions": [
+        { "name": "盈利能力", "score": 80, "detail": "2024 利润 +61%，整改后盈利改善" },
+        { "name": "成长动能", "score": 65, "detail": "监管常态化后增速趋稳" },
+        { "name": "现金流", "score": 82, "detail": "支付业务现金流优秀" },
+        { "name": "研发投入", "score": 75, "detail": "金融科技研发强度高" },
+        { "name": "竞争壁垒", "score": 88, "detail": "支付宝国民级应用" },
+        { "name": "估值合理性", "score": null, "detail": "非上市无法直接估值" }
+      ],
+      "qualitative": {
+        "peLowReason": "非上市；若间接估值偏低，主因监管不确定性与 IPO 搁置。",
+        "techVsMfg": "金融科技平台，非制造业。",
+        "userCorrection": "整改后更偏「合规金融基础设施」而非高杠杆扩张。"
+      },
+      "agents": [
+        { "role": "价值投资者", "score": 70, "view": "利润恢复但缺乏流动性" },
+        { "role": "金融科技分析师", "score": 82, "view": "支付入口价值巨大" },
+        { "role": "监管分析师", "score": 60, "view": "合规成本持续" },
+        { "role": "平台经济分析师", "score": 85, "view": "超级 App 地位" },
+        { "role": "空头研究员", "score": 45, "view": "IPO 与监管不确定" },
+        { "role": "竞品对比分析师", "score": 78, "view": "vs 腾讯金融科技" }
+      ],
+      "conclusion": "蚂蚁 2024 利润显著回升至 383 亿，支付基本盘稳固；非上市主体需通过阿里披露跟踪，关注 IPO 进展与 AI+金融场景落地。",
+      "sources": [
+        { "title": "阿里巴巴 FY2025 财报（权益法）", "url": "https://www.alibabagroup.com" }
+      ]
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "nameEn": "Apple Inc.",
+      "ticker": "AAPL",
+      "exchange": "纳斯达克",
+      "listed": true,
+      "color": "#555555",
+      "currency": "USD",
+      "currencySymbol": "$",
+      "unit": "亿美元",
+      "fiscalYearEnd": "09-30",
+      "tagline": "iPhone · Mac · Services · 生态闭环",
+      "ceo": "Tim Cook",
+      "ipoDate": "1980-12-12",
+      "latestReport": "FY2025 全年（至 2025-09-27）",
+      "definition": "全球市值最高的消费电子与软件服务生态公司；硬件高毛利+服务订阅化，AI（Apple Intelligence）为下一章。",
+      "market": {
+        "price": "$198",
+        "marketCap": "约 3.0 万亿美元",
+        "pe": 31,
+        "week52High": "$260",
+        "week52Low": "$169",
+        "dividendYield": "0.5%",
+        "source": "NASDAQ / Apple IR"
+      },
+      "annuals": [
+        { "year": "FY2025", "label": "至2025-09", "revenue": 4162, "netProfit": 1120, "grossMargin": 46.9, "netMargin": 26.9, "rd": 346, "rdPct": 8.3, "yoyRev": 6.4, "yoyProfit": 19.5 },
+        { "year": "FY2024", "label": "至2024-09", "revenue": 3910, "netProfit": 937, "rd": 314, "rdPct": 8.0, "yoyRev": 2.0, "yoyProfit": -3.4 },
+        { "year": "FY2023", "label": "至2023-09", "revenue": 3833, "netProfit": 970, "rd": 299, "rdPct": 7.8, "yoyRev": -2.8, "yoyProfit": -2.8 },
+        { "year": "FY2022", "label": "至2022-09", "revenue": 3943, "netProfit": 998, "rd": 262, "rdPct": 6.7, "yoyRev": 7.8, "yoyProfit": 5.4 },
+        { "year": "FY2021", "label": "至2021-09", "revenue": 3658, "netProfit": 946, "rd": 219, "rdPct": 6.0, "yoyRev": 33.3, "yoyProfit": 64.9 }
+      ],
+      "reports": [
+        { "date": "2025-10-30", "type": "annual", "title": "FY2025 10-K / 四季报" },
+        { "date": "2024-11-01", "type": "annual", "title": "FY2024 10-K" }
+      ],
+      "segments": [
+        { "name": "iPhone", "y1": 2012, "y2": 2103, "unit": "亿美元", "y1Label": "FY2024", "y2Label": "FY2025" },
+        { "name": "Services", "y1": 961, "y2": 1091, "unit": "亿美元", "note": "毛利率约 74%" },
+        { "name": "Mac", "y1": 300, "y2": 337, "unit": "亿美元" },
+        { "name": "Wearables/Home", "y1": 370, "y2": 356, "unit": "亿美元" }
+      ],
+      "rd": {
+        "official": true,
+        "years": [
+          { "year": "FY2025", "total": 346, "pct": 8.3, "breakdown": [
+            { "name": "芯片（Apple Silicon）", "amount": 121, "est": true },
+            { "name": "AI/软件", "amount": 104, "est": true },
+            { "name": "硬件工程", "amount": 87, "est": true },
+            { "name": "其他", "amount": 34, "est": true }
+          ]}
+        ],
+        "note": "研发总额为 10-K 官方；分板块估算。"
+      },
+      "dimensions": [
+        { "name": "盈利能力", "score": 95, "detail": "净利率 ~27%，行业顶尖" },
+        { "name": "成长动能", "score": 68, "detail": "iPhone 周期波动，服务稳增" },
+        { "name": "现金流", "score": 95, "detail": "年回购超千亿美元" },
+        { "name": "研发投入", "score": 85, "detail": "自研芯片+AI" },
+        { "name": "竞争壁垒", "score": 92, "detail": "生态锁定效应" },
+        { "name": "估值合理性", "score": 72, "detail": "PE ~31×，溢价来自确定性" }
+      ],
+      "qualitative": {
+        "peLowReason": "Apple PE 并不低；相对 Mag7 属于稳健溢价型。",
+        "techVsMfg": "消费电子+芯片设计+软件服务，垂直整合科技公司。",
+        "userCorrection": "不仅是硬件公司，服务收入占比已超 25%。"
+      },
+      "agents": [
+        { "role": "价值投资者", "score": 82, "view": "回购+股息+品牌" },
+        { "role": "科技成长分析师", "score": 75, "view": "AI 换机周期待验证" },
+        { "role": "硬件分析师", "score": 88, "view": "供应链王者" },
+        { "role": "服务分析师", "score": 90, "view": "高毛利订阅生态" },
+        { "role": "空头研究员", "score": 40, "view": "中国区竞争" },
+        { "role": "竞品对比分析师", "score": 85, "view": "vs 三星/华为高端" }
+      ],
+      "conclusion": "Apple FY2025 营收与利润双增，服务业务创新高；AI 功能与换机周期是中期关键变量，现金流与回购支撑估值。",
+      "sources": [
+        { "title": "Apple FY2025 10-K", "url": "https://investor.apple.com" }
+      ]
+    },
+    {
+      "id": "nvidia",
+      "name": "Nvidia",
+      "nameEn": "NVIDIA Corporation",
+      "ticker": "NVDA",
+      "exchange": "纳斯达克",
+      "listed": true,
+      "color": "#76b900",
+      "currency": "USD",
+      "currencySymbol": "$",
+      "unit": "亿美元",
+      "fiscalYearEnd": "01-26",
+      "tagline": "GPU · AI 数据中心 · 全栈加速计算",
+      "ceo": "Jensen Huang",
+      "ipoDate": "1999-01-22",
+      "latestReport": "FY2025 全年（至 2025-01-26）",
+      "definition": "AI 算力基础设施核心供应商，数据中心 GPU（H100/B200）主导生成式 AI 训练与推理市场。",
+      "market": {
+        "price": "$145",
+        "marketCap": "约 3.5 万亿美元",
+        "pe": 45,
+        "week52High": "$153",
+        "week52Low": "$86",
+        "source": "NASDAQ / Nvidia IR"
+      },
+      "annuals": [
+        { "year": "FY2025", "label": "至2025-01", "revenue": 1305, "netProfit": 729, "grossMargin": 75.0, "netMargin": 55.9, "rd": 129, "rdPct": 9.9, "yoyRev": 114.2, "yoyProfit": 144.9 },
+        { "year": "FY2024", "label": "至2024-01", "revenue": 609, "netProfit": 298, "rd": 87, "rdPct": 14.2, "yoyRev": 125.9, "yoyProfit": 581.3 },
+        { "year": "FY2023", "label": "至2023-01", "revenue": 270, "netProfit": 44, "rd": 73, "rdPct": 27.1, "yoyRev": 0.2, "yoyProfit": -55.3 },
+        { "year": "FY2022", "label": "至2022-01", "revenue": 269, "netProfit": 97, "rd": 58, "rdPct": 21.4, "yoyRev": 61.0, "yoyProfit": 125.1 },
+        { "year": "FY2021", "label": "至2021-01", "revenue": 167, "netProfit": 43, "rd": 39, "rdPct": 23.5, "yoyRev": 52.7, "yoyProfit": 54.9 }
+      ],
+      "reports": [
+        { "date": "2025-02-26", "type": "annual", "title": "FY2025 全年业绩" },
+        { "date": "2024-02-21", "type": "annual", "title": "FY2024 全年业绩" }
+      ],
+      "segments": [
+        { "name": "Data Center", "y1": 475, "y2": 1152, "unit": "亿美元", "y1Label": "FY2024", "y2Label": "FY2025", "note": "AI GPU 主力" },
+        { "name": "Gaming", "y1": 104, "y2": 114, "unit": "亿美元" },
+        { "name": "Professional Visualization", "y1": 16, "y2": 19, "unit": "亿美元" },
+        { "name": "Automotive", "y1": 4, "y2": 5, "unit": "亿美元" }
+      ],
+      "rd": {
+        "official": true,
+        "years": [
+          { "year": "FY2025", "total": 129, "pct": 9.9, "breakdown": [
+            { "name": "GPU 架构/芯片", "amount": 71, "est": true },
+            { "name": "CUDA/软件栈", "amount": 39, "est": true },
+            { "name": "网络/系统", "amount": 19, "est": true }
+          ]}
+        ],
+        "note": "FY2025 研发 $12.9B 来自 10-K。"
+      },
+      "dimensions": [
+        { "name": "盈利能力", "score": 98, "detail": "毛利率 75%，净利率 56%" },
+        { "name": "成长动能", "score": 95, "detail": "FY2025 营收 +114%" },
+        { "name": "现金流", "score": 92, "detail": "FCF 充沛" },
+        { "name": "研发投入", "score": 90, "detail": "CUDA 生态护城河" },
+        { "name": "竞争壁垒", "score": 95, "detail": "AI 算力垄断地位" },
+        { "name": "估值合理性", "score": 55, "detail": "高 PE 反映高增长预期" }
+      ],
+      "qualitative": {
+        "peLowReason": "Nvidia PE 偏高非偏低；市场定价 AI 龙头溢价。",
+        "techVsMfg": "Fabless 芯片+软件平台，纯科技公司。",
+        "userCorrection": "不仅是游戏显卡公司，已是 AI 基础设施核心。"
+      },
+      "agents": [
+        { "role": "成长投资者", "score": 92, "view": "AI Capex 周期受益者" },
+        { "role": "半导体分析师", "score": 96, "view": "数据中心 GPU 垄断" },
+        { "role": "空头研究员", "score": 48, "view": "竞争与客户自研" },
+        { "role": "宏观策略师", "score": 85, "view": "AI 主题核心标的" },
+        { "role": "竞品对比分析师", "score": 94, "view": "vs AMD/自研芯片" }
+      ],
+      "conclusion": "Nvidia FY2025 创纪录营收 1305 亿美元，数据中心业务驱动；需关注 Blackwell 供给、竞争格局与客户集中度。",
+      "sources": [
+        { "title": "Nvidia FY2025 10-K", "url": "https://investor.nvidia.com" }
+      ]
+    },
+    {
+      "id": "amd",
+      "name": "AMD",
+      "nameEn": "Advanced Micro Devices",
+      "ticker": "AMD",
+      "exchange": "纳斯达克",
+      "listed": true,
+      "color": "#ed1c24",
+      "currency": "USD",
+      "currencySymbol": "$",
+      "unit": "亿美元",
+      "fiscalYearEnd": "12-31",
+      "tagline": "CPU · GPU · 数据中心 · AI 加速器",
+      "ceo": "Lisa Su",
+      "ipoDate": "1979（现代重组）",
+      "latestReport": "FY2025 全年",
+      "definition": "全球第二大 x86 CPU 供应商与 GPU/AI 加速器挑战者；EPYC 服务器 CPU + Instinct MI 系列对标 Nvidia。",
+      "market": {
+        "price": "$128",
+        "marketCap": "约 2,070 亿美元",
+        "pe": 48,
+        "week52High": "$186",
+        "week52Low": "$76",
+        "source": "NASDAQ / AMD IR"
+      },
+      "annuals": [
+        { "year": "2025", "label": "FY2025", "revenue": 346, "netProfit": 43, "grossMargin": 51.0, "netMargin": 12.5, "rd": 72, "rdPct": 20.8, "yoyRev": 34.3, "yoyProfit": 169.0 },
+        { "year": "2024", "label": "FY2024", "revenue": 258, "netProfit": 16, "rd": 65, "rdPct": 25.2, "yoyRev": 13.7, "yoyProfit": -36.0 },
+        { "year": "2023", "label": "FY2023", "revenue": 227, "netProfit": 25, "rd": 59, "rdPct": 26.0, "yoyRev": 4.3, "yoyProfit": -35.1 },
+        { "year": "2022", "label": "FY2022", "revenue": 236, "netProfit": 13, "rd": 50, "rdPct": 21.2, "yoyRev": 43.6, "yoyProfit": -58.0 },
+        { "year": "2021", "label": "FY2021", "revenue": 164, "netProfit": 32, "rd": 45, "rdPct": 27.4, "yoyRev": 68.3, "yoyProfit": 27.0 }
+      ],
+      "reports": [
+        { "date": "2026-02", "type": "annual", "title": "FY2025 全年业绩" },
+        { "date": "2025-02", "type": "annual", "title": "FY2024 全年业绩" }
+      ],
+      "segments": [
+        { "name": "Data Center", "y1": 126, "y2": 198, "unit": "亿美元", "y1Label": "2024", "y2Label": "2025" },
+        { "name": "Client（PC CPU）", "y1": 71, "y2": 88, "unit": "亿美元" },
+        { "name": "Gaming", "y1": 26, "y2": 26, "unit": "亿美元" },
+        { "name": "Embedded", "y1": 35, "y2": 34, "unit": "亿美元" }
+      ],
+      "rd": {
+        "official": true,
+        "years": [
+          { "year": "2025", "total": 72, "pct": 20.8, "breakdown": [
+            { "name": "CPU (Zen/EPYC)", "amount": 29, "est": true },
+            { "name": "GPU/Instinct AI", "amount": 29, "est": true },
+            { "name": "其他", "amount": 14, "est": true }
+          ]}
+        ],
+        "note": "研发占收比例高，反映追赶 AI 投入。"
+      },
+      "dimensions": [
+        { "name": "盈利能力", "score": 70, "detail": "2025 净利反弹至 43 亿" },
+        { "name": "成长动能", "score": 82, "detail": "数据中心 +57%" },
+        { "name": "现金流", "score": 72, "detail": "Capex 上升" },
+        { "name": "研发投入", "score": 85, "detail": "研发占收 ~21%" },
+        { "name": "竞争壁垒", "score": 75, "detail": "x86 双寡头之一" },
+        { "name": "估值合理性", "score": 60, "detail": "AI 叙事支撑溢价" }
+      ],
+      "qualitative": {
+        "peLowReason": "PE 不低；相对 Nvidia 折价反映 AI GPU 份额落后。",
+        "techVsMfg": "Fabless 半导体设计公司。",
+        "userCorrection": "不仅是 PC CPU 公司，数据中心+AI 已是核心叙事。"
+      },
+      "agents": [
+        { "role": "半导体分析师", "score": 80, "view": "EPYC 份额持续提升" },
+        { "role": "AI 分析师", "score": 75, "view": "MI300 放量，仍落后 Nvidia" },
+        { "role": "空头研究员", "score": 50, "view": "GPU 竞争激烈" },
+        { "role": "竞品对比分析师", "score": 78, "view": "vs Intel/Nvidia" }
+      ],
+      "conclusion": "AMD FY2025 营收 346 亿美元（+34%），数据中心业务驱动反弹；AI GPU 是增长关键，但利润率与份额仍落后于 Nvidia。",
+      "sources": [
+        { "title": "AMD FY2025 业绩", "url": "https://ir.amd.com" }
+      ]
+    },
+    {
+      "id": "luxshare",
+      "name": "立讯精密",
+      "nameEn": "Luxshare Precision",
+      "ticker": "002475.SZ",
+      "exchange": "深交所",
+      "listed": true,
+      "color": "#0066cc",
+      "currency": "CNY",
+      "currencySymbol": "¥",
+      "unit": "亿元",
+      "fiscalYearEnd": "12-31",
+      "tagline": "消费电子精密制造 · Apple 核心供应商",
+      "ceo": "王来春",
+      "ipoDate": "2010-09-15",
+      "latestReport": "2025 年年报（2026-04 披露）",
+      "definition": "全球领先的消费电子精密制造与组装龙头，深度绑定 Apple；向汽车电子与通信拓展。",
+      "market": {
+        "price": "¥46",
+        "marketCap": "约 3,300 亿元",
+        "pe": 20,
+        "week52High": "¥58",
+        "week52Low": "¥28",
+        "source": "深交所 / 立讯精密公告"
+      },
+      "annuals": [
+        { "year": "2025", "label": "FY2025", "revenue": 3323, "netProfit": 166, "grossMargin": 12.1, "netMargin": 5.0, "rd": 96, "rdPct": 2.9, "yoyRev": 23.6, "yoyProfit": 24.2 },
+        { "year": "2024", "label": "FY2024", "revenue": 2688, "netProfit": 134, "grossMargin": 12.4, "netMargin": 5.0, "rd": 86, "rdPct": 3.2, "yoyRev": 15.9, "yoyProfit": 22.0 },
+        { "year": "2023", "label": "FY2023", "revenue": 2319, "netProfit": 110, "rd": 82, "rdPct": 3.5, "yoyRev": 8.3, "yoyProfit": 19.5 },
+        { "year": "2022", "label": "FY2022", "revenue": 2140, "netProfit": 92, "rd": 72, "rdPct": 3.4, "yoyRev": 39.0, "yoyProfit": 56.2 },
+        { "year": "2021", "label": "FY2021", "revenue": 1539, "netProfit": 71, "rd": 52, "rdPct": 3.4, "yoyRev": 47.1, "yoyProfit": 1.4 }
+      ],
+      "reports": [
+        { "date": "2026-04-25", "type": "annual", "title": "2025 年年度报告" },
+        { "date": "2025-04-25", "type": "annual", "title": "2024 年年度报告" }
+      ],
+      "segments": [
+        { "name": "消费电子", "y1": 2355, "y2": 2912, "unit": "亿元", "y1Label": "2024", "y2Label": "2025", "note": "含 Apple 组装与零部件" },
+        { "name": "汽车电子", "y1": 180, "y2": 245, "unit": "亿元" },
+        { "name": "通信设备", "y1": 98, "y2": 112, "unit": "亿元" }
+      ],
+      "rd": {
+        "official": true,
+        "years": [
+          { "year": "2025", "total": 96, "pct": 2.9, "breakdown": [
+            { "name": "材料/工艺/制程", "amount": 29, "est": false, "note": "公司披露约 30% 投向前沿" },
+            { "name": "消费电子组装", "amount": 38, "est": true },
+            { "name": "汽车电子", "amount": 19, "est": true },
+            { "name": "通信", "amount": 10, "est": true }
+          ]},
+          { "year": "2024", "total": 86, "pct": 3.2, "breakdown": [
+            { "name": "材料/工艺", "amount": 26, "est": true },
+            { "name": "消费电子", "amount": 34, "est": true },
+            { "name": "汽车电子", "amount": 17, "est": true },
+            { "name": "通信", "amount": 9, "est": true }
+          ]}
+        ],
+        "note": "2024 年报研发费用 85.56 亿；分板块部分为估算。"
+      },
+      "dimensions": [
+        { "name": "盈利能力", "score": 68, "detail": "净利率约 5%，制造属性" },
+        { "name": "成长动能", "score": 80, "detail": "2025 营收 +24%" },
+        { "name": "现金流", "score": 65, "detail": "资本开支与应收较高" },
+        { "name": "研发投入", "score": 62, "detail": "研发占收 ~3%，偏制造" },
+        { "name": "竞争壁垒", "score": 78, "detail": "Apple 供应链深度绑定" },
+        { "name": "估值合理性", "score": 70, "detail": "PE ~20×" }
+      ],
+      "qualitative": {
+        "peLowReason": "制造业估值框架，客户集中（Apple）带来折价与波动。",
+        "techVsMfg": "精密制造为主，研发投向工艺与材料，非典型软件科技公司。",
+        "userCorrection": "「立讯」是制造龙头而非平台科技公司；成长来自份额提升与新业务。"
+      },
+      "agents": [
+        { "role": "制造业分析师", "score": 82, "view": "精密制造龙头" },
+        { "role": "Apple 供应链分析师", "score": 85, "view": "核心供应商地位" },
+        { "role": "空头研究员", "score": 45, "view": "客户集中度极高" },
+        { "role": "汽车分析师", "score": 72, "view": "汽车电子第二曲线" },
+        { "role": "竞品对比分析师", "score": 76, "view": "vs 歌尔/蓝思" }
+      ],
+      "conclusion": "立讯精密 2025 营收突破 3323 亿、净利 166 亿，Apple 供应链核心地位巩固；需关注客户集中度与毛利率压力。",
+      "sources": [
+        { "title": "立讯精密 2025 年报", "url": "http://www.cninfo.com.cn" },
+        { "title": "立讯精密 2024 年报", "url": "http://www.cninfo.com.cn" }
+      ],
+      "aliasNote": "用户口述「立兴金米」→ 立讯精密（002475.SZ）"
     }
   ]
 }

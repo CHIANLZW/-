@@ -1,85 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="卿晓萌 — 上市公司研究 · 二级市场股价 · 发展方向 · 走势预测">
-  <title>公司研究 · 卿晓萌</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>公司财务分析 · 卿晓萌</title>
+  <script src="js/base.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="page-guandian">
+<body>
+<div class="container">
+  <div class="portal-hero">
+    <h1>📊 公司财务分析</h1>
+    <p>点击公司卡片直接进入完整 8 章分析报告 · 勾选多家后可生成横向对比</p>
+  </div>
 
-  <header class="site-header" id="top">
-    <div class="site-header__brand">卿晓萌 <span>公司研究</span></div>
-    <button class="site-header__toggle" type="button" aria-label="打开导航" aria-expanded="false">☰</button>
-    <nav class="site-header__nav" aria-label="章节导航">
-      <a href="#overview">研究说明</a>
-      <a href="#watchlist">关注公司</a>
-      <a href="#research">深度研究</a>
-      <a href="#predictions">股价预测</a>
-      <a href="#log">更新记录</a>
-    </nav>
-  </header>
+  <div class="select-all">
+    <button class="btn btn-secondary" id="selectAll">全选对比</button>
+    <button class="btn btn-secondary" id="clearAll">清除勾选</button>
+    <span class="hint" style="margin-left:12px" id="selCount">已选 0 家（用于对比）</span>
+  </div>
 
-  <main class="finance">
+  <div class="company-grid" id="companyGrid">
+    <p class="hint" style="grid-column:1/-1;text-align:center;padding:24px">正在加载公司列表…</p>
+  </div>
 
-    <header class="finance-header" id="overview">
-      <p class="finance-header__label">二级站点 · 个人观点看法</p>
-      <h1 class="finance-header__title">上市公司研究</h1>
-      <p class="finance-header__desc" data-intro>加载中…</p>
-      <p class="finance-header__meta" data-updated></p>
-    </header>
+  <div class="action-bar">
+    <button class="btn btn-primary" id="openCompare" disabled>多公司对比表（需勾选 2 家及以上）</button>
+  </div>
 
-    <section class="finance-section" id="watchlist">
-      <h2 class="finance-section__title">关注公司一览</h2>
-      <p class="finance-section__lead">二级市场行情快照：现价、涨跌幅与 52 周区间。</p>
-      <div class="finance-section__body" data-watchlist>
-        <p class="hub__loading">正在加载关注列表…</p>
-      </div>
-    </section>
+  <div class="section" style="margin-top:24px">
+    <h2 style="border:none;padding:0;margin-bottom:10px;font-size:15px">📋 涵盖 8 家公司</h2>
+    <p class="hint">小米集团 · 阿里巴巴 · 腾讯控股 · 蚂蚁集团 · Apple · Nvidia · AMD · 立讯精密 — 各公司财年截止日不同，报告中均单独标注。</p>
+  </div>
 
-    <section class="finance-section" id="research">
-      <h2 class="finance-section__title">公司深度研究</h2>
-      <p class="finance-section__lead">每家公司的关注逻辑、战略发展方向、股价判断与主要风险。</p>
-      <div class="finance-section__body finance-section__body--stack" data-research>
-        <p class="hub__loading">正在加载研究笔记…</p>
-      </div>
-    </section>
-
-    <section class="finance-section" id="predictions">
-      <h2 class="finance-section__title">股价与方向预测</h2>
-      <p class="finance-section__lead">汇总各公司的阶段性观点、目标价位与时间窗口，便于横向对比。</p>
-      <div class="finance-section__body" data-predictions>
-        <p class="hub__loading">正在加载预测表…</p>
-      </div>
-    </section>
-
-    <section class="finance-section" id="log">
-      <h2 class="finance-section__title">研究更新记录</h2>
-      <div class="finance-section__body">
-        <article class="note-card">
-          <span class="note-card__date">2026-06</span>
-          <span class="note-card__title">板块定位调整</span>
-          <p class="note-card__body">个人观点板块聚焦感兴趣公司的二级市场研究：跟踪股价、研判发展方向、记录预测并在后续复盘。</p>
-          <div class="note-card__tags">
-            <span class="finance-tag">股价跟踪</span>
-            <span class="finance-tag">发展方向</span>
-            <span class="finance-tag">走势预测</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2026 卿晓萌 · 公司研究 · 仅代表个人，不构成投资建议</p>
-  </footer>
-
-  <script src="../_lib/oneway.js"></script>
-  <script src="js/app.js"></script>
+  <p class="disclaimer">数据来源：各公司 IR / 港交所 / SEC / 巨潮资讯 · 仅供研究参考，不构成投资建议 · 报告日期 2026-06-22</p>
+</div>
+<script src="../_lib/oneway.js"></script>
+<script src="js/portal.js"></script>
 </body>
 </html>
