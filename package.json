@@ -4,7 +4,8 @@
   "description": "inchian.top 静态站点 — 本地预览",
   "scripts": {
     "start": "serve -l 8080",
-    "dev": "serve -l 8080"
+    "dev": "serve -l 8080",
+    "bundle": "node guandian/scripts/build-data-bundle.mjs"
   },
   "devDependencies": {
     "serve": "^14.2.4"

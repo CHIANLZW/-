@@ -91,15 +91,27 @@
     return 'stance-neutral';
   }
 
+  function listingMarket(c) {
+    if (c.listingMarket) return c.listingMarket;
+    const ex = c.exchange || '';
+    const tk = c.ticker || '';
+    if (ex.includes('深交所') || ex.includes('上交所') || /\.(SZ|SH)\b/i.test(tk)) return 'CN';
+    if (c.currency === 'USD' || ex.includes('纳斯达克') || ex.includes('纽交所')) return 'US';
+    if (ex.includes('港交所') || /\.HK\b/i.test(tk)) return 'HK';
+    return c.currency === 'USD' ? 'US' : 'CN';
+  }
+
   function pricePrefix(c) {
-    if (c.currency === 'USD') return '$';
-    if (c.ticker?.includes('.HK')) return 'HK$';
+    const lm = listingMarket(c);
+    if (lm === 'US') return '$';
+    if (lm === 'HK') return 'HK$';
     return '¥';
   }
 
   function capUnit(c) {
-    if (c.currency === 'USD') return '亿美元';
-    if (c.ticker?.includes('.HK')) return '亿港元';
+    const lm = listingMarket(c);
+    if (lm === 'US') return '亿美元';
+    if (lm === 'HK') return '亿港元';
     return '亿元';
   }
 
@@ -142,16 +154,36 @@
     return '<div class="read-progress" aria-hidden="true"><div class="read-progress__bar"></div></div>';
   }
 
+  function renderRiskBanner() {
+    return `<div class="risk-banner" role="note" aria-label="风险提示">
+      <strong>风险提示</strong>
+      <p>本报告为基于公开财报的研究情景推演，<strong>不构成投资建议</strong>。股价与市值预测存在重大不确定性；数据存在披露滞后；汇率变动可能影响跨市场对比。请结合最新公告与专业顾问意见独立决策。</p>
+    </div>`;
+  }
+
   function renderReportMeta(c, meta) {
+    const lm = listingMarket(c);
+    const fxNote =
+      lm === 'US'
+        ? '交易货币：美元'
+        : lm === 'HK'
+          ? '交易货币：港元 · 财报口径：人民币'
+          : '交易货币：人民币';
+    const updated = meta.reportDate || '2026-06-23';
     return `<div class="report-meta">
-      <span>数据截至 ${meta.reportDate || '2026-06-23'}</span>
+      <span>数据截至 ${updated}</span>
+      <span>·</span>
+      <span>最新财报 ${c.latestReport || '—'}</span>
       <span>·</span>
       <span>${c.exchange || ''}</span>
       <span>·</span>
       <span>财年 ${c.fiscalYearEnd || '—'}</span>
       <span>·</span>
+      <span>${fxNote}</span>
+      <span>·</span>
       <span class="report-meta__tag">分析师研究版 v4</span>
-    </div>`;
+    </div>
+    <p class="report-meta__sub">各公司财报时间窗口不同（季报/年报/FY 截止日各异），跨公司对比时请以上市公司 IR 披露为准；分部对标营收以原币或换算美元标注来源。</p>`;
   }
 
   async function loadData(id) {
@@ -161,6 +193,9 @@
       const company = (companies.companies || []).find((c) => c.id === id);
       if (!company) throw new Error('company not found');
       return { meta: companies.meta || {}, company, ...ext };
+    }
+    if (location.protocol === 'file:') {
+      throw new Error('file-protocol');
     }
     const compRes = await fetch('data/companies.json');
     if (!compRes.ok) throw new Error('companies.json');
@@ -337,8 +372,9 @@
   }
 
   function renderChiefBar(c, syn, sp, fc) {
-    const spBase = sp?.scenarios?.base;
-    const fcBase = fc?.scenarios?.base || (fc?.baseline ? { endValue: fc.baseline.value, changePct: '—' } : null);
+    const capBaseline = fc?.baseline?.value;
+    const consensusPrice = sp?.scenarios?.consensus;
+    const consensusCap = fc?.scenarios?.consensus;
     const horizon = sp?.horizonEnd || '2028-06';
     return `
       <section class="chief-bar" id="top">
@@ -347,15 +383,16 @@
             <span class="tag">${c.ticker}</span>
             <h1>${c.name}</h1>
             <p class="chief-bar__sub">${c.tagline || ''}</p>
-            <p class="chief-bar__stance ${stanceClass(syn.stance)}">${syn.stance} · ${syn.confidence || '中'}置信</p>
+            <p class="chief-bar__stance ${stanceClass(syn.stance)}">${syn.stance} · ${syn.confidence || '中'}置信 · 首席 ${syn.finalScore}/100</p>
           </div>
           ${scoreRing(syn.finalScore, c.color)}
         </div>
         <div class="chief-kpi">
           <div class="chief-kpi__item"><span>现价</span><strong>${c.market?.price || '—'}</strong></div>
-          <div class="chief-kpi__item"><span>市值</span><strong>${c.market?.marketCap || '—'}</strong></div>
-          ${spBase ? `<div class="chief-kpi__item"><span>基准股价(${horizon.slice(5)})</span><strong class="up">${fmtPrice(c, spBase.endPrice)}</strong></div>` : ''}
-          ${fcBase ? `<div class="chief-kpi__item"><span>基准市值</span><strong class="up">${fmt(fcBase.endValue)}${capUnit(c)}</strong></div>` : ''}
+          <div class="chief-kpi__item"><span>披露市值</span><strong>${c.market?.marketCap || c.market?.marketCapUsd || '—'}</strong></div>
+          ${capBaseline ? `<div class="chief-kpi__item"><span>测算市值(2026-06)</span><strong>${fmt(capBaseline)}${capUnit(c)}</strong></div>` : ''}
+          ${consensusPrice ? `<div class="chief-kpi__item"><span>博弈综合股价(${horizon.slice(5)})</span><strong class="up">${fmtPrice(c, consensusPrice.endPrice)}</strong></div>` : ''}
+          ${consensusCap ? `<div class="chief-kpi__item"><span>博弈综合市值(${horizon.slice(5)})</span><strong class="up">${fmt(consensusCap.endValue)}${capUnit(c)}</strong></div>` : ''}
         </div>
         <p class="chief-bar__verdict">${syn.verdict || c.conclusion || ''}</p>
       </section>`;
@@ -410,10 +447,29 @@
     return `
       <section class="section section--compact" id="s-seg">
         ${secTitle('04', '业务板块深度对标', '<span class="badge b-q">分析师视角</span>')}
-        <p class="hint">鼠标悬停对标行显示细节；各板块营收/研发为最新公开财年口径。</p>
+        <p class="hint">鼠标悬停对标行显示细节；各板块营收为最新公开财年。跨币种对标已标注来源；美元可比数据汇率基准见各公司 IR/SEC 披露日。</p>
         <div id="peerTip" class="peer-tip" hidden>悬停表格行查看详情</div>
         ${cards}
       </section>`;
+  }
+
+  function renderForecastAssumptions(sp, fc) {
+    const assumptions = sp?.assumptions || fc?.assumptions;
+    if (!assumptions) return '';
+    const blocks = ['bull', 'base', 'bear', 'consensus']
+      .filter((k) => assumptions[k])
+      .map(
+        (k) => `<details class="assume-block">
+          <summary>${assumptions[k].label || k} · 核心假设</summary>
+          <ul>${(assumptions[k].assumptions || []).map((a) => `<li>${a}</li>`).join('')}</ul>
+        </details>`
+      )
+      .join('');
+    return `<details class="fold fold--assume" open>
+      <summary>情景假设与「博弈综合」计算方法</summary>
+      <p class="hint">${sp?.horizonLabel || '预测周期 2026-06 → 2028-06'} · 股本不变假设</p>
+      ${blocks}
+    </details>`;
   }
 
   function renderForecast(fc, sp, c) {
@@ -440,6 +496,7 @@
         ${secTitle('05', '股价与市值预测', '<span class="badge b-interim">2026-06 → 2028-06</span>')}
         ${calNote ? `<p class="hint">${calNote}</p>` : '<p class="hint">基准价约 2026-06 行情；情景折线为研究推演。</p>'}
         <div class="scenario-grid">${cards}</div>
+        ${renderForecastAssumptions(sp, fc)}
         <div id="klineMount" class="kline-mount"></div>
         <div class="chart-tabs">
           <button type="button" class="chart-tab active" data-chart="price">股价情景折线</button>
@@ -485,10 +542,19 @@
       <section class="section section--compact" id="s-agents">
         ${secTitle('06', `${agentCount} 席分析师架构博弈`, '<span class="badge b-annual">默认折叠</span>')}
         <p class="hint">${fw.methodology}</p>
+        ${fw.scoringRubric ? `<details class="fold"><summary>评分标准说明（0–100）</summary>
+          <div class="method-box">
+            <p><strong>分档：</strong>${fw.scoringRubric.scale}</p>
+            <p><strong>维度：</strong>${(fw.scoringRubric.dimensions || []).join(' · ')}</p>
+            <p><strong>权重：</strong>${fw.scoringRubric.weighting || '—'}</p>
+            <p class="muted">${fw.scoringRubric.comparability || ''}</p>
+          </div>
+        </details>` : ''}
         <details class="fold fold--chief" open>
           <summary>首席综合研判 · ${syn.stance} · ${syn.finalScore}/100</summary>
           <div class="chief-detail">
             <p>${syn.summary}</p>
+            ${syn.consensusFormula ? `<p class="hint hint--method"><strong>博弈综合公式：</strong>${syn.consensusFormula}</p>` : ''}
             <p class="seg-verdict"><strong>分部结论：</strong>${syn.segmentVerdict || ''}</p>
             <div class="grid3">
               <div class="block block--bull"><div class="t">乐观</div><p>${syn.bullCase}</p></div>
@@ -710,10 +776,16 @@
       data = await loadData(companyId);
     } catch (e) {
       console.error(e);
+      const msg =
+        e.message === 'file-protocol'
+          ? '本地文件模式无法加载报告数据。请运行 <code>npm start</code> 后访问 <code>http://localhost:8080/guandian/</code>，或使用 <a href="https://chianlzw.github.io/-/guandian/report.html?id=' +
+            encodeURIComponent(companyId) +
+            '">在线版</a>。'
+          : '报告加载失败（' + companyId + '）';
       app.innerHTML =
-        '<div class="section"><p class="hint" style="color:var(--neg)">报告加载失败（' +
-        companyId +
-        '）</p><p class="hint"><a href="index.html">返回公司列表</a></p></div>';
+        '<div class="section"><p class="hint" style="color:var(--neg)">' +
+        msg +
+        '</p><p class="hint"><a href="index.html">返回公司列表</a></p></div>';
       return;
     }
 
@@ -734,6 +806,7 @@
 
     app.innerHTML =
       renderProgressBar() +
+      renderRiskBanner() +
       renderReportMeta(c, meta) +
       renderChiefBar(c, syn, sp, fc) +
       renderToc() +
@@ -747,17 +820,28 @@
 
     const disclaimer = document.getElementById('disclaimer');
     if (disclaimer) {
-      disclaimer.textContent = `数据来源：公司 IR / 交易所公开披露 · 情景推演不构成投资建议 · ${meta.reportDate || '2026-06-23'}`;
+      disclaimer.innerHTML =
+        `<div class="risk-banner risk-banner--foot" role="note">
+          <strong>风险提示</strong>
+          <p>数据来源：公司 IR / 交易所公开披露 · 情景推演不构成投资建议 · 预测存在重大不确定性 · 最后更新 ${meta.reportDate || '2026-06-23'}</p>
+          <p class="muted">更新机制：季报披露后 7 日内刷新财报字段；重大事件（并购/指引调整）即时修订；预测情景每半年复核（下次计划 2026-12）。</p>
+        </div>`;
     }
 
     bindPeerTips();
     bindAppendixDrill();
-    if (window.KlineChart) {
-      const mount = document.getElementById('klineMount');
-      if (mount) KlineChart.mount(mount, { daily: KlineChart.generateDailyOHLC(price0, 380, 0.032) });
+    try {
+      if (window.KlineChart) {
+        const mount = document.getElementById('klineMount');
+        if (mount) KlineChart.mount(mount, { daily: KlineChart.generateDailyOHLC(price0, 380, 0.032) });
+      }
+      if (typeof Chart !== 'undefined') {
+        if (fc && sp) initForecastCharts(fc, sp, c);
+        initAppendixCharts(c);
+      }
+    } catch (chartErr) {
+      console.warn('图表初始化跳过', chartErr);
     }
-    if (fc && sp) initForecastCharts(fc, sp, c);
-    initAppendixCharts(c);
     if (window.GuandianReportUI) GuandianReportUI.init();
   }
 

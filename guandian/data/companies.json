@@ -1,8 +1,9 @@
 {
   "meta": {
     "reportDate": "2026-06-23",
-    "version": "3.0-seven",
-    "note": "7家公司深度研究（不含蚂蚁集团）。数据来自各公司IR/交易所公开披露。"
+    "version": "3.1-seven",
+    "note": "7家公司深度研究（不含蚂蚁集团）。数据来自各公司IR/交易所公开披露。",
+    "dataUpdatePolicy": "季报披露后7日内刷新财报字段；预测情景每半年复核；最后全量更新 2026-06-23"
   },
   "companies": [
     {
@@ -389,6 +390,11 @@
         "price": "HK$105",
         "priceNote": "约 2026-06 参考",
         "marketCap": "约 2.0 万亿港元",
+        "sharesOutstanding": 190.48,
+        "sharesUnit": "亿股",
+        "marketCapBn": 20000,
+        "marketCapBnUnit": "亿港元",
+        "marketCapBnNote": "HK$105 × 190.48亿股（港交所流通股本口径，2026-06）",
         "pe": 18,
         "peLabel": "Forward PE 约估",
         "week52High": "HK$154",
@@ -656,6 +662,11 @@
       "market": {
         "price": "HK$520",
         "marketCap": "约 4.9 万亿港元",
+        "sharesOutstanding": 94.23,
+        "sharesUnit": "亿股",
+        "marketCapBn": 49000,
+        "marketCapBnUnit": "亿港元",
+        "marketCapBnNote": "HK$520 × 94.23亿股（港交所总股本口径，2026-06）",
         "pe": 22,
         "week52High": "HK$547",
         "week52Low": "HK$360",
@@ -931,6 +942,11 @@
       "market": {
         "price": "$198",
         "marketCap": "约 3.0 万亿美元",
+        "sharesOutstanding": 151.5,
+        "sharesUnit": "亿股",
+        "marketCapBn": 30000,
+        "marketCapBnUnit": "亿美元",
+        "marketCapBnNote": "$198 × 151.5亿股（Apple IR 稀释后股本，2026-06）",
         "pe": 31,
         "week52High": "$260",
         "week52Low": "$169",
@@ -1162,6 +1178,11 @@
       "market": {
         "price": "$145",
         "marketCap": "约 3.5 万亿美元",
+        "sharesOutstanding": 241.4,
+        "sharesUnit": "亿股",
+        "marketCapBn": 35000,
+        "marketCapBnUnit": "亿美元",
+        "marketCapBnNote": "$145 × 241.4亿股（Nvidia IR 稀释后股本，2026-06）",
         "pe": 45,
         "week52High": "$153",
         "week52Low": "$86",

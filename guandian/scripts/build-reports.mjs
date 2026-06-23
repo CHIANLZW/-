@@ -17,21 +17,145 @@ function charCount(obj) {
   return JSON.stringify(obj).replace(/[{}"\[\],:]/g, '').length;
 }
 
-function parsePriceHK(s) {
+function parsePrice(s, c) {
   if (!s) return null;
   const m = String(s).match(/[\d.]+/);
   return m ? parseFloat(m[0]) : null;
 }
 
-function parseCapBn(s) {
-  if (!s) return 6300;
-  const m = String(s).replace(/,/g, '').match(/([\d.]+)\s*亿/);
-  return m ? parseFloat(m[1]) : null;
+/** 上市地：港股 / 美股 / A股 — 决定股价与市值展示货币 */
+function listingMarket(c) {
+  if (c.listingMarket) return c.listingMarket;
+  const ex = c.exchange || '';
+  const tk = c.ticker || '';
+  if (ex.includes('深交所') || ex.includes('上交所') || /\.(SZ|SH)\b/i.test(tk)) return 'CN';
+  if (c.currency === 'USD' || ex.includes('纳斯达克') || ex.includes('纽交所')) return 'US';
+  if (ex.includes('港交所') || /\.HK\b/i.test(tk) || /^\d{4,5}\.HK/.test(tk)) return 'HK';
+  return c.currency === 'USD' ? 'US' : 'CN';
 }
 
-function forecastFromBase(price, capBn, currency = 'HKD', calibration = {}) {
+function capUnitLabel(c) {
+  const lm = listingMarket(c);
+  if (lm === 'US') return '亿美元';
+  if (lm === 'HK') return '亿港元';
+  return '亿元';
+}
+
+function priceUnitLabel(c) {
+  const lm = listingMarket(c);
+  if (lm === 'US') return '美元';
+  if (lm === 'HK') return '港元';
+  return '人民币';
+}
+
+/** 解析市值为「亿」单位数值（与 capUnitLabel 一致）；优先使用 marketCapBn 硬编码 */
+function parseMarketCapBn(c) {
+  const m = c.market || {};
+  if (m.marketCapBn != null && !Number.isNaN(Number(m.marketCapBn))) {
+    return Number(m.marketCapBn);
+  }
+  const raw = m.marketCap || m.marketCapUsd || '';
+  if (!raw) return null;
+  const s = String(raw).replace(/,/g, '').replace(/约/g, '').trim();
+  const lm = listingMarket(c);
+
+  let tm = s.match(/([\d.]+)\s*万亿美元/);
+  if (tm) return parseFloat(tm[1]) * 10000;
+
+  tm = s.match(/([\d.]+)\s*万亿港元/);
+  if (tm) return parseFloat(tm[1]) * 10000;
+
+  tm = s.match(/([\d.]+)\s*万亿/);
+  if (tm) return parseFloat(tm[1]) * 10000;
+
+  let m2 = s.match(/([\d.]+)\s*亿美元/);
+  if (m2) return parseFloat(m2[1]);
+
+  m2 = s.match(/([\d.]+)\s*亿港元/);
+  if (m2) return parseFloat(m2[1]);
+
+  m2 = s.match(/([\d.]+)\s*亿元人民币/);
+  if (m2) return parseFloat(m2[1]);
+
+  m2 = s.match(/([\d.]+)\s*亿元/);
+  if (m2) return parseFloat(m2[1]);
+
+  m2 = s.match(/([\d.]+)\s*亿/);
+  if (m2) {
+    const v = parseFloat(m2[1]);
+    if (lm === 'US' && s.includes('美元')) return v;
+    if (lm === 'HK' && (s.includes('港') || s.includes('HK'))) return v;
+    return v;
+  }
+  return null;
+}
+
+function buildScenarioAssumptions(c, price, capBn) {
+  const a0 = c.annuals?.[0];
+  const revYoy = a0?.yoyRev;
+  const revHint = revYoy != null ? `最近财年营收同比 ${revYoy >= 0 ? '+' : ''}${revYoy}%` : '最近财年营收增速见披露';
+  const pe = c.market?.pe != null ? `${c.market.pe}×` : '—';
+  const unit = capUnitLabel(c);
+  const pUnit = priceUnitLabel(c);
+  const capStr = capBn != null ? `${capBn.toLocaleString('zh-CN')}${unit}` : '—';
+  const common = [
+    `基准起点：2026-06 股价 ${price}${pUnit === '美元' ? '$' : pUnit === '港元' ? 'HK$' : '¥'}，测算市值 ${capStr}（股本不变假设）`,
+    `预测终点：2028-06（24 个月线性插值，非日内 K 线）`,
+    `估值参考：当前 ${c.market?.peLabel || 'PE'} 约 ${pe}`
+  ];
+  return {
+    bull: {
+      label: '乐观',
+      assumptions: [
+        ...common,
+        `营收假设：${revHint}；乐观情景再上浮 3–5pct`,
+        `利润率：毛利率改善或费用率杠杆，经营杠杆释放`,
+        `估值倍数：Forward PE 较现水平扩张约 15–25%`,
+        `催化：新产品/AI 货币化、份额提升、政策利好`,
+        `股价变动：基准 × 1.35（+35%）`
+      ]
+    },
+    base: {
+      label: '基准',
+      assumptions: [
+        ...common,
+        `营收假设：延续 ${revHint} 趋势，无重大并购`,
+        `利润率：与近四季报均值大致持平`,
+        `估值倍数：PE 维持现水平附近`,
+        `风险：行业竞争与宏观按基线消化`,
+        `股价变动：基准 × 1.15（+15%）`
+      ]
+    },
+    bear: {
+      label: '悲观',
+      assumptions: [
+        ...common,
+        `营收假设：增速低于基线 5–10pct 或价格战`,
+        `利润率：毛利率压缩、研发/资本开支侵蚀利润`,
+        `估值倍数：PE 收缩 10–20%`,
+        `风险：监管、竞争加剧、需求走弱`,
+        `股价变动：基准 × 0.88（-12%）`
+      ]
+    },
+    consensus: {
+      label: '博弈综合',
+      assumptions: [
+        ...common,
+        `计算方法：十席分析师 0–100 评分算术平均 → 首席综合分；映射至「综合」轨道`,
+        `综合轨道终点：基准 × 1.12（+12%），介于悲观与基准之间，反映多空折中`,
+        `与「基准」区别：基准为基本面延续；综合纳入博弈分歧后的折中价`,
+        `市值联动：市值终点 = 测算市值(2026-06) × 同比例倍数`,
+        `局限：未对单席目标价做加权平均，详见 §06 方法论`
+      ]
+    }
+  };
+}
+
+function forecastFromBase(price, capBn, c, calibration = {}) {
   const p0 = price || 25;
   const q1Weak = calibration.q1RevYoy != null && calibration.q1RevYoy < 0;
+  const lm = listingMarket(c);
+  const currency = lm === 'US' ? 'USD' : lm === 'HK' ? 'HKD' : 'CNY';
   const scenarios = {
     bull: { mult: q1Weak ? 1.52 : 1.35, label: '乐观' },
     base: { mult: q1Weak ? 1.2 : 1.15, label: '基准' },
@@ -47,11 +171,15 @@ function forecastFromBase(price, capBn, currency = 'HKD', calibration = {}) {
     }));
   }
   return {
-    unit: currency === 'USD' ? '美元' : '港元',
+    unit: priceUnitLabel(c),
+    currency,
+    capUnit: capUnitLabel(c),
     baseline: { month: '2026-06', price: p0 },
     horizonEnd: '2028-06',
+    horizonLabel: '2026年6月 → 2028年6月（24个月）',
     asOf: '2026-06-23',
     calibrationNote: calibration.note || '基准价取自约 2026-06 行情；情景 2026-06→2028-06 线性插值。',
+    assumptions: buildScenarioAssumptions(c, p0, capBn),
     scenarios: Object.fromEntries(
       Object.entries(scenarios).map(([k, v]) => [
         k,
@@ -283,7 +411,15 @@ function buildAgentFramework(c) {
   return {
     title: '十席分析师架构博弈',
     subtitle: '基于公开财报的多视角质询—收敛（研究推演）',
-    methodology: '各席引用财报与行业公开数据，禁止捏造未披露数字。',
+    methodology:
+      '各席引用财报与行业公开数据，禁止捏造未披露数字。三轮结构：R1 事实陈述 → R2 交叉质询 → R3 情景定价。' +
+      '「博弈综合」= 十席评分算术平均得首席分，再映射至股价/市值「综合」轨道（2026-06 基准 × 1.12 至 2028-06），与「基准」轨道（×1.15）区分。',
+    scoringRubric: {
+      scale: '0–100 分：≥75 强烈看多；60–74 谨慎偏多；45–59 中性；30–44 谨慎偏空；<30 强烈看空',
+      dimensions: ['财报质量与现金流', '行业竞争地位', '估值性价比', '催化与风险权衡'],
+      weighting: '标准版十席等权（各 10%）；首席综合分 = 十席 score 算术平均',
+      comparability: '同类型分析师（如科技成长席）跨公司分数可比；不同席别评分维度侧重不同，不宜直接横比'
+    },
     rounds: [
       { id: 1, name: 'R1 事实陈述', desc: '仅引用披露数据' },
       { id: 2, name: 'R2 交叉质询', desc: '多空辩论' },
@@ -292,7 +428,9 @@ function buildAgentFramework(c) {
     agents,
     synthesis: {
       role: '首席综合研判席',
-      method: '加权评分 + 分歧保留',
+      method: '十席评分算术平均 + 分歧保留；综合市值/股价取「综合」情景轨道',
+      consensusFormula:
+        'finalScore = round(Σ 十席score / 10)；综合股价(2028-06) = 基准价(2026-06) × 1.12；综合市值 = 测算市值(2026-06) × 1.12',
       finalScore: avg,
       stance: avg >= 70 ? '谨慎偏多' : avg >= 55 ? '中性' : '谨慎偏空',
       confidence: '中等',
@@ -411,10 +549,8 @@ function buildNarrative(c) {
       `若与官方 IR 数据冲突，以公司法定披露为准。`
   );
 
-  const price =
-    parsePriceHK(m.price) ||
-    (c.currency === 'USD' ? parseFloat(String(m.price).replace(/[^0-9.]/g, '')) : null);
-  const capBn = parseCapBn(m.marketCap) || parseCapBn(m.marketCapUsd);
+  const price = parsePrice(m.price, c);
+  const capBn = parseMarketCapBn(c);
   paras.push(...buildExtendedSections(c, price, capBn));
 
   return paras;
@@ -550,13 +686,11 @@ function buildOptimizationPlan(c, price, capBn) {
 fs.mkdirSync(reportsDir, { recursive: true });
 
 for (const c of d.companies) {
-  const price =
-    parsePriceHK(c.market?.price) ||
-    (c.currency === 'USD' ? parseFloat(String(c.market?.price).replace(/[^0-9.]/g, '')) : null);
-  const capBn = parseCapBn(c.market?.marketCap) || parseCapBn(c.market?.marketCapUsd);
-  const cur = c.ticker?.includes('.HK') ? 'HKD' : c.currency === 'USD' ? 'USD' : 'CNY';
+  const price = parsePrice(c.market?.price, c);
+  const capBn = parseMarketCapBn(c);
+  if (!capBn) console.warn(c.id, ': market cap parse failed');
 
-  const fcast = forecastFromBase(price, capBn, cur, {
+  const fcast = forecastFromBase(price, capBn, c, {
     q1RevYoy: c.quarterly?.yoyRev,
     note:
       c.quarterly?.yoyRev != null && c.quarterly.yoyRev < 0
@@ -598,8 +732,11 @@ for (const c of d.companies) {
     stockPriceForecast: fcast,
     marketCapForecast: capBn
       ? {
-          unit: c.ticker?.includes('.HK') ? '亿港元' : c.currency === 'USD' ? '亿美元' : '亿元人民币',
+          unit: capUnitLabel(c),
+          capUnit: capUnitLabel(c),
           baseline: { month: '2026-06', value: capBn },
+          calibrationNote: fcast.calibrationNote,
+          assumptions: fcast.assumptions,
           scenarios: Object.fromEntries(
             Object.entries(scenarioDefs).map(([k, v]) => [
               k,
