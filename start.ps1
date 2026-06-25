@@ -14,7 +14,6 @@ Write-Host "   http://localhost:8080" -ForegroundColor Green
 Write-Host ""
 Write-Host " 二级站点：" -ForegroundColor Gray
 Write-Host "   /studio/    工作室" -ForegroundColor Gray
-Write-Host "   /resume/    简历" -ForegroundColor Gray
 Write-Host "   /zichan/    资产分析" -ForegroundColor Gray
 Write-Host "   /guandian/  公司财务分析" -ForegroundColor Gray
 Write-Host ""
