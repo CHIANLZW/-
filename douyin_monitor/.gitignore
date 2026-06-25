@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+recordings/
+logs/
+state/
+output/
+DONE.txt
