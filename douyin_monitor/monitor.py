@@ -52,9 +52,9 @@ class LiveMonitor:
             resp = requests.get(url, headers=config.REQUEST_HEADERS, timeout=15)
             text = resp.text
 
-            title_match = re.search(r'"title"\s*:\s*"([^"\\]+)"', text)
+            title_match = re.search(r'"title"\s*:\s*"((?:\\.|[^"\\])*)"', text)
             if title_match:
-                title = title_match.group(1).encode("utf-8").decode("unicode_escape", errors="ignore")
+                title = decode_json_string(title_match.group(1))
 
             # status 2 = broadcasting; Living string also appears when live
             if re.search(r'"status"\s*:\s*2\b', text) or '"Living"' in text:
