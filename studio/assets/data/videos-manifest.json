@@ -14,7 +14,10 @@
       "category": "fpv",
       "size_mb": 11.62,
       "issue": "待确认是否为正确素材；原 WordPress 旧站视频",
-      "pages": ["index 经典项目", "portfolio#fpv"],
+      "pages": [
+        "index 经典项目",
+        "portfolio#fpv"
+      ],
       "published": false
     },
     {
@@ -25,7 +28,9 @@
       "category": "fpv",
       "size_mb": 3.38,
       "issue": "与桌面 毕业/f44bb0e….mp4 同大小，可能为重复拷贝，待确认",
-      "pages": ["portfolio#fpv"],
+      "pages": [
+        "portfolio#fpv"
+      ],
       "published": false
     },
     {
@@ -36,14 +41,17 @@
       "category": "film",
       "size_mb": 71.43,
       "issue": "与桌面 毕业/C0001.MP4 同大小，疑为同源；体积大可能影响加载",
-      "pages": ["index 经典项目", "portfolio#film"],
+      "pages": [
+        "index 经典项目",
+        "portfolio#film"
+      ],
       "published": false
     },
     {
       "id": "grad-c0001",
       "title": "毕业项目 C0001（候选）",
       "file": null,
-      "source_path": "C:\\Users\\28295\\Desktop\\毕业\\C0001.MP4",
+      "source_path": "[本地路径已移除]",
       "category": "film",
       "size_mb": 71.43,
       "published": false
@@ -52,7 +60,7 @@
       "id": "grad-c0002",
       "title": "毕业项目 C0002（候选）",
       "file": null,
-      "source_path": "C:\\Users\\28295\\Desktop\\毕业\\C0002.MP4",
+      "source_path": "[本地路径已移除]",
       "category": "film",
       "size_mb": 226.89,
       "published": false
@@ -61,7 +69,7 @@
       "id": "grad-f44b",
       "title": "毕业项目短片（候选）",
       "file": null,
-      "source_path": "C:\\Users\\28295\\Desktop\\毕业\\f44bb0eee7ff8e160ec100edbba1a4b9.mp4",
+      "source_path": "[本地路径已移除]",
       "category": "film",
       "size_mb": 3.38,
       "published": false

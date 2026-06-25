@@ -2,6 +2,18 @@
 
 个人网站。访问根目录 `index.html` 进入站点选择页。
 
+## Agent 工作区（Cursor / mimocod）
+
+| 项 | 路径 / 链接 |
+|----|-------------|
+| **本地仓库** | `D:\agent\inchian-top` |
+| **GitHub** | https://github.com/CHIANLZW/- |
+| **Agent 说明** | 根目录 `AGENTS.md` |
+| **一键菜单** | 双击 `start-agent.bat` |
+| **mimocod（在本仓库运行）** | `D:\mimocod\bin\mimocod-agent.cmd` |
+
+在 Cursor 中：**文件 → 打开文件夹** → 选择 `D:\agent\inchian-top`，或打开 `inchian.top.code-workspace`。
+
 ## 本地运行
 
 ### 观点 / 小米分析（guandian）— 推荐

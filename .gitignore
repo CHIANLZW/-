@@ -26,6 +26,9 @@ desktop.ini
 # 本地开发依赖（npm start）
 node_modules/
 
+# MiMo Code / mimocod 本地会话记忆（勿提交）
+.mimocode/
+
 # Boss 自动投简历（浏览器扩展源码，勿提交依赖与构建产物）
 自动投简历/node_modules/
 自动投简历/.output/

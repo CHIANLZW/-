@@ -43,10 +43,38 @@ window.ClientDisplay = (() => {
     );
   }
 
+  function maskCompanyName(name) {
+    const suffixes = ['有限责任公司', '股份有限公司', '有限公司', '培训学校'];
+    let body = name.trim();
+    let suffix = '';
+    for (const s of suffixes) {
+      if (body.endsWith(s)) {
+        suffix = s;
+        body = body.slice(0, -s.length);
+        break;
+      }
+    }
+    const chars = [...body];
+    if (chars.length <= 1) return name;
+    if (chars.length === 2) {
+      chars[1] = '*';
+      return chars.join('') + suffix;
+    }
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+    let i1 = 1 + (h % (chars.length - 1));
+    let i2 = 1 + ((h >>> 8) % (chars.length - 1));
+    if (i1 === i2) i2 = i1 < chars.length - 1 ? i1 + 1 : i1 - 1;
+    chars[i1] = '*';
+    chars[i2] = '*';
+    return chars.join('') + suffix;
+  }
+
   function format(name) {
     const resolved = resolveAlias(name);
     if (!resolved) return '其他案例';
     if (isSensitive(resolved)) return config.sensitiveMask || '***';
+    if (/有限公司|有限责任公司|培训学校/.test(resolved)) return maskCompanyName(resolved);
     return resolved;
   }
 

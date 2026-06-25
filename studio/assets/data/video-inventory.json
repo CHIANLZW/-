@@ -2,7 +2,7 @@
   "note": "勾选要上线的视频后告知，将写入 assets/data/videos-manifest.json 并更新首页/项目集",
   "site_current": [
     {
-      "path": "C:\\Users\\28295\\Desktop\\inchian.top\\assets\\videos\\film\\film-behind.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": "assets/videos/film/film-behind.mp4",
       "size_mb": 71.43,
       "on_site": true,
@@ -13,7 +13,7 @@
       "suggested_category": "film"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\inchian.top\\assets\\videos\\fpv\\fpv-flight.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": "assets/videos/fpv/fpv-flight.mp4",
       "size_mb": 3.38,
       "on_site": true,
@@ -23,7 +23,7 @@
       "suggested_category": "fpv"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\inchian.top\\assets\\videos\\fpv\\fpv-showreel.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": "assets/videos/fpv/fpv-showreel.mp4",
       "size_mb": 11.62,
       "on_site": true,
@@ -36,7 +36,7 @@
   ],
   "candidates": [
     {
-      "path": "C:\\Users\\28295\\Desktop\\毕业\\C0001.MP4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 71.43,
       "on_site": false,
@@ -44,7 +44,7 @@
       "suggested_category": "film"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\毕业\\C0002.MP4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 226.89,
       "on_site": false,
@@ -52,7 +52,7 @@
       "suggested_category": "film"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\毕业\\f44bb0eee7ff8e160ec100edbba1a4b9.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 3.38,
       "on_site": false,
@@ -60,7 +60,7 @@
       "suggested_category": "film"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\WKDES新版地面站\\PC端地面站下载教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 43.45,
       "on_site": false,
@@ -68,7 +68,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\八字打点\\八字打点教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 12.85,
       "on_site": false,
@@ -76,7 +76,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\数传连接\\地面端数传安装.MP4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 24.73,
       "on_site": false,
@@ -84,7 +84,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\数传连接\\手机端连接教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 83.96,
       "on_site": false,
@@ -92,7 +92,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\数传连接\\电脑端连接教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 40.85,
       "on_site": false,
@@ -100,7 +100,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\陀螺仪与磁力器校准\\陀螺仪与磁力器校准.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 86.78,
       "on_site": false,
@@ -108,7 +108,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\飞控固件升级\\飞控固件升级教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 2.68,
       "on_site": false,
@@ -118,7 +118,7 @@
   ],
   "all": [
     {
-      "path": "C:\\Users\\28295\\Desktop\\毕业\\C0001.MP4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 71.43,
       "on_site": false,
@@ -126,7 +126,7 @@
       "suggested_category": "film"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\毕业\\C0002.MP4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 226.89,
       "on_site": false,
@@ -134,7 +134,7 @@
       "suggested_category": "film"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\毕业\\f44bb0eee7ff8e160ec100edbba1a4b9.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 3.38,
       "on_site": false,
@@ -142,7 +142,7 @@
       "suggested_category": "film"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\WKDES新版地面站\\PC端地面站下载教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 43.45,
       "on_site": false,
@@ -150,7 +150,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\八字打点\\八字打点教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 12.85,
       "on_site": false,
@@ -158,7 +158,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\数传连接\\地面端数传安装.MP4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 24.73,
       "on_site": false,
@@ -166,7 +166,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\数传连接\\手机端连接教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 83.96,
       "on_site": false,
@@ -174,7 +174,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\数传连接\\电脑端连接教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 40.85,
       "on_site": false,
@@ -182,7 +182,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\陀螺仪与磁力器校准\\陀螺仪与磁力器校准.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 86.78,
       "on_site": false,
@@ -190,7 +190,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\软件\\华科尔教培相关资料包1.0\\华科尔教培相关资料包\\飞控固件升级\\飞控固件升级教程.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": null,
       "size_mb": 2.68,
       "on_site": false,
@@ -198,7 +198,7 @@
       "suggested_category": "other"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\inchian.top\\assets\\videos\\film\\film-behind.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": "assets/videos/film/film-behind.mp4",
       "size_mb": 71.43,
       "on_site": true,
@@ -209,7 +209,7 @@
       "suggested_category": "film"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\inchian.top\\assets\\videos\\fpv\\fpv-flight.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": "assets/videos/fpv/fpv-flight.mp4",
       "size_mb": 3.38,
       "on_site": true,
@@ -219,7 +219,7 @@
       "suggested_category": "fpv"
     },
     {
-      "path": "C:\\Users\\28295\\Desktop\\inchian.top\\assets\\videos\\fpv\\fpv-showreel.mp4",
+      "path": "[本地路径已移除]",
       "relative_to_project": "assets/videos/fpv/fpv-showreel.mp4",
       "size_mb": 11.62,
       "on_site": true,
