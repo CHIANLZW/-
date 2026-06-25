@@ -4,6 +4,9 @@
   "directoryListing": false,
   "rewrites": [
     { "source": "/guandian", "destination": "/guandian/index.html" },
-    { "source": "/guandian/", "destination": "/guandian/index.html" }
+    { "source": "/guandian/", "destination": "/guandian/index.html" },
+    { "source": "/resume", "destination": "/studio/index.html" },
+    { "source": "/resume/", "destination": "/studio/index.html" },
+    { "source": "/resume/**", "destination": "/studio/index.html" }
   ]
 }
