@@ -1,0 +1,16 @@
+# Douyin live monitor — audio pipeline dependencies
+
+# Live status polling
+requests>=2.31.0
+
+# Windows system audio capture (WASAPI loopback)
+pyaudiowpatch>=0.2.12.6
+
+# Local transcription (zero API cost)
+faster-whisper>=1.0.0
+
+# Summarization (single API call)
+openai>=1.30.0
+
+# faster-whisper runtime
+av>=10.0.0

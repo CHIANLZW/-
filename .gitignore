@@ -30,3 +30,5 @@ node_modules/
 自动投简历/node_modules/
 自动投简历/.output/
 自动投简历/.wxt/
+__pycache__/
+*.pyc
