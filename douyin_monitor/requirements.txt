@@ -1,0 +1,5 @@
+# Douyin Live Monitor
+# Core scripts use Python 3.10+ stdlib only (urllib, json, subprocess).
+# No pip packages required for monitoring.
+#
+# Optional: set OPENAI_API_KEY for AI summarization in summarizer.py
